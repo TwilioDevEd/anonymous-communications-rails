@@ -3,7 +3,34 @@
     <div class="overview">
         <img src="<%= @vacation_property.image_url %>" />
     </div>
-    <h2><%= @vacation_property.description %></h2>
+    <h1><%= @vacation_property.description %></h1>
+    <hr>
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Make a Reservation</h3>
+            </div>
+            <div class="panel-body">
+                <%= form_for @reservation do |f| %>
+                  <div class="form-group">
+                    <%= f.label :message, "Would you like to say anything to the host?" %>
+                    <%= f.text_area :message, size: "10x10", class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+                  </div>
+                  <div class="hidden">
+                    <%= f.text_field :name, value: @user.name %>
+                  </div>
+                  <div class="hidden">
+                    <%= f.text_field :phone_number, value: @user.phone_number %>
+                  </div>
+                  <div class="hidden">
+                    <%= f.text_field :property_id, value: @vacation_property.id %>
+                  </div>
+                  <button class="btn btn-primary">Reserve Now</button>
+                <% end -%>
+            </div>
+        </div>
+    </div>
+    
     <%= link_to 'Edit', edit_vacation_property_path(@vacation_property) %> |
     <%= link_to 'Back', vacation_properties_path %>
 </div>

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_many :vacation_properties
+  has_many :reservations, through: :vacation_properties
 
   after_create :register_with_authy
 

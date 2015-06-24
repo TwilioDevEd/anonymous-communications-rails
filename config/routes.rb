@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   post "users/verify"
   post "users/resend"
 
+  resources :reservations, only: [:new, :create]
+
   resources :users, only: [:new, :create, :show]
 
   # Home page

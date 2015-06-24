@@ -4289,3 +4289,1853 @@ Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2
 
 
 Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 15:23:22 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (24.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReservations (20150624223136)
+  [1m[35m (11.2ms)[0m  BEGIN
+  [1m[36m (11.4ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateReservations (20150624223136)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (68.3ms)[0m  [1mCREATE TABLE "reservations" ("id" serial primary key, "name" character varying, "phone_number" character varying, "status" integer, "message" text, "vacation_property_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (27.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150624223136"]]
+  [1m[36m (3.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (17.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reservations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'vacation_properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/properties/3/edit" for ::1 at 2015-06-24 16:04:02 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VacationPropertiesController#edit as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mVacationProperty Load (5.7ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (6.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  Rendered vacation_properties/_form.html.erb (27.6ms)
+  Rendered vacation_properties/edit.html.erb within layouts/application (30.6ms)
+Completed 200 OK in 191ms (Views: 129.5ms | ActiveRecord: 19.7ms)
+
+
+Started GET "/properties/" for ::1 at 2015-06-24 16:04:53 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT "vacation_properties".* FROM "vacation_properties"
+  Rendered vacation_properties/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 48ms (Views: 47.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:04:53 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:04:54 -0700
+
+
+Started GET "/assets/tngbg.jpg" for ::1 at 2015-06-24 16:04:54 -0700
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 16:04:57 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (1.5ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (3.2ms)
+Completed 200 OK in 35ms (Views: 34.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 16:05:21 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (2.8ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (4.6ms)
+Completed 200 OK in 53ms (Views: 44.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:05:21 -0700
+
+
+Started POST "/properties" for ::1 at 2015-06-24 16:06:20 -0700
+Processing by VacationPropertiesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"p5OMf8gVIgz1DScwSIDmKO/fn9nO5jNA2ORY0FF/5VTr3WyHb6VSs1MrEzVkSWKWTeHM0rTAcmvnzF3NwBj6gA==", "vacation_property"=>{"description"=>"Riker's Retreat", "image_url"=>"http://howtodocs.s3.amazonaws.com/trek_3.jpg"}, "commit"=>"Create Vacation property"}
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `vacation_properties' for nil:NilClass):
+  app/controllers/vacation_properties_controller.rb:25:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (36.2ms)
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 16:08:02 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (2.8ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 69ms (Views: 57.3ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:08:03 -0700
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 16:08:05 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (1.2ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 29ms (Views: 28.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:08:05 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:08:06 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:08:06 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:08:06 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:08:06 -0700
+
+
+Started POST "/properties" for ::1 at 2015-06-24 16:08:13 -0700
+Processing by VacationPropertiesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wbq2FjQ83ThVbU1872wYh/xkcOT54Cm0DsaqpR53wNGN9Fbuk4yth/NLeXnDpZw5Xloj74PGaJ8x7q+4jxDfBQ==", "vacation_property"=>{"description"=>"Riker's Retreat", "image_url"=>"http://howtodocs.s3.amazonaws.com/trek_4.jpg"}, "commit"=>"Create Vacation property"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (14.0ms)[0m  [1mINSERT INTO "vacation_properties" ("description", "image_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "Riker's Retreat"], ["image_url", "http://howtodocs.s3.amazonaws.com/trek_4.jpg"], ["user_id", 9], ["created_at", "2015-06-24 23:08:13.074536"], ["updated_at", "2015-06-24 23:08:13.074536"]]
+  [1m[35m (2.2ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 74ms (ActiveRecord: 21.1ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:08:13 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 34ms (Views: 32.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:08:13 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:18:45 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (21.0ms)
+Completed 500 Internal Server Error in 69ms
+
+ActionView::Template::Error (undefined method `textarea_field' for #<ActionView::Helpers::FormBuilder:0x007f85dc279a98>):
+     9:     <%= form_for @user do |f| %>
+    10:       <div class="form-group">
+    11:         <%= f.label :message, "Would you like to say anything to the host?" %>
+    12:         <%= f.textarea_field :message, class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+    13:       </div>
+    14:       <div class="hidden">
+    15:         <%= f.text_field :name, value: @user.name %>
+  app/views/vacation_properties/show.html.erb:12:in `block in _app_views_vacation_properties_show_html_erb__4575624461335620595_70106500118280'
+  app/views/vacation_properties/show.html.erb:9:in `_app_views_vacation_properties_show_html_erb__4575624461335620595_70106500118280'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (21.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (36.5ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:18:54 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (15.1ms)
+Completed 500 Internal Server Error in 20ms
+
+ActionView::Template::Error (undefined method `text_area_field' for #<ActionView::Helpers::FormBuilder:0x007f85dd2b3620>):
+     9:     <%= form_for @user do |f| %>
+    10:       <div class="form-group">
+    11:         <%= f.label :message, "Would you like to say anything to the host?" %>
+    12:         <%= f.text_area_field :message, class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+    13:       </div>
+    14:       <div class="hidden">
+    15:         <%= f.text_field :name, value: @user.name %>
+  app/views/vacation_properties/show.html.erb:12:in `block in _app_views_vacation_properties_show_html_erb__4575624461335620595_70106500651060'
+  app/views/vacation_properties/show.html.erb:9:in `_app_views_vacation_properties_show_html_erb__4575624461335620595_70106500651060'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (20.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (29.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (43.9ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:19:02 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (6.6ms)
+Completed 500 Internal Server Error in 11ms
+
+ActionView::Template::Error (undefined method `message' for #<User:0x007f85dd36aeb0>):
+     9:     <%= form_for @user do |f| %>
+    10:       <div class="form-group">
+    11:         <%= f.label :message, "Would you like to say anything to the host?" %>
+    12:         <%= f.text_area :message, class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+    13:       </div>
+    14:       <div class="hidden">
+    15:         <%= f.text_field :name, value: @user.name %>
+  app/views/vacation_properties/show.html.erb:12:in `block in _app_views_vacation_properties_show_html_erb__4575624461335620595_70106502060340'
+  app/views/vacation_properties/show.html.erb:9:in `_app_views_vacation_properties_show_html_erb__4575624461335620595_70106502060340'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (19.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (12.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (28.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:19:08 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (7.5ms)
+Completed 500 Internal Server Error in 13ms
+
+ActionView::Template::Error (undefined method `message' for #<User:0x007f85e24a20f8>):
+     9:     <%= form_for @user do |f| %>
+    10:       <div class="form-group">
+    11:         <%= f.label :message, "Would you like to say anything to the host?" %>
+    12:         <%= f.text_field :message, class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+    13:       </div>
+    14:       <div class="hidden">
+    15:         <%= f.text_field :name, value: @user.name %>
+  app/views/vacation_properties/show.html.erb:12:in `block in _app_views_vacation_properties_show_html_erb__4575624461335620595_70106501928340'
+  app/views/vacation_properties/show.html.erb:9:in `_app_views_vacation_properties_show_html_erb__4575624461335620595_70106501928340'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (24.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (10.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (23.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:19:36 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (5.2ms)
+Completed 500 Internal Server Error in 10ms
+
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+     6:     <h2><%= @vacation_property.description %></h2>
+     7:     <hr>
+     8:     <h1>Make a Reservation</h1>
+     9:     <%= form_for @reservation do |f| %>
+    10:       <div class="form-group">
+    11:         <%= f.label :message, "Would you like to say anything to the host?" %>
+    12:         <%= f.text_field :message, class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+  app/views/vacation_properties/show.html.erb:9:in `_app_views_vacation_properties_show_html_erb__4575624461335620595_70106458584920'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (18.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (10.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (23.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:20:08 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (16.5ms)
+Completed 500 Internal Server Error in 58ms
+
+ActionView::Template::Error (undefined method `reservations_path' for #<#<Class:0x007f85e239bcb8>:0x007f85e2398018>):
+     6:     <h2><%= @vacation_property.description %></h2>
+     7:     <hr>
+     8:     <h1>Make a Reservation</h1>
+     9:     <%= form_for @reservation do |f| %>
+    10:       <div class="form-group">
+    11:         <%= f.label :message, "Would you like to say anything to the host?" %>
+    12:         <%= f.text_field :message, class: "form-control", placeholder: "Hello! I am hoping to stay in your intergalactic suite..." %>
+  app/views/vacation_properties/show.html.erb:9:in `_app_views_vacation_properties_show_html_erb__4575624461335620595_70106458584920'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (22.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (23.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (38.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:21:41 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 76ms (Views: 43.9ms | ActiveRecord: 9.7ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:21:42 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:22:57 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 40ms (Views: 37.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:22:57 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:23:29 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 61ms (Views: 57.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:23:29 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:23:30 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:23:38 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 43ms (Views: 41.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:23:38 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:23:39 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:23:45 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (5.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (2.4ms)
+Completed 200 OK in 65ms (Views: 56.6ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:23:46 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:24:07 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (4.0ms)
+Completed 200 OK in 88ms (Views: 84.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:24:07 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:24:08 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:24:16 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 37ms (Views: 35.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:24:16 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:24:23 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (1.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 61ms (Views: 56.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:24:23 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:26:01 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 46ms (Views: 43.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:26:01 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:27:04 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 41ms (Views: 37.8ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:27:04 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:27:05 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:28:07 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 69ms (Views: 37.8ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:28:07 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:28:08 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:28:20 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"4aZfYTuCUBa/ZUq85wtvBGspvcVOW8KuXcnFCv7/et+t6L+ZnDIgqRlDfrnLwuu6yRfuzjR9g4Vi4cAXb5hlCw==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813"}}
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find VacationProperty with 'id'=):
+  app/controllers/reservations_controller.rb:9:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (37.9ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:29:00 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (4.2ms)
+Completed 200 OK in 65ms (Views: 38.4ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:29:00 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:29:07 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"coD7u7WXj14ZO574EpjlMM44vLZo0U/Vif5wsIJFFco+zhtDEif/4b8dqv0+UWGObAbvvRL3Dv621nWtEyIKHg==", "reservation"=>{"message"=>"", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (1.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", nil]]
+Completed 404 Not Found in 6ms
+
+ActiveRecord::RecordNotFound (Couldn't find VacationProperty with 'id'=):
+  app/controllers/reservations_controller.rb:9:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (13.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.4ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:29:10 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 29ms (Views: 27.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:29:10 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:29:11 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:29:11 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (1.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.5ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 149ms (Views: 143.5ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:29:12 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:29:27 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eXPOYrAE/ZJaJYWRNuK0v0UJlgOddLsINiaKtjrDKCk1PS6aF7SNLfwDsZQaKzAB5zfFCOdS+iMJDo+rq6Q3/Q==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 3ms
+
+ActiveRecord::RecordNotFound (Couldn't find VacationProperty with 'id'=):
+  app/controllers/reservations_controller.rb:9:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (12.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (27.3ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:30:01 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 64ms (Views: 60.7ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:30:01 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:30:58 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EWdZZOaqdJjpi4KDjysCJ6WH9Su133ukNeLm+8YG7thdKbmcQRoEJ0+ttoaj4oaZB7mmIM/5Oo8KyuPmV2HxDA==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", nil]]
+Completed 404 Not Found in 2ms
+
+ActiveRecord::RecordNotFound (Couldn't find VacationProperty with 'id'=):
+  app/controllers/reservations_controller.rb:9:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (37.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:31:54 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (2.6ms)
+Completed 200 OK in 91ms (Views: 52.7ms | ActiveRecord: 8.2ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:31:55 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:31:58 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 35ms (Views: 32.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:31:58 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:32:04 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ch6LAZ60Gbs7/Tp635s+fhfDmQPlJhfqz3qXe+8+4XI+UGv5OQRpBJ3bDn/zUrrAtf3KCJ8AVsHwUpJmfln+pg==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 5ms
+
+ActiveRecord::RecordNotFound (Couldn't find VacationProperty with 'id'=):
+  app/controllers/reservations_controller.rb:10:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (30.8ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:33:23 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 61ms (Views: 34.8ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:33:23 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:33:39 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"+l9pQJZ7+HqfBA7AQV3Xxg2h6/9iBYiPR6i3f2hvKK+2EYm4McuIxTkiOsVtlFN4r5+49BgjyaR4gLJi+Qg3ew==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+Completed 500 Internal Server Error in 1ms
+
+TypeError (no implicit conversion of Symbol into Integer):
+  app/controllers/reservations_controller.rb:9:in `[]'
+  app/controllers/reservations_controller.rb:9:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (30.5ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:33:45 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 77ms (Views: 45.9ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:33:45 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:33:51 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"BZklXEtrqk2Yydj9V6CE7P1k8la0RglIeaQety7cFsNJ18Wk7Nva8j7v7Ph7aQBSX1qhXc5gSGNGjBuqv7sJFw==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+Completed 500 Internal Server Error in 5ms
+
+TypeError (no implicit conversion of Symbol into Integer):
+  app/controllers/reservations_controller.rb:10:in `[]'
+  app/controllers/reservations_controller.rb:10:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (11.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (24.8ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:34:48 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 83ms (Views: 41.8ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:34:49 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:34:54 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"q2oJVRqHpPRigPLdOjWXH6R20ZBeLUut2Dz9AFDJFNbnJOmtvTfUS8SmxtgW/BOhBkiCmyQLCobnFPgdwa4LAg==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+Completed 500 Internal Server Error in 2ms
+
+NoMethodError (undefined method `reservation' for #<ActionController::Parameters:0x007f85e227def8>):
+  app/controllers/reservations_controller.rb:9:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (13.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.1ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:35:27 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 63ms (Views: 37.5ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:35:28 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:35:31 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"mBC60e7epo8YVyl7OxCmTKBF5hHnD2ly7012tiwsBGjUXlopSW7WML5xHX4X2SLyAnu1Gp0pKFnQZXOrvUsbvA==", "reservation"=>{"message"=>"Hi there, I would like to make a reservation.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.5ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Completed 500 Internal Server Error in 5ms
+
+NoMethodError (undefined method `reservations' for #<VacationProperty:0x007f85dc3815d0>):
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (13.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.7ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (3.9ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reservations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.5ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'vacation_properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:39:15 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.6ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 299ms (Views: 241.8ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:39:15 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:39:16 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:39:17 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.8ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 31ms (Views: 26.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:39:17 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:40:39 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"MUUwz7UBQS3TO6G85tjic5Al3L9T47DgwrJlMdZX96V9C9A3ErExknUdlbnKEWbNMhuPtCnF8cv9mmAsRzDocQ==", "reservation"=>{"message"=>"Hi let's do this.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.8ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Completed 500 Internal Server Error in 26ms
+
+NoMethodError (undefined method `reservations' for #<VacationProperty:0x007feb873dbb28>):
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (37.5ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:41:47 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.5ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (12.3ms)
+Completed 200 OK in 309ms (Views: 224.9ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:41:48 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:41:49 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 16:41:51 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"z+pr0O9gvwDGnbp7T1wjNhD4bPmPdOjOrO0rPQjPA7GDpIsoSNDPv2C7jn5jlaeIssY/8vVSqeWTxS4gmagcZQ==", "reservation"=>{"message"=>"Hi let's do this.", "name"=>"Jardino Twostep", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.6ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (12.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (23.7ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Jardino Twostep"], ["phone_number", "2066505813"], ["message", "Hi let's do this."], ["vacation_property_id", 4], ["created_at", "2015-06-24 23:41:51.493674"], ["updated_at", "2015-06-24 23:41:51.493674"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 64ms (ActiveRecord: 38.1ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 16:41:51 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 29ms (Views: 26.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 16:41:51 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:41:52 -0700

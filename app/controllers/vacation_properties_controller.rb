@@ -1,5 +1,5 @@
 class VacationPropertiesController < ApplicationController
-  before_action :set_vacation_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_vacation_property_and_user, only: [:show, :edit, :update, :destroy]
 
   # GET /vacation_properties
   # GET /vacation_properties.json
@@ -10,6 +10,7 @@ class VacationPropertiesController < ApplicationController
   # GET /vacation_properties/1
   # GET /vacation_properties/1.json
   def show
+    @reservation = Reservation.new
   end
 
   # GET /vacation_properties/new
@@ -21,10 +22,9 @@ class VacationPropertiesController < ApplicationController
   def edit
   end
 
-  # POST /vacation_properties
-  # POST /vacation_properties.json
   def create
-    @vacation_property = VacationProperty.new(vacation_property_params)
+    @user = current_user
+    @vacation_property = @user.vacation_properties.create(vacation_property_params)
 
     respond_to do |format|
       if @vacation_property.save
@@ -37,8 +37,6 @@ class VacationPropertiesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /vacation_properties/1
-  # PATCH/PUT /vacation_properties/1.json
   def update
     respond_to do |format|
       if @vacation_property.update(vacation_property_params)
@@ -51,8 +49,6 @@ class VacationPropertiesController < ApplicationController
     end
   end
 
-  # DELETE /vacation_properties/1
-  # DELETE /vacation_properties/1.json
   def destroy
     @vacation_property.destroy
     respond_to do |format|
@@ -63,7 +59,8 @@ class VacationPropertiesController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_vacation_property
+    def set_vacation_property_and_user
+      @user = current_user
       @vacation_property = VacationProperty.find(params[:id])
     end
 
