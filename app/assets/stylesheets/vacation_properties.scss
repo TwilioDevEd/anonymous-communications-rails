@@ -26,3 +26,18 @@
         position: relative;
     }
 }
+
+.property-detail {
+    position: absolute;
+    top: 0px;
+    width: 100%;
+    .overview {
+        height: 400px;
+        overflow: hidden;
+
+    }
+    img {
+        width:100%;
+
+    }
+}
