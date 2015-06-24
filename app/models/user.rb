@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_many :vacation_properties
+
   after_create :register_with_authy
 
   validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @vacation_property.description %>
+</p>
+
+<p>
+  <strong>Image url:</strong>
+  <%= @vacation_property.image_url %>
+</p>
+
+<%= link_to 'Edit', edit_vacation_property_path(@vacation_property) %> |
+<%= link_to 'Back', vacation_properties_path %>
