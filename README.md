@@ -1,4 +1,4 @@
-# Account Verification
+# Rails Starter Kit
 
 Use Authy and Twilio to verify your user's account.
 
