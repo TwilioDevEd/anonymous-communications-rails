@@ -2,6 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 /* Index page */
+body.cover {
+    footer {
+        text-align: center;
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+    }
+}
 .hero-text {
     background: url(tngbg.jpg);
     margin: 0px;
@@ -58,10 +66,14 @@
         list-style: none;
         margin: 10px;
         a { 
+            color: #337ab7 !important;
             font-size:14px; 
             &:hover {
                 background:transparent;
                 text-decoration: none;
+            }
+            &:visited {
+                color: #337ab7 !important;
             }
         }
     }
@@ -73,11 +85,4 @@
 
 #main.push-nav {
     margin-top: 60px;
-}
-
-footer {
-    text-align: center;
-    position: absolute;
-    bottom: 20px;
-    width: 100%;
 }

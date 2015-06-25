@@ -8,14 +8,16 @@ class UsersController < ApplicationController
   end
 
   def create
-    begin
-      @user = User.create(user_params)
+    @user = User.create(user_params)
+    puts @user.valid?
+    if @user.valid?
       # Save the user_id to the session object
       session[:user_id] = @user.id
       redirect_to verify_path
-    rescue => e
-      puts e.message
+    else 
       render :new
+      puts @user.errors.full_messages
+      flash.now[:danger] = @user.errors.full_messages
     end
   end
 
