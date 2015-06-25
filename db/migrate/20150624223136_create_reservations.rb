@@ -6,7 +6,6 @@ class CreateReservations < ActiveRecord::Migration
       t.integer :status
       t.text :message
       t.belongs_to :vacation_property, index:true
-      t.belongs_to :user
 
       t.timestamps null: false
     end

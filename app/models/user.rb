@@ -26,10 +26,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_authy_token_via_sms
-    Authy::API.request_sms(id: self.authy_id)
-  end
-
   def send_message_via_sms(message)
     @app_number = ENV['BARISTA_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
@@ -43,12 +39,16 @@ class User < ActiveRecord::Base
 
   def check_for_reservations_pending
     if pending_reservation
-      pending_reservation.notify_host 
+      pending_reservation.notify_host(true)
     end
   end
 
   def pending_reservation
     self.reservations.where(status: "pending").first
+  end
+
+  def pending_reservations
+    self.reservations.where(status: "pending")
   end
 
   private
@@ -62,5 +62,9 @@ class User < ActiveRecord::Base
       self.update(authy_id: authy.id)
 
       self.send_authy_token_via_sms
+    end
+
+    def send_authy_token_via_sms
+      Authy::API.request_sms(id: self.authy_id)
     end
 end

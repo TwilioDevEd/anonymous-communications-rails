@@ -21,16 +21,21 @@ class Reservation < ActiveRecord::Base
     self.save
   end
 
-  def notify_host
+  def notify_host(force = false)
     @host = User.find(self.vacation_property[:user_id])
 
-    message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}: 
+    # Don't send the message if we have more than one or we aren't being forced
+    if @host.pending_reservations.length > 1 or !force
+      return
+    else
+      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}: 
 
-    '#{self.message}'
+      '#{self.message}'
 
-    Reply [accept] or [reject]."
+      Reply [accept] or [reject]."
 
-    @host.send_message_via_sms(message)
+      @host.send_message_via_sms(message)
+    end
   end
 
   private
