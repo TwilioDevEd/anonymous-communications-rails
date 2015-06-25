@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   validates :name, presence: true
   validates :country_code, presence: true
   validates :phone_number, presence: true
+  validates_uniqueness_of :phone_number
 
   def verify_auth_token(postedToken)
     # Use Authy to send the verification token
@@ -25,18 +26,29 @@ class User < ActiveRecord::Base
     end
   end
 
-  def send_message_via_sms(message)
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    message = @client.account.messages.create(
-      :from => ENV['TWILIO_NUMBER'],
-      :to => self.country_code+self.phone_number,
-      :body => message
-    )
-    puts message.to
-  end
-
   def send_authy_token_via_sms
     Authy::API.request_sms(id: self.authy_id)
+  end
+
+  def send_message_via_sms(message)
+    @app_number = ENV['BARISTA_NUMBER']
+    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    sms_message = @client.account.messages.create(
+      :from => @app_number,
+      :to => self.phone_number,
+      :body => message,
+    )
+    puts sms_message.to
+  end
+
+  def check_for_reservations_pending
+    if pending_reservation
+      pending_reservation.notify_host 
+    end
+  end
+
+  def pending_reservation
+    self.reservations.where(status: "pending").first
   end
 
   private

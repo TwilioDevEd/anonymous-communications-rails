@@ -22,9 +22,12 @@ ActiveRecord::Schema.define(version: 20150624223136) do
     t.integer  "status"
     t.text     "message"
     t.integer  "vacation_property_id"
+    t.integer  "user_id"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
   end
+
+  add_index "reservations", ["vacation_property_id"], name: "index_reservations_on_vacation_property_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                           null: false

@@ -6139,3 +6139,2309 @@ Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2
 
 
 Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 16:41:52 -0700
+
+
+Started GET "/users/new" for ::1 at 2015-06-24 17:14:04 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (19.5ms)
+Completed 200 OK in 87ms (Views: 61.8ms | ActiveRecord: 3.8ms)
+
+
+Started POST "/users" for ::1 at 2015-06-24 17:14:43 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"JBjpYeXIJ33pmXh9sg3evEeAVXWuKKg2M4xqo1BZa+9oVgmZQnhXwk+/THiexFoC5b4GftQO6R0MpG++wT50Ow==", "user"=>{"name"=>"Jarod Guest1", "email"=>"jarodreyes+test14@gmail.com", "password"=>"[FILTERED]", "country_code"=>"+1", "phone_number"=>"2066505813"}}
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (7.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'jarodreyes+test14@gmail.com' LIMIT 1[0m
+  [1m[35mSQL (12.4ms)[0m  INSERT INTO "users" ("email", "password_digest", "name", "country_code", "phone_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["email", "jarodreyes+test14@gmail.com"], ["password_digest", "$2a$10$jnxbl3vrTzL1xwAqv16khe5pyrzCs5tvd2p8bk5FFf6johPkbDnSW"], ["name", "Jarod Guest1"], ["country_code", "+1"], ["phone_number", "2066505813"], ["created_at", "2015-06-25 00:14:43.189535"], ["updated_at", "2015-06-25 00:14:43.189535"]]
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'jarodreyes+test14@gmail.com' AND "users"."id" != 10) LIMIT 1[0m
+  [1m[35mSQL (1.8ms)[0m  UPDATE "users" SET "email" = $1, "password_digest" = $2, "name" = $3, "country_code" = $4, "phone_number" = $5, "created_at" = $6, "updated_at" = $7, "id" = $8, "authy_id" = $9 WHERE "users"."id" = $10  [["email", "jarodreyes+test14@gmail.com"], ["password_digest", "$2a$10$jnxbl3vrTzL1xwAqv16khe5pyrzCs5tvd2p8bk5FFf6johPkbDnSW"], ["name", "Jarod Guest1"], ["country_code", "+1"], ["phone_number", "2066505813"], ["created_at", "2015-06-25 00:14:43.189535"], ["updated_at", "2015-06-25 00:14:43.189535"], ["id", 10], ["authy_id", "5588010"], ["id", 10]]
+  [1m[36m (1.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/users/verify
+Completed 302 Found in 890ms (ActiveRecord: 23.7ms)
+
+
+Started GET "/users/verify" for ::1 at 2015-06-24 17:14:43 -0700
+Processing by UsersController#show_verify as HTML
+  Rendered users/show_verify.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 29ms (Views: 29.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:14:44 -0700
+
+
+Started POST "/users/verify" for ::1 at 2015-06-24 17:14:56 -0700
+Processing by UsersController#verify as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"9ThVCDZ/t5epjKtZF+dV8jxZHJKp/lIPREd9rbSUJuG5drXwkc/HKA+qn1w7LtFMnmdPmdPYEyR7b3iwJfM5NQ==", "token"=>"5719116"}
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'jarodreyes+test14@gmail.com' AND "users"."id" != 10) LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mUPDATE "users" SET "verified" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["verified", "t"], ["updated_at", "2015-06-25 00:14:56.450424"], ["id", 10]]
+  [1m[35m (0.9ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/10
+Completed 302 Found in 1054ms (ActiveRecord: 2.8ms)
+
+
+Started GET "/users/10" for ::1 at 2015-06-24 17:14:57 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"10"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 103ms (Views: 101.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:14:57 -0700
+
+
+Started GET "/properties/" for ::1 at 2015-06-24 17:15:02 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT "vacation_properties".* FROM "vacation_properties"
+  Rendered vacation_properties/index.html.erb within layouts/application (5.4ms)
+Completed 200 OK in 39ms (Views: 34.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/assets/tngbg.jpg" for ::1 at 2015-06-24 17:15:02 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:15:06 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 37ms (Views: 26.2ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 17:15:13 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Xohitb7NS2NgYiF96L9eWzji9IcAg0aK5es6Bs6Ul2QSxoJNGX073MZEFXjEdtrlmtynjHqlB6Hawz8bX/OIsA==", "reservation"=>{"message"=>"Hi please let me stay!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.6ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 89ms
+
+SystemStackError (stack level too deep):
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:79
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (17.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (27.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (56.6ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:17:22 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (17.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 65ms (Views: 42.4ms | ActiveRecord: 18.2ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:17:22 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 17:17:35 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"EDsQU9aF7LS1iDEJ54p14v1BcqHFSK1y6ndWYNSvsTdcdfCrcTWcCxOuBQzLQ/FcX38hqr9u7FnVX1N9Rciu4w==", "reservation"=>{"message"=>"Hi please let me stay!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (11.4ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 128ms
+
+SystemStackError (stack level too deep):
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:79
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (16.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (36.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:18:01 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (10.4ms)
+Completed 200 OK in 234ms (Views: 220.4ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:18:01 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:18:02 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 17:19:32 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"vcF4WLxm/TJqUxCUnh7kCnsx8ccqq/dG7mgiVPBVbk7xj5igG9aNjcx1JJGy12C02Q+izFCNtm3RQCdJYTJxmg==", "reservation"=>{"message"=>"Hi please let me stay!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (13.1ms)[0m  [1mINSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi please let me stay!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 00:19:32.441837"], ["updated_at", "2015-06-25 00:19:32.441837"], ["status", 0]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mReservation Load (0.5ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 9]]
+  [1m[35m (6.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 890ms (ActiveRecord: 26.2ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:19:33 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 37ms (Views: 34.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:19:33 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:19:34 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:21:23 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 58ms (Views: 33.0ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:21:24 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 17:21:28 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"hEpPT9TAuisglnZCdSOAxCM0yO7aTtMURW8e91rRnT3IBK+3c3DKlIawQkdZ6gR6gQqb5aBokj96Rxvqy7aC6Q==", "reservation"=>{"message"=>"Hi please let me stay!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi please let me stay!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 00:21:28.248633"], ["updated_at", "2015-06-25 00:21:28.248633"], ["status", 0]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mReservation Load (0.3ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 9]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 16ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/models/user.rb:46:in `notify_of_new_reservation'
+  app/models/reservation.rb:20:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (19.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (13.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (28.9ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:23:14 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 48ms (Views: 46.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:23:14 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:23:16 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 17:28:03 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ZNPK8iS8RPvAuZmUMaQ23+kavGKIzfPDQqxvCdgiXtQonSoKgww0RGafrZEdbbJhSyTvafLrsuh9hGoUSUVBAA==", "reservation"=>{"message"=>"Hi please let me stay!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (1.0ms)[0m  [1mINSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi please let me stay!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 00:28:03.970913"], ["updated_at", "2015-06-25 00:28:03.970913"], ["status", 0]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 9]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 44ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/models/user.rb:46:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (30.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 17:28:10 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 38ms (Views: 35.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 17:28:10 -0700
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 20:03:11 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (2.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (3.9ms)
+Completed 200 OK in 188ms (Views: 101.7ms | ActiveRecord: 47.4ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 20:03:11 -0700
+
+
+Started GET "/assets/airtng-logo.png" for ::1 at 2015-06-24 20:03:12 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (23.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (5.0ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reservations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (3.6ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'vacation_properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 20:09:37 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mVacationProperty Load (0.4ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (13.2ms)
+Completed 200 OK in 318ms (Views: 228.3ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 20:09:37 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 20:09:37 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 20:09:37 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 20:09:37 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 20:09:37 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 20:09:37 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 20:09:38 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 20:09:38 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 20:09:38 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 20:09:38 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:09:41 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.5ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (14.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (21.3ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:09:41.777405"], ["updated_at", "2015-06-25 03:09:41.777405"], ["status", 0]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.5ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (24.3ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 145ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/models/user.rb:46:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (23.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (36.6ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:13:54 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:13:54.590651"], ["updated_at", "2015-06-25 03:13:54.590651"], ["status", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.7ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36mReservation Load (0.4ms)[0m  [1mSELECT "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1[0m  [["user_id", 9]]
+  [1m[35m (0.1ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 115ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/models/user.rb:49:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (11.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (28.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (12.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (27.0ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:15:04 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.4ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (6.1ms)[0m  [1mINSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:15:04.901003"], ["updated_at", "2015-06-25 03:15:04.901003"], ["status", 0]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mReservation Load (0.6ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 9]]
+  [1m[35mReservation Load (0.5ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 74ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/models/user.rb:49:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (12.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (28.4ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:15:56 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.5ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:15:56.690441"], ["updated_at", "2015-06-25 03:15:56.690441"], ["status", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.7ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 58ms
+
+NoMethodError (undefined method `phone_number' for nil:NilClass):
+  app/models/user.rb:47:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (15.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (30.6ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:16:21 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (2.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:16:21.727529"], ["updated_at", "2015-06-25 03:16:21.727529"], ["status", 0]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.4ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 74ms
+
+NoMethodError (undefined method `description' for nil:NilClass):
+  app/models/user.rb:47:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (13.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (28.2ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:17:02 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:17:02.900832"], ["updated_at", "2015-06-25 03:17:02.900832"], ["status", 0]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.5ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 47ms
+
+NoMethodError (undefined method `attribute_names' for nil:NilClass):
+  app/models/user.rb:47:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (17.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (13.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.2ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:17:16 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:17:16.083315"], ["updated_at", "2015-06-25 03:17:16.083315"], ["status", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.2ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 37ms
+
+NoMethodError (undefined method `name' for nil:NilClass):
+  app/models/user.rb:49:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.4ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:17:51 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"y47QmnIkxvBTmI8ag7eDYQumucULRz/4tiSmU2allV6HwDBi1ZS2T/W+ux+vfgffqZjqznFhftOJDKNO98KKig==", "reservation"=>{"message"=>"Hi there let's do this!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.7ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Hi there let's do this!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:17:51.502816"], ["updated_at", "2015-06-25 03:17:51.502816"], ["status", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.5ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (13.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 931ms (ActiveRecord: 25.1ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 20:17:52 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 53ms (Views: 50.0ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:21:20 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v2wpdNPnbFeV/C3ownBHVzBmNER/SQdOJd3MT1dI1UnzIsmMdFcc6DPaGe3uucPpklhnTwVvRmUa9clSxi/KnQ==", "reservation"=>{"message"=>"Try number two!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Try number two!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:21:20.198464"], ["updated_at", "2015-06-25 03:21:20.198464"]]
+  [1m[36mUser Load (0.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (0.6ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = NULL  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9]]
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+Completed 500 Internal Server Error in 78ms
+
+NoMethodError (undefined method `attribute_names' for nil:NilClass):
+  app/models/user.rb:47:in `notify_of_new_reservation'
+  app/models/reservation.rb:21:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.6ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 20:22:20 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"v2wpdNPnbFeV/C3ownBHVzBmNER/SQdOJd3MT1dI1UnzIsmMdFcc6DPaGe3uucPpklhnTwVvRmUa9clSxi/KnQ==", "reservation"=>{"message"=>"Try number two!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.4ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Try number two!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 03:22:20.677461"], ["updated_at", "2015-06-25 03:22:20.677461"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mReservation Load (1.1ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9], ["status", 0]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 9], ["status", "pending"]]
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 1360ms (ActiveRecord: 14.0ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 20:22:22 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 45ms (Views: 42.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 21:06:59 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 180ms (Views: 123.5ms | ActiveRecord: 8.5ms)
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 21:06:59 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 21:07:11 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"agvdm+akclJahJeIcXaHXXgguq0e5sbwQgh198VS5swmRT1jQRQC7fyio41dvwPj2h7ppmTAh9t9IHDqVDX5GA==", "reservation"=>{"message"=>"I'd love to stay in space... :-p", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[36m (0.9ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "I'd love to stay in space... :-p"], ["vacation_property_id", 4], ["created_at", "2015-06-25 04:07:11.365328"], ["updated_at", "2015-06-25 04:07:11.365328"], ["status", 0]]
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35m (1.0ms)[0m  ROLLBACK
+Completed 500 Internal Server Error in 51ms
+
+NoMethodError (undefined method `name' for #<VacationProperty:0x007faf10adb170>):
+  app/models/reservation.rb:31:in `notify_host'
+  app/controllers/reservations_controller.rb:11:in `create'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (22.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (15.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (31.7ms)
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 21:07:57 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"agvdm+akclJahJeIcXaHXXgguq0e5sbwQgh198VS5swmRT1jQRQC7fyio41dvwPj2h7ppmTAh9t9IHDqVDX5GA==", "reservation"=>{"message"=>"I'd love to stay in space... :-p", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (1.9ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "I'd love to stay in space... :-p"], ["vacation_property_id", 4], ["created_at", "2015-06-25 04:07:57.614097"], ["updated_at", "2015-06-25 04:07:57.614097"], ["status", 0]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36m (2.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1[0m  [["phone_number", "2066505813"]]
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 1476ms (ActiveRecord: 21.9ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 21:07:59 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 47ms (Views: 44.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 21:12:34 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 82ms (Views: 52.6ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 21:12:34 -0700
+
+
+Started POST "/reservations" for ::1 at 2015-06-24 21:12:42 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Tkz7hLXqtZcx5R+bmx3BtpkAjzvEk2XASvDkHQEcZkoCAht8ElrFKJfDK5631EUIOz7cML61JOt12OEAkHt5ng==", "reservation"=>{"message"=>"Meet me in space!", "name"=>"Jarod Guest1", "phone_number"=>"2066505813", "property_id"=>"4"}}
+  [1m[36mVacationProperty Load (0.4ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 4]]
+Unpermitted parameter: property_id
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36mSQL (3.1ms)[0m  [1mINSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Jarod Guest1"], ["phone_number", "2066505813"], ["message", "Meet me in space!"], ["vacation_property_id", 4], ["created_at", "2015-06-25 04:12:42.809622"], ["updated_at", "2015-06-25 04:12:42.809622"], ["status", 0]]
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36m (1.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1[0m  [["phone_number", "2066505813"]]
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/properties/4
+Completed 302 Found in 771ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/properties/4" for ::1 at 2015-06-24 21:12:43 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"4"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 4]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 34ms (Views: 32.6ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:13:04 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM1dd54b7d6d0b5b284a6d85be46f28e84", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM1dd54b7d6d0b5b284a6d85be46f28e84", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM1dd54b7d6d0b5b284a6d85be46f28e84", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+Completed 422 Unprocessable Entity in 1ms
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  actionpack (4.2.0) lib/action_controller/metal/request_forgery_protection.rb:181:in `handle_unverified_request'
+  actionpack (4.2.0) lib/action_controller/metal/request_forgery_protection.rb:209:in `handle_unverified_request'
+  actionpack (4.2.0) lib/action_controller/metal/request_forgery_protection.rb:204:in `verify_authenticity_token'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:163:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:163:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (12.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (27.7ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:14:02 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM775c6a57f233400d8b3c35dc02b1f1f6", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM775c6a57f233400d8b3c35dc02b1f1f6", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Yes", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM775c6a57f233400d8b3c35dc02b1f1f6", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+Completed 422 Unprocessable Entity in 1ms
+
+ActionController::InvalidAuthenticityToken (ActionController::InvalidAuthenticityToken):
+  actionpack (4.2.0) lib/action_controller/metal/request_forgery_protection.rb:181:in `handle_unverified_request'
+  actionpack (4.2.0) lib/action_controller/metal/request_forgery_protection.rb:209:in `handle_unverified_request'
+  actionpack (4.2.0) lib/action_controller/metal/request_forgery_protection.rb:204:in `verify_authenticity_token'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:427:in `block in make_lambda'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:163:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:163:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (20.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (30.0ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:16:47 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM9717cbb4c7281da5be63269d5a3a91a5", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM9717cbb4c7281da5be63269d5a3a91a5", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM9717cbb4c7281da5be63269d5a3a91a5", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `to_downcase' for "Accept":String):
+  app/controllers/reservations_controller.rb:27:in `accept_or_reject'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (18.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (30.9ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:17:17 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM0f194aea2960f0b46aa21bc914211349", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM0f194aea2960f0b46aa21bc914211349", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM0f194aea2960f0b46aa21bc914211349", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1[0m  [["phone_number", "+12066505813"]]
+Completed 500 Internal Server Error in 8ms
+
+NoMethodError (undefined method `pending_reservation' for nil:NilClass):
+  app/controllers/reservations_controller.rb:30:in `accept_or_reject'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (32.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (29.8ms)
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reservations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'vacation_properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36m (41.6ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (17.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20150219231715)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (28.3ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying NOT NULL, "password_digest" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (6.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150219231715"]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+Migrating to AddsUserNameToUsers (20150220155337)
+  [1m[35m (11.9ms)[0m  BEGIN
+  [1m[36m (12.8ms)[0m  [1mALTER TABLE "users" ADD "name" character varying[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150220155337"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to AddPhoneNumberAndCountryCodeToUsers (20150220161843)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mALTER TABLE "users" ADD "phone_number" character varying[0m
+  [1m[35m (0.2ms)[0m  ALTER TABLE "users" ADD "country_code" character varying
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150220161843"]]
+  [1m[35m (6.1ms)[0m  COMMIT
+Migrating to AddAuthyTokenToUsers (20150220171049)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "users" ADD "authy_id" character varying
+  [1m[36m (31.5ms)[0m  [1mALTER TABLE "users" ADD "verified" boolean DEFAULT 'f'[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150220171049"]]
+  [1m[36m (1.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateVacationProperties (20150624175446)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (23.0ms)[0m  [1mCREATE TABLE "vacation_properties" ("id" serial primary key, "user_id" integer, "description" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.9ms)[0m  CREATE  INDEX  "index_vacation_properties_on_user_id" ON "vacation_properties"  ("user_id")
+  [1m[36mSQL (0.1ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20150624175446"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+Migrating to CreateReservations (20150624223136)
+  [1m[36m (5.5ms)[0m  [1mBEGIN[0m
+  [1m[35m (21.5ms)[0m  CREATE TABLE "reservations" ("id" serial primary key, "name" character varying, "phone_number" character varying, "status" integer, "message" text, "vacation_property_id" integer, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (1.0ms)[0m  [1mCREATE  INDEX  "index_reservations_on_vacation_property_id" ON "reservations"  ("vacation_property_id")[0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20150624223136"]]
+  [1m[36m (0.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (4.2ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reservations'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (4.0ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (3.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'vacation_properties'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+
+
+Started GET "/" for ::1 at 2015-06-24 21:20:33 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by MainController#index as HTML
+  Rendered main/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 264ms (Views: 255.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/assets/tngbg.jpg" for ::1 at 2015-06-24 21:20:34 -0700
+
+
+Started GET "/properties/" for ::1 at 2015-06-24 21:20:37 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[35mVacationProperty Load (13.2ms)[0m  SELECT "vacation_properties".* FROM "vacation_properties"
+  Rendered vacation_properties/index.html.erb within layouts/application (15.7ms)
+Completed 200 OK in 51ms (Views: 27.4ms | ActiveRecord: 14.1ms)
+
+
+Started GET "/users/new" for ::1 at 2015-06-24 21:20:41 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (18.4ms)
+Completed 200 OK in 90ms (Views: 77.9ms | ActiveRecord: 3.4ms)
+
+
+Started POST "/users" for ::1 at 2015-06-24 21:21:06 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TzM6ji4OMgTjNIqRyCYR3RQMuIIDptEowu9ssodYvcADfdp2ib5Cu0USvpTk75VjtjLriXmAkAP9x2mvFj+iFA==", "user"=>{"name"=>"Jardino", "email"=>"jarodreyes+test15@gmail.com", "password"=>"[FILTERED]", "country_code"=>"+1", "phone_number"=>"2066505813"}}
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (2.7ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'jarodreyes+test15@gmail.com' LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."phone_number" = '2066505813' LIMIT 1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "users" ("email", "password_digest", "name", "country_code", "phone_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["email", "jarodreyes+test15@gmail.com"], ["password_digest", "$2a$10$sEoRa2TymNlXWBQYoC/h9eScXG89xJtA/bnxV6FOUL/z1wQiSMV9."], ["name", "Jardino"], ["country_code", "+1"], ["phone_number", "2066505813"], ["created_at", "2015-06-25 04:21:06.967344"], ["updated_at", "2015-06-25 04:21:06.967344"]]
+  [1m[36mUser Exists (0.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'jarodreyes+test15@gmail.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."phone_number" = '2066505813' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (7.1ms)[0m  [1mUPDATE "users" SET "email" = $1, "password_digest" = $2, "name" = $3, "country_code" = $4, "phone_number" = $5, "created_at" = $6, "updated_at" = $7, "id" = $8, "authy_id" = $9 WHERE "users"."id" = $10[0m  [["email", "jarodreyes+test15@gmail.com"], ["password_digest", "$2a$10$sEoRa2TymNlXWBQYoC/h9eScXG89xJtA/bnxV6FOUL/z1wQiSMV9."], ["name", "Jardino"], ["country_code", "+1"], ["phone_number", "2066505813"], ["created_at", "2015-06-25 04:21:06.967344"], ["updated_at", "2015-06-25 04:21:06.967344"], ["id", 1], ["authy_id", "5588010"], ["id", 1]]
+  [1m[35m (13.3ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/verify
+Completed 302 Found in 825ms (ActiveRecord: 24.8ms)
+
+
+Started GET "/users/verify" for ::1 at 2015-06-24 21:21:07 -0700
+Processing by UsersController#show_verify as HTML
+  Rendered users/show_verify.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 24ms (Views: 23.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users/verify" for ::1 at 2015-06-24 21:21:24 -0700
+Processing by UsersController#verify as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UGUhkSoarygbQCNcjFPF0OEPO35jgwYmTAz3bEgZxfkcK8Fpjarfl71mF1mgmkFuQzFodRmlRw1zJPJx2X7aLQ==", "token"=>"6411130"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."email" = 'jarodreyes+test15@gmail.com' AND "users"."id" != 1) LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."phone_number" = '2066505813' AND "users"."id" != 1) LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "users" SET "verified" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["verified", "t"], ["updated_at", "2015-06-25 04:21:24.611145"], ["id", 1]]
+  [1m[35m (0.2ms)[0m  COMMIT
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 1366ms (ActiveRecord: 1.9ms)
+
+
+Started GET "/users/1" for ::1 at 2015-06-24 21:21:25 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered users/show.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 31ms (Views: 29.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 21:22:31 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (2.1ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (6.1ms)
+Completed 200 OK in 43ms (Views: 37.1ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/properties" for ::1 at 2015-06-24 21:23:04 -0700
+Processing by VacationPropertiesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"eXzjF8bGs5aPs8Yj8Q6jlItzrMhv0Y41ghSjGwwgVSE1MgPvYXbDKSmV8ibdxycqKU3/wxX3zx69PKYGnUdK9Q==", "vacation_property"=>{"description"=>"Data's Den", "image_url"=>"http://howtodocs.s3.amazonaws.com/trek_2.jpg"}, "commit"=>"Create Vacation property"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (11.5ms)[0m  INSERT INTO "vacation_properties" ("description", "image_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["description", "Data's Den"], ["image_url", "http://howtodocs.s3.amazonaws.com/trek_2.jpg"], ["user_id", 1], ["created_at", "2015-06-25 04:23:04.630661"], ["updated_at", "2015-06-25 04:23:04.630661"]]
+  [1m[36m (5.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://localhost:3000/properties/1
+Completed 302 Found in 43ms (ActiveRecord: 18.2ms)
+
+
+Started GET "/properties/1" for ::1 at 2015-06-24 21:23:04 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered vacation_properties/show.html.erb within layouts/application (7.9ms)
+Completed 200 OK in 47ms (Views: 35.7ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-06-24 21:23:17 -0700
+Processing by MainController#index as HTML
+  Rendered main/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 38ms (Views: 37.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for 127.0.0.1 at 2015-06-24 21:23:17 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/assets/tngbg.jpg" for 127.0.0.1 at 2015-06-24 21:23:18 -0700
+
+
+Started GET "/users/new" for 127.0.0.1 at 2015-06-24 21:23:23 -0700
+Processing by UsersController#new as HTML
+  Rendered users/new.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 29ms (Views: 28.2ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for 127.0.0.1 at 2015-06-24 21:23:55 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"cd0YqWEO7IXqAl1EQoxj3WpueE1D06G1DgG4jcAeqOcBM5uzriWduJytUWr7K9yy4SuF4Jig01SlBZhrvaCk/Q==", "user"=>{"name"=>"Sarah Maestro", "email"=>"sarahsunshine+test01@gmail.com", "password"=>"[FILTERED]", "country_code"=>"+1", "phone_number"=>"2068543413"}}
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'sarahsunshine+test01@gmail.com' LIMIT 1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."phone_number" = '2068543413' LIMIT 1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("email", "password_digest", "name", "country_code", "phone_number", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["email", "sarahsunshine+test01@gmail.com"], ["password_digest", "$2a$10$b0hLYkygLekhh5L9.Fz/Wu19FaSUjiZH8.IBr3gHqPYK4Qt8gKfA6"], ["name", "Sarah Maestro"], ["country_code", "+1"], ["phone_number", "2068543413"], ["created_at", "2015-06-25 04:23:55.932789"], ["updated_at", "2015-06-25 04:23:55.932789"]]
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'sarahsunshine+test01@gmail.com' AND "users"."id" != 2) LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."phone_number" = '2068543413' AND "users"."id" != 2) LIMIT 1[0m
+  [1m[35mSQL (2.2ms)[0m  UPDATE "users" SET "email" = $1, "password_digest" = $2, "name" = $3, "country_code" = $4, "phone_number" = $5, "created_at" = $6, "updated_at" = $7, "id" = $8, "authy_id" = $9 WHERE "users"."id" = $10  [["email", "sarahsunshine+test01@gmail.com"], ["password_digest", "$2a$10$b0hLYkygLekhh5L9.Fz/Wu19FaSUjiZH8.IBr3gHqPYK4Qt8gKfA6"], ["name", "Sarah Maestro"], ["country_code", "+1"], ["phone_number", "2068543413"], ["created_at", "2015-06-25 04:23:55.932789"], ["updated_at", "2015-06-25 04:23:55.932789"], ["id", 2], ["authy_id", "7032871"], ["id", 2]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+Redirected to http://jreyes.ngrok.com/users/verify
+Completed 302 Found in 917ms (ActiveRecord: 5.5ms)
+
+
+Started GET "/users/verify" for 127.0.0.1 at 2015-06-24 21:23:56 -0700
+Processing by UsersController#show_verify as HTML
+  Rendered users/show_verify.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:23:57 -0700
+
+
+Started POST "/users/verify" for 127.0.0.1 at 2015-06-24 21:24:23 -0700
+Processing by UsersController#verify as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rd6v2NtSYaY1LJQ5vsLxy/aM1HKWy4m+cXYckhOmxDbdMCzCFHkQm0ODmBcHZU6kfckp3024+1/acjx0bhjILA==", "token"=>"5321618"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE ("users"."email" = 'sarahsunshine+test01@gmail.com' AND "users"."id" != 2) LIMIT 1
+  [1m[36mUser Exists (0.2ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE ("users"."phone_number" = '2068543413' AND "users"."id" != 2) LIMIT 1[0m
+  [1m[35mSQL (6.0ms)[0m  UPDATE "users" SET "verified" = $1, "updated_at" = $2 WHERE "users"."id" = $3  [["verified", "t"], ["updated_at", "2015-06-25 04:24:23.506905"], ["id", 2]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+Redirected to http://jreyes.ngrok.com/users/2
+Completed 302 Found in 1146ms (ActiveRecord: 7.5ms)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2015-06-24 21:24:24 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered users/show.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 33ms (Views: 31.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:24:24 -0700
+
+
+Started GET "/properties" for 127.0.0.1 at 2015-06-24 21:24:30 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT "vacation_properties".* FROM "vacation_properties"[0m
+  Rendered vacation_properties/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 46ms (Views: 45.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:24:31 -0700
+
+
+Started GET "/assets/tngbg.jpg" for 127.0.0.1 at 2015-06-24 21:24:31 -0700
+
+
+Started GET "/properties/1" for 127.0.0.1 at 2015-06-24 21:24:32 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 32ms (Views: 30.4ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/reservations" for 127.0.0.1 at 2015-06-24 21:24:41 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Hyr/onycvqBXQeFijdESGK3sFzbLn3j8dQ5r0jbb6v5vxHy4s7fPnSHu7Uw0dq13JqnqmxDsCh3eCks0S2Xm5A==", "reservation"=>{"message"=>"I would like to stay here.", "name"=>"Sarah Maestro", "phone_number"=>"2068543413", "property_id"=>"1"}}
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 1]]
+Unpermitted parameter: property_id
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Sarah Maestro"], ["phone_number", "2068543413"], ["message", "I would like to stay here."], ["vacation_property_id", 1], ["created_at", "2015-06-25 04:24:41.304683"], ["updated_at", "2015-06-25 04:24:41.304683"], ["status", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2068543413"]]
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://jreyes.ngrok.com/properties/1
+Completed 302 Found in 561ms (ActiveRecord: 3.3ms)
+
+
+Started GET "/properties/1" for 127.0.0.1 at 2015-06-24 21:24:42 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 32ms (Views: 29.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:24:42 -0700
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:24:54 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SMcba291c2fc618e184e7a3fca10b7eaea", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SMcba291c2fc618e184e7a3fca10b7eaea", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SMcba291c2fc618e184e7a3fca10b7eaea", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "+12066505813"]]
+Completed 500 Internal Server Error in 1ms
+
+NoMethodError (undefined method `pending_reservation' for nil:NilClass):
+  app/controllers/reservations_controller.rb:30:in `accept_or_reject'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (44.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (19.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (55.2ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:28:54 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SMd8b06012dc018781736d147a4ebaceac", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SMd8b06012dc018781736d147a4ebaceac", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SMd8b06012dc018781736d147a4ebaceac", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+Completed 500 Internal Server Error in 4ms
+
+NameError (uninitialized constant ReservationsController::Sanitize):
+  app/controllers/reservations_controller.rb:26:in `accept_or_reject'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (31.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (18.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (40.4ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:30:05 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM2bd9bd428230d70efae0360c659ddfd9", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM2bd9bd428230d70efae0360c659ddfd9", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM2bd9bd428230d70efae0360c659ddfd9", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2066505813"]]
+  [1m[36mReservation Load (1.7ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1  [["user_id", 1], ["status", "pending"]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", "pending"]]
+Completed 500 Internal Server Error in 110ms
+
+NoMethodError (private method `notify_host' called for #<Reservation:0x007fb433255898>):
+  app/models/user.rb:46:in `check_for_reservations_pending'
+  app/controllers/reservations_controller.rb:38:in `accept_or_reject'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (21.0ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (16.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (38.4ms)
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:31:34 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM7f0147ef46ee9c45cecd0c6a5244e1da", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM7f0147ef46ee9c45cecd0c6a5244e1da", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Accept", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM7f0147ef46ee9c45cecd0c6a5244e1da", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2066505813"]]
+  [1m[36mReservation Load (0.5ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "reservations" SET "status" = $1, "updated_at" = $2 WHERE "reservations"."id" = $3[0m  [["status", 1], ["updated_at", "2015-06-25 04:31:34.301820"], ["id", 1]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2068543413"]]
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (6.2ms)[0m  COMMIT
+  [1m[36mReservation Load (0.6ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+Completed 500 Internal Server Error in 937ms
+
+ActionView::MissingTemplate (Missing template reservations/accept_or_reject, application/accept_or_reject with {:locale=>[:en], :formats=>[:html, :text, :js, :css, :ics, :csv, :vcf, :png, :jpeg, :gif, :bmp, :tiff, :mpeg, :xml, :rss, :atom, :yaml, :multipart_form, :url_encoded_form, :json, :pdf, :zip], :variants=>[], :handlers=>[:erb, :builder, :raw, :ruby, :coffee, :jbuilder]}. Searched in:
+  * "/Users/jreyes/Sites/deved-apps/workflow-automation/workflow-automation-rails/app/views"
+):
+  actionview (4.2.0) lib/action_view/path_set.rb:46:in `find'
+  actionview (4.2.0) lib/action_view/lookup_context.rb:121:in `find'
+  actionview (4.2.0) lib/action_view/renderer/abstract_renderer.rb:18:in `find_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:40:in `determine_template'
+  actionview (4.2.0) lib/action_view/renderer/template_renderer.rb:8:in `render'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:42:in `render_template'
+  actionview (4.2.0) lib/action_view/renderer/renderer.rb:23:in `render'
+  actionview (4.2.0) lib/action_view/rendering.rb:100:in `_render_template'
+  actionpack (4.2.0) lib/action_controller/metal/streaming.rb:217:in `_render_template'
+  actionview (4.2.0) lib/action_view/rendering.rb:83:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:32:in `render_to_body'
+  actionpack (4.2.0) lib/action_controller/metal/renderers.rb:37:in `render_to_body'
+  actionpack (4.2.0) lib/abstract_controller/rendering.rb:25:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:16:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block (2 levels) in render'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/benchmark.rb:294:in `realtime'
+  activesupport (4.2.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:41:in `block in render'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:84:in `cleanup_view_runtime'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:40:in `render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:10:in `default_render'
+  actionpack (4.2.0) lib/action_controller/metal/implicit_render.rb:5:in `send_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:198:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:117:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:234:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:169:in `block in halting'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:92:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_process_action_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `block in instrument'
+  activesupport (4.2.0) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.2.0) lib/active_support/notifications.rb:164:in `instrument'
+  actionpack (4.2.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.2.0) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.2.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.2.0) lib/abstract_controller/base.rb:137:in `process'
+  actionview (4.2.0) lib/action_view/rendering.rb:30:in `process'
+  actionpack (4.2.0) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.2.0) lib/action_controller/metal.rb:236:in `block in action'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:73:in `dispatch'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:42:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:43:in `block in serve'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `each'
+  actionpack (4.2.0) lib/action_dispatch/journey/router.rb:30:in `serve'
+  actionpack (4.2.0) lib/action_dispatch/routing/route_set.rb:802:in `call'
+  rack (1.6.4) lib/rack/etag.rb:24:in `call'
+  rack (1.6.4) lib/rack/conditionalget.rb:38:in `call'
+  rack (1.6.4) lib/rack/head.rb:13:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/flash.rb:260:in `call'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.6.4) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/cookies.rb:560:in `call'
+  activerecord (4.2.0) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.2.0) lib/active_record/connection_adapters/abstract/connection_pool.rb:647:in `call'
+  activerecord (4.2.0) lib/active_record/migration.rb:378:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `call'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:88:in `_run_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:734:in `_run_call_callbacks'
+  activesupport (4.2.0) lib/active_support/callbacks.rb:81:in `run_callbacks'
+  actionpack (4.2.0) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/reloader.rb:73:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/remote_ip.rb:78:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  web-console (2.1.3) lib/web_console/middleware.rb:37:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.0) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.0) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.0) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.0) lib/action_dispatch/middleware/static.rb:113:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  railties (4.2.0) lib/rails/engine.rb:518:in `call'
+  railties (4.2.0) lib/rails/application.rb:164:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/jreyes/.rvm/rubies/ruby-2.1.3/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/actionpack-4.2.0/lib/action_dispatch/middleware/templates/rescues/missing_template.html.erb within rescues/layout (22.6ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/console.js.erb within layouts/javascript (14.8ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jreyes/.rvm/gems/ruby-2.1.3/gems/web-console-2.1.3/lib/web_console/templates/index.html.erb (32.4ms)
+
+
+Started GET "/properties" for ::1 at 2015-06-24 21:34:37 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT "vacation_properties".* FROM "vacation_properties"
+  Rendered vacation_properties/index.html.erb within layouts/application (6.6ms)
+Completed 200 OK in 241ms (Views: 226.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 21:34:39 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (26.1ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (27.6ms)
+Completed 200 OK in 54ms (Views: 53.3ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/properties" for ::1 at 2015-06-24 21:34:54 -0700
+Processing by VacationPropertiesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"zjInDxk8zlntAan0FVgHCUkQI+tk3UZJX1Btk4tyVTeCfMf3voy+5ksnnfE5kYO36y5w4B77B2JgeGiOGhVK4w==", "vacation_property"=>{"description"=>"Riker's Retreat", "image_url"=>"http://howtodocs.s3.amazonaws.com/trek_4.jpg"}, "commit"=>"Create Vacation property"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (3.8ms)[0m  [1mINSERT INTO "vacation_properties" ("description", "image_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "Riker's Retreat"], ["image_url", "http://howtodocs.s3.amazonaws.com/trek_4.jpg"], ["user_id", 1], ["created_at", "2015-06-25 04:34:54.393408"], ["updated_at", "2015-06-25 04:34:54.393408"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/properties/2
+Completed 302 Found in 32ms (ActiveRecord: 8.5ms)
+
+
+Started GET "/properties/2" for ::1 at 2015-06-24 21:34:54 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 2]]
+  Rendered vacation_properties/show.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 46ms (Views: 36.7ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/properties" for 127.0.0.1 at 2015-06-24 21:35:02 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT "vacation_properties".* FROM "vacation_properties"[0m
+  Rendered vacation_properties/index.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 33ms (Views: 31.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for 127.0.0.1 at 2015-06-24 21:35:02 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/assets/tngbg.jpg" for 127.0.0.1 at 2015-06-24 21:35:03 -0700
+
+
+Started GET "/properties/2" for 127.0.0.1 at 2015-06-24 21:35:31 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 35ms (Views: 33.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/reservations" for 127.0.0.1 at 2015-06-24 21:35:59 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"NuTkg2IKNtQUuWzjP5IOwK+tSVHZN4/N+cs+GgP/FtFGCmeZrSFH6WIWYM2GNbGvJOi0/AJE/SxSzx78fkEayw==", "reservation"=>{"message"=>"I have three cats, a poodle, and I travel with a band of homeless gypsies.", "name"=>"Sarah Maestro", "phone_number"=>"2068543413", "property_id"=>"2"}}
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 2]]
+Unpermitted parameter: property_id
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (5.9ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Sarah Maestro"], ["phone_number", "2068543413"], ["message", "I have three cats, a poodle, and I travel with a band of homeless gypsies."], ["vacation_property_id", 2], ["created_at", "2015-06-25 04:35:59.891739"], ["updated_at", "2015-06-25 04:35:59.891739"], ["status", 0]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2068543413"]]
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://jreyes.ngrok.com/properties/2
+Completed 302 Found in 784ms (ActiveRecord: 8.7ms)
+
+
+Started GET "/properties/2" for 127.0.0.1 at 2015-06-24 21:36:00 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 30ms (Views: 27.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:36:01 -0700
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:36:17 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SMedc5a3b76f554738f33c96ecf8835b8e", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SMedc5a3b76f554738f33c96ecf8835b8e", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Reject", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SMedc5a3b76f554738f33c96ecf8835b8e", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2066505813"]]
+  [1m[36mReservation Load (0.8ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "reservations" SET "status" = $1, "updated_at" = $2 WHERE "reservations"."id" = $3[0m  [["status", 1], ["updated_at", "2015-06-25 04:36:17.738471"], ["id", 2]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2068543413"]]
+  [1m[36mVacationProperty Load (0.2ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35m (1.0ms)[0m  COMMIT
+  [1m[36mReservation Load (0.7ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+  Rendered text template (0.0ms)
+Completed 200 OK in 630ms (Views: 4.4ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2015-06-24 21:36:31 -0700
+Processing by MainController#index as HTML
+  Rendered main/index.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 33ms (Views: 32.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:36:31 -0700
+
+
+Started GET "/assets/tngbg.jpg" for 127.0.0.1 at 2015-06-24 21:36:31 -0700
+
+
+Started GET "/properties/" for 127.0.0.1 at 2015-06-24 21:37:56 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[35mVacationProperty Load (0.6ms)[0m  SELECT "vacation_properties".* FROM "vacation_properties"
+  Rendered vacation_properties/index.html.erb within layouts/application (13.9ms)
+Completed 200 OK in 79ms (Views: 65.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/properties/new" for ::1 at 2015-06-24 21:38:08 -0700
+Processing by VacationPropertiesController#new as HTML
+  Rendered vacation_properties/_form.html.erb (2.8ms)
+  Rendered vacation_properties/new.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 45ms (Views: 43.6ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/properties" for ::1 at 2015-06-24 21:38:19 -0700
+Processing by VacationPropertiesController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"dJflXx+n7JRe0KB9+5Ukksc3bcwI1doCBuyieCDz5X442QWnuBecK/j2lHjXXKAsZQk+x3Lzmyk5xKdlsZT6qg==", "vacation_property"=>{"description"=>"Picard's Place", "image_url"=>"http://howtodocs.s3.amazonaws.com/trek_6.jpg"}, "commit"=>"Create Vacation property"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (0.8ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "vacation_properties" ("description", "image_url", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["description", "Picard's Place"], ["image_url", "http://howtodocs.s3.amazonaws.com/trek_6.jpg"], ["user_id", 1], ["created_at", "2015-06-25 04:38:19.919265"], ["updated_at", "2015-06-25 04:38:19.919265"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+Redirected to http://localhost:3000/properties/3
+Completed 302 Found in 39ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/properties/3" for ::1 at 2015-06-24 21:38:19 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mVacationProperty Load (0.1ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 3]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.6ms)
+Completed 200 OK in 57ms (Views: 47.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2015-06-24 21:38:25 -0700
+Processing by MainController#index as HTML
+  Rendered main/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 38ms (Views: 36.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/properties/" for 127.0.0.1 at 2015-06-24 21:39:10 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[36mVacationProperty Load (0.3ms)[0m  [1mSELECT "vacation_properties".* FROM "vacation_properties"[0m
+  Rendered vacation_properties/index.html.erb within layouts/application (1.5ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/tngbg.jpg" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:39:11 -0700
+
+
+Started GET "/properties/3" for 127.0.0.1 at 2015-06-24 21:39:16 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered vacation_properties/show.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 38ms (Views: 36.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/reservations" for 127.0.0.1 at 2015-06-24 21:39:56 -0700
+Processing by ReservationsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"Cr4pfFNsDyB129X5zrCq57QWlgWSeJVVujaU5P36MDF6UKpmnEd+HQN02dd3FxWIP1NrqEkL57QRMrQCgEQ8Kw==", "reservation"=>{"message"=>"I love to have parties and I smoke big fat stogies.", "name"=>"Sarah Maestro", "phone_number"=>"2068543413", "property_id"=>"3"}}
+  [1m[35mVacationProperty Load (0.2ms)[0m  SELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1  [["id", 3]]
+Unpermitted parameter: property_id
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reservations" ("name", "phone_number", "message", "vacation_property_id", "created_at", "updated_at", "status") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["name", "Sarah Maestro"], ["phone_number", "2068543413"], ["message", "I love to have parties and I smoke big fat stogies."], ["vacation_property_id", 3], ["created_at", "2015-06-25 04:39:56.707599"], ["updated_at", "2015-06-25 04:39:56.707599"], ["status", 0]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35m (1.8ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2068543413"]]
+  [1m[36m (0.1ms)[0m  [1mCOMMIT[0m
+Redirected to http://jreyes.ngrok.com/properties/3
+Completed 302 Found in 781ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/properties/3" for 127.0.0.1 at 2015-06-24 21:39:57 -0700
+Processing by VacationPropertiesController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  Rendered vacation_properties/show.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 38ms (Views: 35.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:39:57 -0700
+
+
+Started POST "/reservations/incoming" for 127.0.0.1 at 2015-06-24 21:40:12 -0700
+Processing by ReservationsController#accept_or_reject as */*
+  Parameters: {"ToCountry"=>"US", "ToState"=>"CA", "SmsMessageSid"=>"SM2b4427c43663956941203ac9654c3f2d", "NumMedia"=>"0", "ToCity"=>"", "FromZip"=>"98112", "SmsSid"=>"SM2b4427c43663956941203ac9654c3f2d", "FromState"=>"WA", "SmsStatus"=>"received", "FromCity"=>"KIRKLAND", "Body"=>"Reject", "FromCountry"=>"US", "To"=>"+16197369662", "ToZip"=>"", "MessageSid"=>"SM2b4427c43663956941203ac9654c3f2d", "AccountSid"=>"AC38cf10e53d331ec9ce14db86deb3bf29", "From"=>"+12066505813", "ApiVersion"=>"2010-04-01"}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2066505813"]]
+  [1m[36mReservation Load (0.6ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "reservations" SET "status" = $1, "updated_at" = $2 WHERE "reservations"."id" = $3[0m  [["status", 2], ["updated_at", "2015-06-25 04:40:12.097049"], ["id", 3]]
+  [1m[35mUser Load (0.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."phone_number" = $1 LIMIT 1  [["phone_number", "2068543413"]]
+  [1m[36mVacationProperty Load (0.1ms)[0m  [1mSELECT  "vacation_properties".* FROM "vacation_properties" WHERE "vacation_properties"."id" = $1 LIMIT 1[0m  [["id", 3]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36mReservation Load (0.2ms)[0m  [1mSELECT  "reservations".* FROM "reservations" INNER JOIN "vacation_properties" ON "reservations"."vacation_property_id" = "vacation_properties"."id" WHERE "vacation_properties"."user_id" = $1 AND "reservations"."status" = $2  ORDER BY "reservations"."id" ASC LIMIT 1[0m  [["user_id", 1], ["status", 0]]
+  Rendered text template (0.0ms)
+Completed 200 OK in 537ms (Views: 2.1ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/properties/" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+Processing by VacationPropertiesController#index as HTML
+  [1m[35mVacationProperty Load (0.3ms)[0m  SELECT "vacation_properties".* FROM "vacation_properties"
+  Rendered vacation_properties/index.html.erb within layouts/application (1.8ms)
+Completed 200 OK in 36ms (Views: 35.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/assets/main.self-1f8fb9bf79dc8bf77e1492f5d9ce9ac873589d65b59606692316f2263e3a6ca4.css?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/scaffolds.self-edcb764b9ab24816b42c52965f0755943669ca1c0849fc29dc9e3aad1a1020fe.css?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/users.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/vacation_properties.self-58f09fd003cadd5ef404b0d8aa59ed7625a94b8467c634ab87fb22b9c7c1d2aa.css?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/application.self-51d326fb3a19cba749d744ddaf0ea1695cc7a256ad040ac1eab9a6a22ea9fa9e.css?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/jquery_ujs.self-ca5248a2fad13d6bd58ea121318d642f195f0b2dd818b30615f785ff365e8d1f.js?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/application.self-3a3c8b61bda630ee689740ce7cbd0dd8ea6fdd45e2c42eef4661ab38cf268afe.js?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/vacation_properties.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" for 127.0.0.1 at 2015-06-24 21:40:51 -0700
+
+
+Started GET "/assets/tngbg.jpg" for 127.0.0.1 at 2015-06-24 21:40:52 -0700
+
+
+Started GET "/assets/airtng-logo.png" for 127.0.0.1 at 2015-06-24 21:40:52 -0700
