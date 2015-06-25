@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   end
 
   def send_message_via_sms(message)
-    @app_number = ENV['BARISTA_NUMBER']
+    @app_number = ENV['TWILIO_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     sms_message = @client.account.messages.create(
       :from => @app_number,
