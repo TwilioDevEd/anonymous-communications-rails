@@ -9,8 +9,8 @@ class User < ActiveRecord::Base
   validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
   validates :name, presence: true
   validates :country_code, presence: true
-  validates :phone_number, presence: true
-  validates_uniqueness_of :phone_number
+  validates :phone_number, presence: true, uniqueness: true
+  validates_length_of :password, :in => 6..20, :on => :create
 
   def verify_auth_token(postedToken)
     # Use Authy to send the verification token

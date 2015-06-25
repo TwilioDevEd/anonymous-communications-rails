@@ -1,11 +1,12 @@
+<% content_for :body_class, "property-page" %>
 <p id="notice"><%= notice %></p>
 <div class="property-detail">
     <div class="overview">
         <img src="<%= @vacation_property.image_url %>" />
     </div>
-    <h1><%= @vacation_property.description %></h1>
-    <hr>
     <div class="container">
+        <h1 ><%= @vacation_property.description %></h1><span><%= link_to 'Edit', edit_vacation_property_path(@vacation_property) %></span>
+        <hr>
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Make a Reservation</h3>
@@ -30,7 +31,4 @@
             </div>
         </div>
     </div>
-    
-    <%= link_to 'Edit', edit_vacation_property_path(@vacation_property) %> |
-    <%= link_to 'Back', vacation_properties_path %>
 </div>

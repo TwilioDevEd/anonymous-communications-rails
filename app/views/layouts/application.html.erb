@@ -10,14 +10,21 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<body class="<%= yield (:body_class) %>">
   <%= yield :nav_bg %>
     <!-- Nav Bar -->
     <nav class="navbar navbar-transparent">
       <a class="navbar-brand" href="/">airtng</a>
-      <p id="nav-links" class="navbar-text pull-right">
-        <%= link_to "Sign Up", new_user_path %>
-      </p>
+      <ul class="navbar-nav navbar-right pull-right">
+        <% if signed_in? %>
+          <li><%= image_tag("spock.png") %></li>
+          <li><%= link_to "Log Out", '/logout' %></li>
+        <% else %>
+          <li><%= link_to "Sign Up", new_user_path %></li>
+          <li><%= link_to "Log In", '/login' %></li>
+        <% end %>
+        
+      </ul>
     </nav>
 
   <%= yield :hero %>

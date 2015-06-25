@@ -2,6 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body.property-page {
+    footer {
+        position:relative;
+    }
+    #main {
+        min-height: 900px;
+    }
+}
+
 .property {
     display: block;
     position: relative;

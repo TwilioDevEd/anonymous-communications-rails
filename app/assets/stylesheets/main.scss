@@ -32,6 +32,7 @@
 }
 
 .navbar {
+    border-radius:0px !important;
     &.navbar-transparent {
         background:transparent;
         position: absolute;
@@ -50,8 +51,19 @@
         color:white;
         font-size:32px;
     }
-    #nav-links {
-        color:white;
+    img {
+        width: 20px;
+    }
+    li {
+        list-style: none;
+        margin: 10px;
+        a { 
+            font-size:14px; 
+            &:hover {
+                background:transparent;
+                text-decoration: none;
+            }
+        }
     }
 }
 

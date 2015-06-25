@@ -15,7 +15,24 @@ class ApplicationController < ActionController::Base
 
   protected
 
-  def authenticate!
-    redirect_to new_user_path and return unless signed_in?
+  def authenticate_user
+    unless session[:user_id]
+      redirect_to(:controller => 'sessions', :action => 'login')
+      flash[:notice] = "You must be logged in to view that page."
+      return false
+    else
+      @user = User.find session[:user_id] 
+      return true
+    end
   end
+
+  def save_login_state
+    if session[:user_id]
+      redirect_to home_path
+      return false
+    else
+      return true
+    end
+  end
+
 end
