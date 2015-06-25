@@ -31,13 +31,19 @@
     }
 }
 
-.navbar-transparent {
-    background:transparent;
-    position: absolute;
-    width: 100%;
-    top:0px;
-    z-index: 1020;
-    padding: 20px;
+.navbar {
+    &.navbar-transparent {
+        background:transparent;
+        position: absolute;
+        width: 100%;
+        top:0px;
+        z-index: 1020;
+        padding: 20px;
+    }
+    &.navbar-space {
+        background:url(tngbg.jpg);
+        height:90px;
+    }
     .navbar-brand {
         background:url(airtng-logo.png) no-repeat;
         padding-left:40px;
@@ -49,8 +55,14 @@
     }
 }
 
+
+
 #main.push-hero {
     margin-top: 30px;
+}
+
+#main.push-nav {
+    margin-top: 60px;
 }
 
 footer {

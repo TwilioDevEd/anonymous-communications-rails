@@ -11,7 +11,7 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield :nav %>
+  <%= yield :nav_bg %>
     <!-- Nav Bar -->
     <nav class="navbar navbar-transparent">
       <a class="navbar-brand" href="/">airtng</a>
@@ -21,7 +21,7 @@
     </nav>
 
   <%= yield :hero %>
-  <section id="main" class="push-hero">
+  <section id="main" class="push-nav">
     <%= flash_messages %>
     <%= yield %>
   </section>
