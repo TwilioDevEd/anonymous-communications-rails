@@ -1,0 +1,83 @@
+.step(data-title='Creating a Reservation')
+  h2 User Story 2: 
+  blockquote As a Guest, I want to be able to view vacation rental properties and request a reservation.
+  :markdown
+    This is a beefy story so let's break it down into its components:
+
+    * A reservation model with a name, message and phone number
+
+    * A form for submitting a reservation
+
+    * A controller to handle the form submit and create a reservation
+
+    We might have just used the `rails generate scaffold` again to generate a new Reservation resource, but that would have created a lot of unnecessary cruft. Instead we opted to write our own modules.
+
+    Let's start by looking at our reservation model.
+
+.step(data-title="Reservation Model", data-file="app/models/reservation.rb")
+  :markdown
+    ## The Reservation Model
+
+    The `Reservation` model is at the center of the workflow for this application. It is responsible for keeping track of:
+      * the `VacationProperty` it is associated with
+
+      * the `User` who owns that vacation property (the host)
+
+      * the guest name and phone number
+
+    Since the reservation can only have one guest in this example, we simplified the model by assigning a name and phone_number directly on the model. We'll cover how we did this later but first we're going to review the basic properties of the model, and specifically the status attribute.
+
+
+.step(data-title="Reservation Status", data-file="app/models/reservation.rb", data-highlight="1-9")
+  :markdown
+    ## Reservation status
+
+    Here is the `Reservation` model. First we validate some key properties and define the associations so that we can later lookup those relationships through the model. If you'd like more context, the [Rails guide](http://guides.rubyonrails.org/active_record_basics.html) explains models and associations quite well.
+
+    The main property we need to enable a reservation workflow is some sort of status that we can monitor. This is a perfect candidate for an enumerated `status` attribute. 
+
+    ### Enumerated Attributes
+
+    [Enumerated attributes](http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html) allow us to store a simple integer in the table, while giving each status a searchable name. Here is an example:
+
+    ```ruby
+    # reservation.pending! status: 0
+    reservation.status = "confirmed"
+    reservation.confirmed? # => true
+    ```
+
+    Now we have an attribute that can trigger our workflow events. Time to write some callbacks.
+
+.step(data-title="Reservation Callbacks", data-file="app/models/reservation.rb", data-highlight="10-12")
+  :markdown
+    ## Reservation Callbacks
+
+    Active Record gives us some nifty handles for triggering methods on the Model-- specifically [callbacks](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html).
+
+    You can find more callbacks in `user.rb` but let's look at the two here. 
+
+    After we create the reservation we want to notify the host that they have a pending reservation. Then after the status has been changed, we want to notify the guest that their reservation has either been accepted or rejected.
+
+    Notifying the host of a reservation is a little tricky so let's zoom in to this function.
+
+.step(data-title="Notifying the Host", data-file="app/models/reservation.rb", data-highlight="10-29")
+  :markdown
+    ## Notifying the Host
+
+    In theory, notifying the host should be as simple as looking up the host `User` then sending her an SMS. However you may have already thought of a problem once we have millions of users on this website. 
+
+  blockquote How do we ensure our hosts are A) responding to the correct reservation inquiry and B)  aren't getting spammed?
+
+  :markdown
+    ### Pending Reservations
+
+    The solution to both problems was making sure we only notify the host of the oldest pending reservation. Additionally we shouldn't send another SMS until she has dealt with the last reservation.
+
+    The easiest way of surfacing `pending_reservations` for a user would be to create a helper method on the `User` model. We'll go over that in the next step.
+
+    ### Sending the SMS
+
+    If in fact the host only has one pending reservation, we're going to fire an sms off to her. 
+
+    This would be a great time to take a look at our `User` model which as we now know has a bunch of utility methods for checking reservations, sending texts and more.
+

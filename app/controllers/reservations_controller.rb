@@ -20,23 +20,36 @@ class ReservationsController < ApplicationController
   # webhook for twilio incoming message from host
   def accept_or_reject
     incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
-    response = params[:Body].downcase
+    sms_input = params[:Body].downcase
+    begin
+      @host = User.find_by(phone_number: incoming)
+      @reservation = @host.pending_reservation
 
-    @host = User.find_by(phone_number: incoming)
-    @reservation = @host.pending_reservation
+      if sms_input == "accept" || sms_input == "yes"
+        @reservation.confirm
+      else
+        @reservation.reject
+      end
 
-    if response == "accept" || response == "yes"
-      @reservation.confirm
-    else
-      @reservation.reject
+      @host.check_for_reservations_pending
+
+      sms_reponse = "You have successfully #{@reservation.status} the reservation."
+      respond(sms_reponse)
+    rescue
+      sms_reponse = "Sorry, it looks like you don't have any reservations to respond to."
+      respond(sms_reponse)
     end
-
-    @host.check_for_reservations_pending
-
-    render text: "Reservation updated"
   end
 
   private
+    # Send an SMS back to the Subscriber
+    def respond(message)
+      response = Twilio::TwiML::Response.new do |r|
+        r.Message message
+      end
+      render text: response.text
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
       params.require(:reservation).permit(:name, :phone_number, :message)

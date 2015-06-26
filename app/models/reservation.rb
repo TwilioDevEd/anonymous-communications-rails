@@ -3,23 +3,13 @@ class Reservation < ActiveRecord::Base
   validates :phone_number, presence: true
 
   enum status: [ :pending, :confirmed, :rejected ]
-
-  before_create :set_status_pending
-  after_create :notify_host
-  after_update :notify_guest
+  # t.text :message
 
   belongs_to :vacation_property
   belongs_to :user
 
-  def confirm
-    self.status = "confirmed"
-    self.save
-  end
-
-  def reject
-    self.status = "rejected"
-    self.save
-  end
+  after_create :notify_host
+  after_update :notify_guest
 
   def notify_host(force = false)
     @host = User.find(self.vacation_property[:user_id])
@@ -38,11 +28,17 @@ class Reservation < ActiveRecord::Base
     end
   end
 
-  private
+  def confirm
+    self.status = "confirmed"
+    self.save
+  end
 
-    def set_status_pending
-      self.status = "pending"
-    end
+  def reject
+    self.status = "rejected"
+    self.save
+  end
+
+  private
 
     def notify_guest
       @guest = User.find_by(phone_number: self.phone_number)
@@ -51,6 +47,5 @@ class Reservation < ActiveRecord::Base
         message = "Your recent request to stay at #{self.vacation_property.description} was #{self.status}."
         @guest.send_message_via_sms(message)
       end
-
     end
 end

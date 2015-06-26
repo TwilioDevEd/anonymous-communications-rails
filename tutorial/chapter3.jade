@@ -1,0 +1,66 @@
+.step(data-title='The User Model', data-file="app/models/user.rb", data-highlight="1-11")
+  :markdown
+    ## The User Model
+
+    As you can see we have one model for both the guests and the hosts who are using AirTng. If we were going to scale this app it would probably merit creating two more classes that inherit from the base `User` class, but since our use-case is pretty simple this should suit us fine (famous last words).
+
+    Right at the top we validate the uniqueness of our user. It is important we ensure that the `phone_number` attribute is unique since we will use this to look up `User` records on incoming texts.
+
+    After that we set up our associations so that we can query reservations on the user. 
+
+    Arguably the most important task delegated to our `User` model is to send an SMS to the user when we request it. Click next and we'll go over that.
+    
+.step(data-title='Sending Messages', data-file="app/models/user.rb", data-highlight="15-39")
+  :markdown
+    ## Sending Messages
+
+    Since we know we're only ever going to be sending text messages to our users, it makes sense to create this function on the `User` class. These 7 lines comprise the quintessential way to send an SMS or MMS from the Twilio REST API.
+
+    First we look up our app's phone number, initiate our Twilio client and build the message. Now whenever we need to communicate with a user, whether host or guest, we can just pass a message to this user method and voilah! we've sent them a text.
+
+    If you peak below this method you'll see the helper methods for finding `pending_reservations` that we mentioned previously.
+
+    Great, so we've built a way to send messages to our users. Now we need a way to handle incoming texts from our host when she accepts the reservation.
+
+.step(data-title='Incoming Messages', data-file="app/controllers/reservations_controller.rb", data-highlight="20-37")
+  :markdown
+    ## Handling Incoming Messages
+
+    Let's take a closer look at the `accept_or_reject` controller. This controller handles our incoming Twilio request and does two things:
+
+    1. Checks for a pending reservation from the incoming user
+
+    1. Updates the status of the reservation
+
+    1. Responds to the host
+
+    ## Incoming Twilio Request
+    An incoming request from Twilio comes with some helpful [parameters](/docs/api/twiml/twilio_request#synchronous-request-parameters). These include the `From` phone number and the message `Body`. 
+
+    We'll use the `From` parameter to lookup the host and check if she has any pending reservations. If she does, we'll use the message body to check if she accepted or rejected the reservation.
+
+    Then we'll redirect the request to a TwiML response to send a message back to the user.
+
+    ## TwiML Response
+
+    Usually a Rails controller has a template associated with it that renders a webpage. In our case the only request being made will be by Twilio's API, so we don't need a public page. Instead we're using Twilio's Ruby API to render a custom TwiML response as raw XML on the page.
+
+.step(data-title='Notifying the Guest', data-file="app/models/reservation.rb", data-highlight="43-49")
+  :markdown
+    The final step in our workflow is to notify the guest that their reservation has been booked. Well remember the second reservation callback from a previous step? Now we get to use it! 
+
+    By using the `after_update` callback we gaurantee that this method is going to run. It's quite simple:
+    * We lookup the guest with the `reservation.phone_number`
+    * If the status was changed to an expected result, then we notify the guest of the change.
+
+    And of course all we need to do to send the SMS message to the guest is call the `send_message_via_sms` method that is present on all users.
+
+.step(data-title='Finish')
+  :markdown
+    ## All Done
+
+    Congrats! You just learned how to automate your workflow with Twilio SMS. To improve upon this you could add anonymous communications so that the host and guest could communicate through a shared Twilio phone number. Hmmm... maybe we'll have to put together a tutorial on that!
+
+    Thanks for checking out this tutorial! If you have any feedback to share with us, we'd love to hear it. Tweet [@twilio](http://twitter.com/twilio) to let us know what you think.
+
+

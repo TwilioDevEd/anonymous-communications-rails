@@ -1,0 +1,153 @@
+<!DOCTYPE html><html><head><title>Workflow Automation</title><style>body, html {
+  height:100%;
+  width:100%;
+  padding:0;
+  margin:0;
+  overflow:hidden;
+  background-color:#ddd;
+}
+.wrapper {
+  height:100%;
+  width:100%;
+}</style><link rel="shortcut icon" href="//twilio.com/bundles/marketing/img/favicons/favicon.ico"><link rel="apple-touch-icon" href="//twilio.com/bundles/marketing/img/favicons/favicon_57.png"><link rel="apple-touch-icon" sizes="72x72" href="//twilio.com/bundles/marketing/img/favicons/favicon_72.png"><link rel="apple-touch-icon" sizes="114x114" href="//twilio.com/bundles/marketing/img/favicons/favicon_114.png"><link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"><link rel="stylesheet" href="viewsaurus.css"></head><body><div class="wrapper"><div id="viewsaurus" data-title="Workflow Automation"><div class="saurus-panes"><div class="saurus-prose"><div class="saurus-prose-header"><div class="title-outer"><span class="step-title">Workflow Automation</span></div></div><div class="saurus-nav-buttons"><div class="saurus-nav-button nav-overview"><div class="saurus-nav-button-inner"><i class="fa fa-fw fa-list"></i></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-previous"><div class="saurus-nav-button-inner"><a href=""> <i class="fa fa-fw fa-play fa-rotate-180"></i></a></div><div class="nav-divider"></div></div><div class="saurus-nav-button nav-next clickable"><div class="saurus-nav-button-inner"><a href="#1"> <i class="fa fa-fw fa-play"></i></a></div></div><div class="saurus-next-title"><span class="next-title-inner"></span></div></div><div class="saurus-progress-bar"></div><div class="saurus-start"><p>Increase your rate of response by automating the workflows that are key to your business. In this tutorial, learn how to build a ready-for-scale automated SMS workflow, for a vacation rental company.</p><a href="#0">Start Tutorial</a></div><div class="saurus-content"><div data-title="Hosting a Property" class="chapter"><div data-title="Introduction" class="step"><h2 id="workflow-automation-vacation-rental-example">Workflow Automation - Vacation Rental example</h2>
+<p>At its core this use-case is about enabling your service providers (agents, hosts, customer service reps, administrators, etc) to better serve their customer. To illustrate a very real-world example of this use-case we will implement a webapp for finding vacation properties... we&#39;re calling it Airtng. Here&#39;s how it works:</p>
+<ol>
+<li><p>A host creates a vacation property</p>
+</li>
+<li><p>A guest requests a reservation on that property</p>
+</li>
+<li><p>The host receives an SMS notifying them of the recent reservation request. The host can either Accept or Reject the reservation.</p>
+</li>
+<li><p>The guest is notified that their reservation was either accepted or rejected.</p>
+</li>
+</ol>
+<h2 id="building-blocks">Building Blocks</h2>
+<p>We&#39;ll be using the Twilio REST API to implement this use-case:</p>
+<ul>
+<li><a href="/docs/api/rest/sending-sms">Messages Resource</a>: We will use Twilio directly to send our users messages at important junctures.</li>
+</ul>
+<p>Let&#39;s get started! Click the right arrow to move on to the next step of the tutorial.</p>
+</div><div data-title="Pre-conditions" data-file="config/routes.rb" class="step"><h2 id="pre-conditions">Pre-conditions</h2>
+<p>In this tutorial we will cover the specific use-case of triggering a workflow processs using SMS. There are some core concepts we will not be covering that are implied in the architecture of this app. Some of these are:</p>
+<ul>
+<li>The Rails session object</li>
+<li>Basic user authentication in Rails</li>
+<li>Rails resources and CRUD</li>
+<li>Using the Rails generator</li>
+<li>Active Record querying</li>
+<li>Rails routing (pictured to the right)</li>
+</ul>
+<p>If any of this is unfamiliar don&#39;t worry, you can do a read through and then brush up on these afterwards. All of the core practices necessary to implement workflow automation will be covered. Onward!</p>
+</div><div data-title="About This Tutorial" class="step"><h2 id="about-this-tutorial">About This Tutorial</h2>
+<p>In this tutorial, we will be working through a series of <a href="http://en.wikipedia.org/wiki/User_story">user stories</a> that describe how to fully implement an automated workflow in a web application. Our team implemented this example application in about 12 story points (roughly equivalent to 12 working hours).</p>
+<p>In addition, this tutorial has a user authentication system in place, but since we covered this extensively in the <a href="https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/ruby/rails">Two-Factor Authentication</a> and <a href="https://www.twilio.com/docs/howto/walkthrough/account-verification/ruby/rails">Account Verification</a> tutorials we are going to skip this entirely. </p>
+<p>Let&#39;s get started with our first user story around creating a new vacation property.</p>
+</div><div data-title="The Vacation Property" class="step"><h3>User Story 1:</h3><blockquote>As a Host I want to create a vacation rental property.</blockquote><p>In order to build a true vacation rentals company we&#39;ll need a way to create the property listings. This story requires that we build a user interface and a model to create and save a new <code>VacationProperty</code> in our system. Here&#39;s what we will need to add:</p>
+<ul>
+<li><p>A form to enter details about the new property</p>
+</li>
+<li><p>A route and controller function on the server to render the form </p>
+</li>
+<li><p>A route and controller function on the server to handle the form&#39;s POST request</p>
+</li>
+<li><p>A persistent <code>VacationProperty</code> model object to store information about the property</p>
+</li>
+</ul>
+<p>We&#39;re not going to spend to much time on this step in order to focus on the actual reservation workflow. But before we do let&#39;s take a quick look at the <code>VacationProperty</code> model.</p>
+</div><div data-title="Vacation Property Model" data-file="app/models/vacation_property.rb" class="step"><h2 id="vacation-property">Vacation Property</h2>
+<p>The <code>VacationProperty</code> model belongs to the <code>User</code> who created it (we&#39;ll call this user the <em>host</em> moving forward) and contains only two properties: a <code>description</code> and an <code>image_url</code>. </p>
+<p>It has two <a href="http://guides.rubyonrails.org/association_basics.html">associations</a> in that it has many reservations and therefore many users through those reservations.</p>
+<p>The best way to generate the model and all of the basic <a href="http://rubysnippets.com/2012/12/14/scaffolding-in-rails/">CRUD scaffolding</a> we&#39;ll need, is to use the <a href="http://guides.rubyonrails.org/command_line.html">Rails command line</a> tool:</p>
+<pre><code>bin/rails generate scaffold VacationProperty 
+description:string image_url:string
+</code></pre><p>One of the benefits of using the Rails generator is that it creates all of our routes, controllers and views so that we have a fully functional CRUD interface out of the box.</p>
+<p>This is pretty boilerplate so far, which means it&#39;s time to jump into the stew and see how we are handling the workflow.</p>
+</div></div><div data-title="Creating the Reservation" class="chapter"><div data-title="Creating a Reservation" class="step"><h2>User Story 2: </h2><blockquote>As a Guest, I want to be able to view vacation rental properties and request a reservation.</blockquote><p>This is a beefy story so let&#39;s break it down into its components:</p>
+<ul>
+<li><p>A reservation model with a name, message and phone number</p>
+</li>
+<li><p>A form for submitting a reservation</p>
+</li>
+<li><p>A controller to handle the form submit and create a reservation</p>
+</li>
+</ul>
+<p>We might have just used the <code>rails generate scaffold</code> again to generate a new Reservation resource, but that would have created a lot of unnecessary cruft. Instead we opted to write our own modules.</p>
+<p>Let&#39;s start by looking at our reservation model.</p>
+</div><div data-title="Reservation Model" data-file="app/models/reservation.rb" class="step"><h2 id="the-reservation-model">The Reservation Model</h2>
+<p>The <code>Reservation</code> model is at the center of the workflow for this application. It is responsible for keeping track of:</p>
+<ul>
+<li><p>the <code>VacationProperty</code> it is associated with</p>
+</li>
+<li><p>the <code>User</code> who owns that vacation property (the host)</p>
+</li>
+<li><p>the guest name and phone number</p>
+</li>
+</ul>
+<p>Since the reservation can only have one guest in this example, we simplified the model by assigning a name and phone_number directly on the model. We&#39;ll cover how we did this later but first we&#39;re going to review the basic properties of the model, and specifically the status attribute.</p>
+</div><div data-title="Reservation Status" data-file="app/models/reservation.rb" data-highlight="1-9" class="step"><h2 id="reservation-status">Reservation status</h2>
+<p>Here is the <code>Reservation</code> model. First we validate some key properties and define the associations so that we can later lookup those relationships through the model. If you&#39;d like more context, the <a href="http://guides.rubyonrails.org/active_record_basics.html">Rails guide</a> explains models and associations quite well.</p>
+<p>The main property we need to enable a reservation workflow is some sort of status that we can monitor. This is a perfect candidate for an enumerated <code>status</code> attribute. </p>
+<h3 id="enumerated-attributes">Enumerated Attributes</h3>
+<p><a href="http://edgeapi.rubyonrails.org/classes/ActiveRecord/Enum.html">Enumerated attributes</a> allow us to store a simple integer in the table, while giving each status a searchable name. Here is an example:</p>
+<pre><code class="cm-s-monokai lang-ruby"><span class="cm-comment"># reservation.pending! status: 0</span>
+<span class="cm-variable">reservation</span><span class="cm-operator">.</span><span class="cm-property">status</span> <span class="cm-operator">=</span> <span class="cm-string">&quot;confirmed&quot;</span>
+<span class="cm-variable">reservation</span><span class="cm-operator">.</span><span class="cm-property">confirmed?</span> <span class="cm-comment"># =&gt; true</span>
+</code></pre>
+<p>Now we have an attribute that can trigger our workflow events. Time to write some callbacks.</p>
+</div><div data-title="Reservation Callbacks" data-file="app/models/reservation.rb" data-highlight="10-12" class="step"><h2 id="reservation-callbacks">Reservation Callbacks</h2>
+<p>Active Record gives us some nifty handles for triggering methods on the Model-- specifically <a href="http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html">callbacks</a>.</p>
+<p>You can find more callbacks in <code>user.rb</code> but let&#39;s look at the two here. </p>
+<p>After we create the reservation we want to notify the host that they have a pending reservation. Then after the status has been changed, we want to notify the guest that their reservation has either been accepted or rejected.</p>
+<p>Notifying the host of a reservation is a little tricky so let&#39;s zoom in to this function.</p>
+</div><div data-title="Notifying the Host" data-file="app/models/reservation.rb" data-highlight="10-29" class="step"><h2 id="notifying-the-host">Notifying the Host</h2>
+<p>In theory, notifying the host should be as simple as looking up the host <code>User</code> then sending her an SMS. However you may have already thought of a problem once we have millions of users on this website. </p>
+<blockquote>How do we ensure our hosts are A) responding to the correct reservation inquiry and B)  aren't getting spammed?</blockquote><h3 id="pending-reservations">Pending Reservations</h3>
+<p>The solution to both problems was making sure we only notify the host of the oldest pending reservation. Additionally we shouldn&#39;t send another SMS until she has dealt with the last reservation.</p>
+<p>The easiest way of surfacing <code>pending_reservations</code> for a user would be to create a helper method on the <code>User</code> model. We&#39;ll go over that in the next step.</p>
+<h3 id="sending-the-sms">Sending the SMS</h3>
+<p>If in fact the host only has one pending reservation, we&#39;re going to fire an sms off to her. </p>
+<p>This would be a great time to take a look at our <code>User</code> model which as we now know has a bunch of utility methods for checking reservations, sending texts and more.</p>
+</div></div><div data-title="Confirming the Reservation" class="chapter"><div data-title="The User Model" data-file="app/models/user.rb" data-highlight="1-11" class="step"><h2 id="the-user-model">The User Model</h2>
+<p>As you can see we have one model for both the guests and the hosts who are using AirTng. If we were going to scale this app it would probably merit creating two more classes that inherit from the base <code>User</code> class, but since our use-case is pretty simple this should suit us fine (famous last words).</p>
+<p>Right at the top we validate the uniqueness of our user. It is important we ensure that the <code>phone_number</code> attribute is unique since we will use this to look up <code>User</code> records on incoming texts.</p>
+<p>After that we set up our associations so that we can query reservations on the user. </p>
+<p>Arguably the most important task delegated to our <code>User</code> model is to send an SMS to the user when we request it. Click next and we&#39;ll go over that.</p>
+</div><div data-title="Sending Messages" data-file="app/models/user.rb" data-highlight="15-39" class="step"><h2 id="sending-messages">Sending Messages</h2>
+<p>Since we know we&#39;re only ever going to be sending text messages to our users, it makes sense to create this function on the <code>User</code> class. These 7 lines comprise the quintessential way to send an SMS or MMS from the Twilio REST API.</p>
+<p>First we look up our app&#39;s phone number, initiate our Twilio client and build the message. Now whenever we need to communicate with a user, whether host or guest, we can just pass a message to this user method and voilah! we&#39;ve sent them a text.</p>
+<p>If you peak below this method you&#39;ll see the helper methods for finding <code>pending_reservations</code> that we mentioned previously.</p>
+<p>Great, so we&#39;ve built a way to send messages to our users. Now we need a way to handle incoming texts from our host when she accepts the reservation.</p>
+</div><div data-title="Incoming Messages" data-file="app/controllers/reservations_controller.rb" data-highlight="20-37" class="step"><h2 id="handling-incoming-messages">Handling Incoming Messages</h2>
+<p>Let&#39;s take a closer look at the <code>accept_or_reject</code> controller. This controller handles our incoming Twilio request and does two things:</p>
+<ol>
+<li><p>Checks for a pending reservation from the incoming user</p>
+</li>
+<li><p>Updates the status of the reservation</p>
+</li>
+<li><p>Responds to the host</p>
+</li>
+</ol>
+<h2 id="incoming-twilio-request">Incoming Twilio Request</h2>
+<p>An incoming request from Twilio comes with some helpful <a href="/docs/api/twiml/twilio_request#synchronous-request-parameters">parameters</a>. These include the <code>From</code> phone number and the message <code>Body</code>. </p>
+<p>We&#39;ll use the <code>From</code> parameter to lookup the host and check if she has any pending reservations. If she does, we&#39;ll use the message body to check if she accepted or rejected the reservation.</p>
+<p>Then we&#39;ll redirect the request to a TwiML response to send a message back to the user.</p>
+<h2 id="twiml-response">TwiML Response</h2>
+<p>Usually a Rails controller has a template associated with it that renders a webpage. In our case the only request being made will be by Twilio&#39;s API, so we don&#39;t need a public page. Instead we&#39;re using Twilio&#39;s Ruby API to render a custom TwiML response as raw XML on the page.</p>
+</div><div data-title="Notifying the Guest" data-file="app/models/reservation.rb" data-highlight="43-49" class="step"><p>The final step in our workflow is to notify the guest that their reservation has been booked. Well remember the second reservation callback from a previous step? Now we get to use it! </p>
+<p>By using the <code>after_update</code> callback we gaurantee that this method is going to run. It&#39;s quite simple:</p>
+<ul>
+<li>We lookup the guest with the <code>reservation.phone_number</code></li>
+<li>If the status was changed to an expected result, then we notify the guest of the change.</li>
+</ul>
+<p>And of course all we need to do to send the SMS message to the guest is call the <code>send_message_via_sms</code> method that is present on all users.</p>
+</div><div data-title="Finish" class="step"><h2 id="all-done">All Done</h2>
+<p>Congrats! You just learned how to automate your workflow with Twilio SMS. To improve upon this you could add anonymous communications so that the host and guest could communicate through a shared Twilio phone number. Hmmm... maybe we&#39;ll have to put together a tutorial on that!</p>
+<p>Thanks for checking out this tutorial! If you have any feedback to share with us, we&#39;d love to hear it. Tweet <a href="http://twitter.com/twilio">@twilio</a> to let us know what you think.</p>
+</div></div>
+<div class="saurus-files" style="display:none;"><textarea class="saurus-file" data-file="config/routes.rb" data-mode="ruby">UmFpbHMuYXBwbGljYXRpb24ucm91dGVzLmRyYXcgZG8KCiAgZ2V0ICJ1c2Vycy92ZXJpZnkiLCB0bzogJ3VzZXJzI3Nob3dfdmVyaWZ5JywgYXM6ICd2ZXJpZnknCiAgcG9zdCAidXNlcnMvdmVyaWZ5IgogIHBvc3QgInVzZXJzL3Jlc2VuZCIKCiAgZ2V0ICJsb2dpbi8iLCA6dG8gPT4gInNlc3Npb25zI2xvZ2luIgogIGdldCAibG9nb3V0LyIsIDp0byA9PiAic2Vzc2lvbnMjbG9nb3V0IgogIHBvc3QgImxvZ2luX2F0dGVtcHQvIiwgOnRvID0+ICJzZXNzaW9ucyNsb2dpbl9hdHRlbXB0IgoKICByZXNvdXJjZXMgOnVzZXJzLCBvbmx5OiBbOm5ldywgOmNyZWF0ZSwgOnNob3ddCgogIHJlc291cmNlcyA6dmFjYXRpb25fcHJvcGVydGllcywgOnBhdGggPT4gIi9wcm9wZXJ0aWVzIgogIHJlc291cmNlcyA6cmVzZXJ2YXRpb25zLCBvbmx5OiBbOm5ldywgOmNyZWF0ZV0KICBwb3N0ICJyZXNlcnZhdGlvbnMvaW5jb21pbmciLCB0bzogJ3Jlc2VydmF0aW9ucyNhY2NlcHRfb3JfcmVqZWN0JywgYXM6ICdpbmNvbWluZycKCiAgIyBIb21lIHBhZ2UKICByb290ICdtYWluI2luZGV4JywgYXM6ICdob21lJwoKZW5k</textarea>
+<textarea class="saurus-file" data-file="app/models/vacation_property.rb" data-mode="ruby">Y2xhc3MgVmFjYXRpb25Qcm9wZXJ0eSA8IEFjdGl2ZVJlY29yZDo6QmFzZQogIGJlbG9uZ3NfdG8gOnVzZXIgIyBob3N0CiAgaGFzX21hbnkgOnJlc2VydmF0aW9ucwogIGhhc19tYW55IDp1c2VycywgdGhyb3VnaDogOnJlc2VydmF0aW9ucyAjZ3Vlc3RzCmVuZAo=</textarea>
+<textarea class="saurus-file" data-file="app/models/reservation.rb" data-mode="ruby">Y2xhc3MgUmVzZXJ2YXRpb24gPCBBY3RpdmVSZWNvcmQ6OkJhc2UKICB2YWxpZGF0ZXMgOm5hbWUsIHByZXNlbmNlOiB0cnVlCiAgdmFsaWRhdGVzIDpwaG9uZV9udW1iZXIsIHByZXNlbmNlOiB0cnVlCgogIGVudW0gc3RhdHVzOiBbIDpwZW5kaW5nLCA6Y29uZmlybWVkLCA6cmVqZWN0ZWQgXQogICMgdC50ZXh0IDptZXNzYWdlCgogIGJlbG9uZ3NfdG8gOnZhY2F0aW9uX3Byb3BlcnR5CiAgYmVsb25nc190byA6dXNlcgoKICBhZnRlcl9jcmVhdGUgOm5vdGlmeV9ob3N0CiAgYWZ0ZXJfdXBkYXRlIDpub3RpZnlfZ3Vlc3QKCiAgZGVmIG5vdGlmeV9ob3N0KGZvcmNlID0gZmFsc2UpCiAgICBAaG9zdCA9IFVzZXIuZmluZChzZWxmLnZhY2F0aW9uX3Byb3BlcnR5Wzp1c2VyX2lkXSkKCiAgICAjIERvbid0IHNlbmQgdGhlIG1lc3NhZ2UgaWYgd2UgaGF2ZSBtb3JlIHRoYW4gb25lIG9yIHdlIGFyZW4ndCBiZWluZyBmb3JjZWQKICAgIGlmIEBob3N0LnBlbmRpbmdfcmVzZXJ2YXRpb25zLmxlbmd0aCA+IDEgb3IgIWZvcmNlCiAgICAgIHJldHVybgogICAgZWxzZQogICAgICBtZXNzYWdlID0gIllvdSBoYXZlIGEgbmV3IHJlc2VydmF0aW9uIHJlcXVlc3QgZnJvbSAje3NlbGYubmFtZX0gZm9yICN7c2VsZi52YWNhdGlvbl9wcm9wZXJ0eS5kZXNjcmlwdGlvbn06IAoKICAgICAgJyN7c2VsZi5tZXNzYWdlfScKCiAgICAgIFJlcGx5IFthY2NlcHRdIG9yIFtyZWplY3RdLiIKCiAgICAgIEBob3N0LnNlbmRfbWVzc2FnZV92aWFfc21zKG1lc3NhZ2UpCiAgICBlbmQKICBlbmQKCiAgZGVmIGNvbmZpcm0KICAgIHNlbGYuc3RhdHVzID0gImNvbmZpcm1lZCIKICAgIHNlbGYuc2F2ZQogIGVuZAoKICBkZWYgcmVqZWN0CiAgICBzZWxmLnN0YXR1cyA9ICJyZWplY3RlZCIKICAgIHNlbGYuc2F2ZQogIGVuZAoKICBwcml2YXRlCgogICAgZGVmIG5vdGlmeV9ndWVzdAogICAgICBAZ3Vlc3QgPSBVc2VyLmZpbmRfYnkocGhvbmVfbnVtYmVyOiBzZWxmLnBob25lX251bWJlcikKCiAgICAgIGlmIHNlbGYuc3RhdHVzX2NoYW5nZWQ/ICYmIChzZWxmLnN0YXR1cyA9PSAiY29uZmlybWVkIiB8fCBzZWxmLnN0YXR1cyA9PSAicmVqZWN0ZWQiKQogICAgICAgIG1lc3NhZ2UgPSAiWW91ciByZWNlbnQgcmVxdWVzdCB0byBzdGF5IGF0ICN7c2VsZi52YWNhdGlvbl9wcm9wZXJ0eS5kZXNjcmlwdGlvbn0gd2FzICN7c2VsZi5zdGF0dXN9LiIKICAgICAgICBAZ3Vlc3Quc2VuZF9tZXNzYWdlX3ZpYV9zbXMobWVzc2FnZSkKICAgICAgZW5kCiAgICBlbmQKZW5k</textarea>
+<textarea class="saurus-file" data-file="app/models/user.rb" data-mode="ruby">Y2xhc3MgVXNlciA8IEFjdGl2ZVJlY29yZDo6QmFzZQogIGhhc19zZWN1cmVfcGFzc3dvcmQKICAKICB2YWxpZGF0ZXMgOmVtYWlsLCAgcHJlc2VuY2U6IHRydWUsIGZvcm1hdDogeyB3aXRoOiAvXEEuK0AuKyRcWi8gfSwgdW5pcXVlbmVzczogdHJ1ZQogIHZhbGlkYXRlcyA6bmFtZSwgcHJlc2VuY2U6IHRydWUKICB2YWxpZGF0ZXMgOmNvdW50cnlfY29kZSwgcHJlc2VuY2U6IHRydWUKICB2YWxpZGF0ZXMgOnBob25lX251bWJlciwgcHJlc2VuY2U6IHRydWUsIHVuaXF1ZW5lc3M6IHRydWUKICB2YWxpZGF0ZXNfbGVuZ3RoX29mIDpwYXNzd29yZCwgOmluID0+IDYuLjIwLCA6b24gPT4gOmNyZWF0ZQoKICBoYXNfbWFueSA6dmFjYXRpb25fcHJvcGVydGllcwogIGhhc19tYW55IDpyZXNlcnZhdGlvbnMsIHRocm91Z2g6IDp2YWNhdGlvbl9wcm9wZXJ0aWVzCgogIGFmdGVyX2NyZWF0ZSA6cmVnaXN0ZXJfd2l0aF9hdXRoeQoKICBkZWYgc2VuZF9tZXNzYWdlX3ZpYV9zbXMobWVzc2FnZSkKICAgIEBhcHBfbnVtYmVyID0gRU5WWydUV0lMSU9fTlVNQkVSJ10KICAgIEBjbGllbnQgPSBUd2lsaW86OlJFU1Q6OkNsaWVudC5uZXcgRU5WWydUV0lMSU9fQUNDT1VOVF9TSUQnXSwgRU5WWydUV0lMSU9fQVVUSF9UT0tFTiddCiAgICBzbXNfbWVzc2FnZSA9IEBjbGllbnQuYWNjb3VudC5tZXNzYWdlcy5jcmVhdGUoCiAgICAgIDpmcm9tID0+IEBhcHBfbnVtYmVyLAogICAgICA6dG8gPT4gc2VsZi5waG9uZV9udW1iZXIsCiAgICAgIDpib2R5ID0+IG1lc3NhZ2UsCiAgICApCiAgICBwdXRzIHNtc19tZXNzYWdlLnRvCiAgZW5kCgogIGRlZiBjaGVja19mb3JfcmVzZXJ2YXRpb25zX3BlbmRpbmcKICAgIGlmIHBlbmRpbmdfcmVzZXJ2YXRpb24KICAgICAgcGVuZGluZ19yZXNlcnZhdGlvbi5ub3RpZnlfaG9zdCh0cnVlKQogICAgZW5kCiAgZW5kCgogIGRlZiBwZW5kaW5nX3Jlc2VydmF0aW9uCiAgICBzZWxmLnJlc2VydmF0aW9ucy53aGVyZShzdGF0dXM6ICJwZW5kaW5nIikuZmlyc3QKICBlbmQKCiAgZGVmIHBlbmRpbmdfcmVzZXJ2YXRpb25zCiAgICBzZWxmLnJlc2VydmF0aW9ucy53aGVyZShzdGF0dXM6ICJwZW5kaW5nIikKICBlbmQKCgogIGRlZiB2ZXJpZnlfYXV0aF90b2tlbihwb3N0ZWRUb2tlbikKICAgICMgVXNlIEF1dGh5IHRvIHNlbmQgdGhlIHZlcmlmaWNhdGlvbiB0b2tlbgogICAgdG9rZW4gPSBBdXRoeTo6QVBJLnZlcmlmeShpZDogc2VsZi5hdXRoeV9pZCwgdG9rZW46IHBvc3RlZFRva2VuKQoKICAgIGlmIHRva2VuLm9rPwogICAgICBzZWxmLnVwZGF0ZSh2ZXJpZmllZDogdHJ1ZSkKICAgICAgc2VsZi5zZW5kX21lc3NhZ2VfdmlhX3NtcygiWW91IGRpZCBpdCEgU2lnbnVwIGNvbXBsZXRlIDopIikKICAgICAgcmV0dXJuIHRydWUKICAgIGVsc2UKICAgICAgZXJyb3JzLmFkZCg6dmVyaWZpZWQsICJJbmNvcnJlY3QgY29kZSwgcGxlYXNlIHRyeSBhZ2FpbiIpCiAgICAgIHJldHVybiBmYWxzZQogICAgZW5kCiAgZW5kCgogIHByaXZhdGUKICAgIGRlZiByZWdpc3Rlcl93aXRoX2F1dGh5CiAgICAgICMgQ3JlYXRlIHVzZXIgb24gQXV0aHksIHdpbGwgcmV0dXJuIGFuIGlkIG9uIHRoZSBvYmplY3QKICAgICAgYXV0aHkgPSBBdXRoeTo6QVBJLnJlZ2lzdGVyX3VzZXIoCiAgICAgICAgZW1haWw6IHNlbGYuZW1haWwsCiAgICAgICAgY2VsbHBob25lOiBzZWxmLnBob25lX251bWJlciwKICAgICAgICBjb3VudHJ5X2NvZGU6IHNlbGYuY291bnRyeV9jb2RlCiAgICAgICkKICAgICAgc2VsZi51cGRhdGUoYXV0aHlfaWQ6IGF1dGh5LmlkKQoKICAgICAgc2VsZi5zZW5kX2F1dGh5X3Rva2VuX3ZpYV9zbXMKICAgIGVuZAoKICAgIGRlZiBzZW5kX2F1dGh5X3Rva2VuX3ZpYV9zbXMKICAgICAgQXV0aHk6OkFQSS5yZXF1ZXN0X3NtcyhpZDogc2VsZi5hdXRoeV9pZCkKICAgIGVuZAplbmQK</textarea>
+<textarea class="saurus-file" data-file="app/controllers/reservations_controller.rb" data-mode="ruby">Y2xhc3MgUmVzZXJ2YXRpb25zQ29udHJvbGxlciA8IEFwcGxpY2F0aW9uQ29udHJvbGxlcgoKICAjIEdFVCAvdmFjYXRpb25fcHJvcGVydGllcy9uZXcKICBkZWYgbmV3CiAgICBAcmVzZXJ2YXRpb24gPSBSZXNlcnZhdGlvbi5uZXcKICBlbmQKCiAgZGVmIGNyZWF0ZQogICAgQHZhY2F0aW9uX3Byb3BlcnR5ID0gVmFjYXRpb25Qcm9wZXJ0eS5maW5kKHBhcmFtc1s6cmVzZXJ2YXRpb25dWzpwcm9wZXJ0eV9pZF0pCiAgICBAcmVzZXJ2YXRpb24gPSBAdmFjYXRpb25fcHJvcGVydHkucmVzZXJ2YXRpb25zLmNyZWF0ZShyZXNlcnZhdGlvbl9wYXJhbXMpCgogICAgaWYgQHJlc2VydmF0aW9uLnNhdmUKICAgICAgZmxhc2hbOm5vdGljZV0gPSAiU2VuZGluZyB5b3VyIHJlc2VydmF0aW9uIHJlcXVlc3Qgbm93LiIKICAgICAgcmVkaXJlY3RfdG8gQHZhY2F0aW9uX3Byb3BlcnR5CiAgICBlbHNlCiAgICAgIGZsYXN0WzpkYW5nZXJdID0gQHJlc2VydmF0aW9uLmVycm9ycwogICAgZW5kCiAgZW5kCgogICMgd2ViaG9vayBmb3IgdHdpbGlvIGluY29taW5nIG1lc3NhZ2UgZnJvbSBob3N0CiAgZGVmIGFjY2VwdF9vcl9yZWplY3QKICAgIGluY29taW5nID0gU2FuaXRpemUuY2xlYW4ocGFyYW1zWzpGcm9tXSkuZ3N1YigvXlwrXGQvLCAnJykKICAgIHNtc19pbnB1dCA9IHBhcmFtc1s6Qm9keV0uZG93bmNhc2UKICAgIGJlZ2luCiAgICAgIEBob3N0ID0gVXNlci5maW5kX2J5KHBob25lX251bWJlcjogaW5jb21pbmcpCiAgICAgIEByZXNlcnZhdGlvbiA9IEBob3N0LnBlbmRpbmdfcmVzZXJ2YXRpb24KCiAgICAgIGlmIHNtc19pbnB1dCA9PSAiYWNjZXB0IiB8fCBzbXNfaW5wdXQgPT0gInllcyIKICAgICAgICBAcmVzZXJ2YXRpb24uY29uZmlybQogICAgICBlbHNlCiAgICAgICAgQHJlc2VydmF0aW9uLnJlamVjdAogICAgICBlbmQKCiAgICAgIEBob3N0LmNoZWNrX2Zvcl9yZXNlcnZhdGlvbnNfcGVuZGluZwoKICAgICAgc21zX3JlcG9uc2UgPSAiWW91IGhhdmUgc3VjY2Vzc2Z1bGx5ICN7QHJlc2VydmF0aW9uLnN0YXR1c30gdGhlIHJlc2VydmF0aW9uLiIKICAgICAgcmVzcG9uZChzbXNfcmVwb25zZSkKICAgIHJlc2N1ZQogICAgICBzbXNfcmVwb25zZSA9ICJTb3JyeSwgaXQgbG9va3MgbGlrZSB5b3UgZG9uJ3QgaGF2ZSBhbnkgcmVzZXJ2YXRpb25zIHRvIHJlc3BvbmQgdG8uIgogICAgICByZXNwb25kKHNtc19yZXBvbnNlKQogICAgZW5kCiAgZW5kCgogIHByaXZhdGUKICAgICMgU2VuZCBhbiBTTVMgYmFjayB0byB0aGUgU3Vic2NyaWJlcgogICAgZGVmIHJlc3BvbmQobWVzc2FnZSkKICAgICAgcmVzcG9uc2UgPSBUd2lsaW86OlR3aU1MOjpSZXNwb25zZS5uZXcgZG8gfHJ8CiAgICAgICAgci5NZXNzYWdlIG1lc3NhZ2UKICAgICAgZW5kCiAgICAgIHJlbmRlciB0ZXh0OiByZXNwb25zZS50ZXh0CiAgICBlbmQKCiAgICAjIE5ldmVyIHRydXN0IHBhcmFtZXRlcnMgZnJvbSB0aGUgc2NhcnkgaW50ZXJuZXQsIG9ubHkgYWxsb3cgdGhlIHdoaXRlIGxpc3QgdGhyb3VnaC4KICAgIGRlZiByZXNlcnZhdGlvbl9wYXJhbXMKICAgICAgcGFyYW1zLnJlcXVpcmUoOnJlc2VydmF0aW9uKS5wZXJtaXQoOm5hbWUsIDpwaG9uZV9udW1iZXIsIDptZXNzYWdlKQogICAgZW5kCgplbmQK</textarea>
+</div>
+</div><div class="saurus-overview"><ul></ul></div></div><div class="saurus-code"><div class="file-path"><span class="crumb-container"></span><i class="fa fa-fw fa-folder"></i></div><div class="saurus-editor"></div></div><div class="saurus-explorer"><div class="saurus-file-list"></div></div></div></div></div><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/1.1.2/backbone-min.js"></script><script src="ace/ace.js"></script><script src="ace/theme-monokai.js"></script><script src="viewsaurus.js"></script></body></html>

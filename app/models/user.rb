@@ -1,30 +1,16 @@
 class User < ActiveRecord::Base
   has_secure_password
-
-  has_many :vacation_properties
-  has_many :reservations, through: :vacation_properties
-
-  after_create :register_with_authy
-
+  
   validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
   validates :name, presence: true
   validates :country_code, presence: true
   validates :phone_number, presence: true, uniqueness: true
   validates_length_of :password, :in => 6..20, :on => :create
 
-  def verify_auth_token(postedToken)
-    # Use Authy to send the verification token
-    token = Authy::API.verify(id: self.authy_id, token: postedToken)
+  has_many :vacation_properties
+  has_many :reservations, through: :vacation_properties
 
-    if token.ok?
-      self.update(verified: true)
-      self.send_message_via_sms("You did it! Signup complete :)")
-      return true
-    else
-      errors.add(:verified, "Incorrect code, please try again")
-      return false
-    end
-  end
+  after_create :register_with_authy
 
   def send_message_via_sms(message)
     @app_number = ENV['TWILIO_NUMBER']
@@ -49,6 +35,21 @@ class User < ActiveRecord::Base
 
   def pending_reservations
     self.reservations.where(status: "pending")
+  end
+
+
+  def verify_auth_token(postedToken)
+    # Use Authy to send the verification token
+    token = Authy::API.verify(id: self.authy_id, token: postedToken)
+
+    if token.ok?
+      self.update(verified: true)
+      self.send_message_via_sms("You did it! Signup complete :)")
+      return true
+    else
+      errors.add(:verified, "Incorrect code, please try again")
+      return false
+    end
   end
 
   private
