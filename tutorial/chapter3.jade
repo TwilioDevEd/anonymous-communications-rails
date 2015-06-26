@@ -45,7 +45,7 @@
 
     Usually a Rails controller has a template associated with it that renders a webpage. In our case the only request being made will be by Twilio's API, so we don't need a public page. Instead we're using Twilio's Ruby API to render a custom TwiML response as raw XML on the page.
 
-.step(data-title='Notifying the Guest', data-file="app/models/reservation.rb", data-highlight="43-49")
+.step(data-title='Notifying the Guest', data-file="app/models/reservation.rb", data-highlight="43-50")
   :markdown
     The final step in our workflow is to notify the guest that their reservation has been booked. Well remember the second reservation callback from a previous step? Now we get to use it! 
 
