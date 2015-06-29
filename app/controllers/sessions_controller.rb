@@ -8,12 +8,10 @@ class SessionsController < ApplicationController
 
   def login_attempt
     user = User.find_by_email(params[:email])
-    authorized_user = user.authenticate(params[:login_password])
-    if authorized_user
-      session[:user_id] = authorized_user.id
-      flash[:notice] = "Wow Welcome again, you logged in as #{authorized_user.email}"
+    if user && user.authenticate(params[:login_password])
+      session[:user_id] = user.id
+      flash[:notice] = "Welcome again, you logged in as #{user.email}"
       redirect_to home_path
-
 
     else
       flash[:notice] = "Invalid Username or Password"
