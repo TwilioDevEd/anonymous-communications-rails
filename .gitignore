@@ -15,3 +15,8 @@ capybara-*.html
 **.orig
 rerun.txt
 pickle-email-*.html
+/tutorial/
+/ace/
+index.html
+viewsaurus.css
+viewsaurus.js
