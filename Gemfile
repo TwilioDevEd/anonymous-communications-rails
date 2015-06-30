@@ -26,9 +26,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Use Authy for sending token
-gem 'authy'
-
 # Use Twilio to send confirmation message
 gem 'twilio-ruby'
 # Use sanitize
