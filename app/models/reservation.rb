@@ -3,7 +3,6 @@ class Reservation < ActiveRecord::Base
   validates :phone_number, presence: true
 
   enum status: [ :pending, :confirmed, :rejected ]
-  # t.text :message
 
   belongs_to :vacation_property
   belongs_to :user
