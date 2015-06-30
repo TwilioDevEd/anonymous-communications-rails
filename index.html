@@ -58,7 +58,7 @@
 <p>The <code>VacationProperty</code> model belongs to the <code>User</code> who created it (we&#39;ll call this user the <em>host</em> moving forward) and contains only two properties: a <code>description</code> and an <code>image_url</code>. </p>
 <p>It has two <a href="http://guides.rubyonrails.org/association_basics.html">associations</a> in that it has many reservations and therefore many users through those reservations.</p>
 <p>The best way to generate the model and all of the basic <a href="http://rubysnippets.com/2012/12/14/scaffolding-in-rails/">CRUD scaffolding</a> we&#39;ll need, is to use the <a href="http://guides.rubyonrails.org/command_line.html">Rails command line</a> tool:</p>
-<pre><code>bin/rails generate scaffold VacationProperty 
+<pre><code>bin/rails generate scaffold VacationProperty
 description:string image_url:string
 </code></pre><p>One of the benefits of using the Rails generator is that it creates all of our routes, controllers and views so that we have a fully functional CRUD interface out of the box.</p>
 <p>This is pretty boilerplate so far, which means it&#39;s time to jump into the stew and see how we are handling the workflow.</p>
@@ -71,7 +71,7 @@ description:string image_url:string
 <li><p>A controller to handle the form submit and create a reservation</p>
 </li>
 </ul>
-<p>We might have just used the <code>rails generate scaffold</code> again to generate a new Reservation resource, but that would have created a lot of unnecessary cruft. Instead we opted to write our own modules.</p>
+<p>We might have just used the <code>rails generate scaffold</code> again to generate a new `Reservation` resource, but that would have created a lot of unnecessary cruft. Instead we opted to write our own modules.</p>
 <p>Let&#39;s start by looking at our reservation model.</p>
 </div><div data-title="Reservation Model" data-file="app/models/reservation.rb" class="step"><h2 id="the-reservation-model">The Reservation Model</h2>
 <p>The <code>Reservation</code> model is at the center of the workflow for this application. It is responsible for keeping track of:</p>
@@ -108,14 +108,14 @@ description:string image_url:string
 <p>If in fact the host only has one pending reservation, we&#39;re going to fire an sms off to her. </p>
 <p>This would be a great time to take a look at our <code>User</code> model which as we now know has a bunch of utility methods for checking reservations, sending texts and more.</p>
 </div></div><div data-title="Confirming the Reservation" class="chapter"><div data-title="The User Model" data-file="app/models/user.rb" data-highlight="1-11" class="step"><h2 id="the-user-model">The User Model</h2>
-<p>As you can see we have one model for both the guests and the hosts who are using AirTng. If we were going to scale this app it would probably merit creating two more classes that inherit from the base <code>User</code> class, but since our use-case is pretty simple this should suit us fine (famous last words).</p>
+<p>As you can see we have one model for both the guests and the hosts who are using Airtng. If we were going to scale this app it would probably merit creating two more classes that inherit from the base <code>User</code> class, but since our use-case is pretty simple this should suit us fine (famous last words).</p>
 <p>Right at the top we validate the uniqueness of our user. It is important we ensure that the <code>phone_number</code> attribute is unique since we will use this to look up <code>User</code> records on incoming texts.</p>
 <p>After that we set up our associations so that we can query reservations on the user. </p>
 <p>Arguably the most important task delegated to our <code>User</code> model is to send an SMS to the user when we request it. Click next and we&#39;ll go over that.</p>
 </div><div data-title="Sending Messages" data-file="app/models/user.rb" data-highlight="13-38" class="step"><h2 id="sending-messages">Sending Messages</h2>
 <p>Since we know we&#39;re only ever going to be sending text messages to our users, it makes sense to create this function on the <code>User</code> class. These 7 lines comprise the quintessential way to send an SMS or MMS from the Twilio REST API.</p>
 <p>First we look up our app&#39;s phone number, initiate our Twilio client and build the message. Now whenever we need to communicate with a user, whether host or guest, we can just pass a message to this user method and voilah! we&#39;ve sent them a text.</p>
-<p>If you peak below this method you&#39;ll see the helper methods for finding <code>pending_reservations</code> that we mentioned previously.</p>
+<p>If you peek below this method you&#39;ll see the helper methods for finding <code>pending_reservations</code> that we mentioned previously.</p>
 <p>Great, so we&#39;ve built a way to send messages to our users. Now we need a way to handle incoming texts from our host when she accepts the reservation.</p>
 </div><div data-title="Incoming Messages" data-file="app/controllers/reservations_controller.rb" data-highlight="20-42" class="step"><h2 id="handling-incoming-messages">Handling Incoming Messages</h2>
 <p>Let&#39;s take a closer look at the <code>accept_or_reject</code> controller. This controller handles our incoming Twilio request and does two things:</p>
@@ -134,7 +134,7 @@ description:string image_url:string
 <h2 id="twiml-response">TwiML Response</h2>
 <p>Usually a Rails controller has a template associated with it that renders a webpage. In our case the only request being made will be by Twilio&#39;s API, so we don&#39;t need a public page. Instead we&#39;re using Twilio&#39;s Ruby API to render a custom TwiML response as raw XML on the page.</p>
 </div><div data-title="Notifying the Guest" data-file="app/models/reservation.rb" data-highlight="43-50" class="step"><p>The final step in our workflow is to notify the guest that their reservation has been booked. Well remember the second reservation callback from a previous step? Now we get to use it! </p>
-<p>By using the <code>after_update</code> callback we gaurantee that this method is going to run. It&#39;s quite simple:</p>
+<p>By using the <code>after_update</code> callback we guarantee that this method is going to run. It&#39;s quite simple:</p>
 <ul>
 <li>We lookup the guest with the <code>reservation.phone_number</code></li>
 <li>If the status was changed to an expected result, then we notify the guest of the change.</li>

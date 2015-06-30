@@ -2,14 +2,14 @@
   :markdown
     ## The User Model
 
-    As you can see we have one model for both the guests and the hosts who are using AirTng. If we were going to scale this app it would probably merit creating two more classes that inherit from the base `User` class, but since our use-case is pretty simple this should suit us fine (famous last words).
+    As you can see we have one model for both the guests and the hosts who are using Airtng. If we were going to scale this app it would probably merit creating two more classes that inherit from the base `User` class, but since our use-case is pretty simple this should suit us fine (famous last words).
 
     Right at the top we validate the uniqueness of our user. It is important we ensure that the `phone_number` attribute is unique since we will use this to look up `User` records on incoming texts.
 
-    After that we set up our associations so that we can query reservations on the user. 
+    After that we set up our associations so that we can query reservations on the user.
 
     Arguably the most important task delegated to our `User` model is to send an SMS to the user when we request it. Click next and we'll go over that.
-    
+
 .step(data-title='Sending Messages', data-file="app/models/user.rb", data-highlight="13-38")
   :markdown
     ## Sending Messages
@@ -18,7 +18,7 @@
 
     First we look up our app's phone number, initiate our Twilio client and build the message. Now whenever we need to communicate with a user, whether host or guest, we can just pass a message to this user method and voilah! we've sent them a text.
 
-    If you peak below this method you'll see the helper methods for finding `pending_reservations` that we mentioned previously.
+    If you peek below this method you'll see the helper methods for finding `pending_reservations` that we mentioned previously.
 
     Great, so we've built a way to send messages to our users. Now we need a way to handle incoming texts from our host when she accepts the reservation.
 
@@ -35,7 +35,7 @@
     1. Responds to the host
 
     ## Incoming Twilio Request
-    An incoming request from Twilio comes with some helpful [parameters](/docs/api/twiml/twilio_request#synchronous-request-parameters). These include the `From` phone number and the message `Body`. 
+    An incoming request from Twilio comes with some helpful [parameters](/docs/api/twiml/twilio_request#synchronous-request-parameters). These include the `From` phone number and the message `Body`.
 
     We'll use the `From` parameter to lookup the host and check if she has any pending reservations. If she does, we'll use the message body to check if she accepted or rejected the reservation.
 
@@ -47,9 +47,9 @@
 
 .step(data-title='Notifying the Guest', data-file="app/models/reservation.rb", data-highlight="43-50")
   :markdown
-    The final step in our workflow is to notify the guest that their reservation has been booked. Well remember the second reservation callback from a previous step? Now we get to use it! 
+    The final step in our workflow is to notify the guest that their reservation has been booked. Well remember the second reservation callback from a previous step? Now we get to use it!
 
-    By using the `after_update` callback we gaurantee that this method is going to run. It's quite simple:
+    By using the `after_update` callback we guarantee that this method is going to run. It's quite simple:
     * We lookup the guest with the `reservation.phone_number`
     * If the status was changed to an expected result, then we notify the guest of the change.
 
