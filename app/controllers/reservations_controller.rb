@@ -11,6 +11,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       flash[:notice] = "Sending your reservation request now."
+      @reservation.notify_host
       redirect_to @vacation_property
     else
       flast[:danger] = @reservation.errors

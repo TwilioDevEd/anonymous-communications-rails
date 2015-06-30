@@ -8,9 +8,6 @@ class Reservation < ActiveRecord::Base
   belongs_to :vacation_property
   belongs_to :user
 
-  after_create :notify_host
-  after_update :notify_guest
-
   def notify_host(force = false)
     @host = User.find(self.vacation_property[:user_id])
 
@@ -18,7 +15,7 @@ class Reservation < ActiveRecord::Base
     if @host.pending_reservations.length > 1 or !force
       return
     else
-      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}: 
+      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}:
 
       '#{self.message}'
 
@@ -38,14 +35,12 @@ class Reservation < ActiveRecord::Base
     self.save
   end
 
-  private
+  def notify_guest
+    @guest = User.find_by(phone_number: self.phone_number)
 
-    def notify_guest
-      @guest = User.find_by(phone_number: self.phone_number)
-
-      if self.status_changed? && (self.status == "confirmed" || self.status == "rejected")
-        message = "Your recent request to stay at #{self.vacation_property.description} was #{self.status}."
-        @guest.send_message_via_sms(message)
-      end
+    if self.status_changed? && (self.status == "confirmed" || self.status == "rejected")
+      message = "Your recent request to stay at #{self.vacation_property.description} was #{self.status}."
+      @guest.send_message_via_sms(message)
     end
+  end
 end
