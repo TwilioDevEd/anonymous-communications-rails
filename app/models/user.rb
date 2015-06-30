@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
-  
+
   validates :email,  presence: true, format: { with: /\A.+@.+$\Z/ }, uniqueness: true
   validates :name, presence: true
   validates :country_code, presence: true
@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
       :to => self.phone_number,
       :body => message,
     )
-    puts sms_message.to
   end
 
   def check_for_reservations_pending
