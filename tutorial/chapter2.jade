@@ -1,5 +1,5 @@
 .step(data-title='Creating a Reservation')
-  h2 User Story 2: 
+  h2 User Story 2:
   blockquote As a Guest, I want to be able to view vacation rental properties and request a reservation.
   :markdown
     This is a beefy story so let's break it down into its components:
@@ -10,7 +10,7 @@
 
     * A controller to handle the form submit and create a reservation
 
-    We might have just used the `rails generate scaffold` again to generate a new Reservation resource, but that would have created a lot of unnecessary cruft. Instead we opted to write our own modules.
+    We might have just used the `rails generate scaffold` again to generate a new `Reservation` resource, but that would have created a lot of unnecessary cruft. Instead we opted to write our own modules.
 
     Let's start by looking at our reservation model.
 
@@ -34,7 +34,7 @@
 
     Here is the `Reservation` model. First we validate some key properties and define the associations so that we can later lookup those relationships through the model. If you'd like more context, the [Rails guide](http://guides.rubyonrails.org/active_record_basics.html) explains models and associations quite well.
 
-    The main property we need to enable a reservation workflow is some sort of status that we can monitor. This is a perfect candidate for an enumerated `status` attribute. 
+    The main property we need to enable a reservation workflow is some sort of status that we can monitor. This is a perfect candidate for an enumerated `status` attribute.
 
     ### Enumerated Attributes
 
@@ -54,7 +54,7 @@
 
     Active Record gives us some nifty handles for triggering methods on the Model-- specifically [callbacks](http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html).
 
-    You can find more callbacks in `user.rb` but let's look at the two here. 
+    You can find more callbacks in `user.rb` but let's look at the two here.
 
     After we create the reservation we want to notify the host that they have a pending reservation. Then after the status has been changed, we want to notify the guest that their reservation has either been accepted or rejected.
 
@@ -64,7 +64,7 @@
   :markdown
     ## Notifying the Host
 
-    In theory, notifying the host should be as simple as looking up the host `User` then sending her an SMS. However you may have already thought of a problem once we have millions of users on this website. 
+    In theory, notifying the host should be as simple as looking up the host `User` then sending her an SMS. However you may have already thought of a problem once we have millions of users on this website.
 
   blockquote How do we ensure our hosts are A) responding to the correct reservation inquiry and B)  aren't getting spammed?
 
@@ -77,7 +77,7 @@
 
     ### Sending the SMS
 
-    If in fact the host only has one pending reservation, we're going to fire an sms off to her. 
+    If in fact the host only has one pending reservation, we're going to fire an sms off to her.
 
     This would be a great time to take a look at our `User` model which as we now know has a bunch of utility methods for checking reservations, sending texts and more.
 
