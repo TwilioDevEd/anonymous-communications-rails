@@ -34,12 +34,12 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "should post to verify successfully" do
     session["pre_2fa_auth_user_id"] = @user.id
-    verify = OpenStruct.new(:ok? => true)
+    verify = OpenStruct.new(ok?: true)
     Authy::API.expects(:verify).with(
       id: @user.authy_id,
       token: '123456'
     ).once.returns(verify)
-    post :verify, :token => '123456'
+    post :verify, token: '123456'
     assert_response :redirect
     assert_redirected_to account_path
     assert_nil session["pre_2fa_auth_user_id"]
@@ -48,12 +48,12 @@ class SessionsControllerTest < ActionController::TestCase
 
   test "should post to verify unsuccessfully" do
     session["pre_2fa_auth_user_id"] = @user.id
-    verify = OpenStruct.new(:ok? => false)
+    verify = OpenStruct.new(ok?: false)
     Authy::API.expects(:verify).with(
       id: @user.authy_id,
       token: '123456'
     ).once.returns(verify)
-    post :verify, :token => '123456'
+    post :verify, token: '123456'
     assert_response :success
     assert_template :two_factor
   end

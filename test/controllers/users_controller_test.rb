@@ -10,7 +10,7 @@ class UsersControllerTest < ActionController::TestCase
   end
 
   test "should post successfully to create" do
-    authy = OpenStruct.new(:id => '123')
+    authy = OpenStruct.new(id: '123')
     Authy::API.expects(:register_user).
       with(authy_params(user_params)).once.returns(authy)
     assert_difference "User.count" do
