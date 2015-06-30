@@ -18,7 +18,7 @@ class Reservation < ActiveRecord::Base
     if @host.pending_reservations.length > 1 or !force
       return
     else
-      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}: 
+      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}:
 
       '#{self.message}'
 
@@ -28,14 +28,14 @@ class Reservation < ActiveRecord::Base
     end
   end
 
-  def confirm
+  def confirm!
     self.status = "confirmed"
-    self.save
+    self.save!
   end
 
-  def reject
+  def reject!
     self.status = "rejected"
-    self.save
+    self.save!
   end
 
   private
