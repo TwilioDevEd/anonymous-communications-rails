@@ -3,7 +3,6 @@ class Reservation < ActiveRecord::Base
   validates :phone_number, presence: true
 
   enum status: [ :pending, :confirmed, :rejected ]
-  # t.text :message
 
   belongs_to :vacation_property
   belongs_to :user
@@ -18,7 +17,7 @@ class Reservation < ActiveRecord::Base
     if @host.pending_reservations.length > 1 or !force
       return
     else
-      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}: 
+      message = "You have a new reservation request from #{self.name} for #{self.vacation_property.description}:
 
       '#{self.message}'
 
