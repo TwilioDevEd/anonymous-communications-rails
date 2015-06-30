@@ -1,22 +1,13 @@
 {
-  "name": "Account Verification",
-  "description": "Account Verification in Rails with Twilio and Authy",
-  "repository": "https://github.com/TwilioDevEd/account-verification-rails",
+  "name": "Airtng: Workflow Automation",
+  "description": "Workflow Automation (SMS) with Twilio and Rails",
+  "repository": "https://github.com/TwilioDevEd/workflow-automation-rails",
   "success_url": "/landing.html",
   "keywords": [
     "security", "phone", "twilio", "authy", "account verification", "security", "data"
   ],
   "addons": ["heroku-postgresql:hobby-dev"],
   "env": {
-    "AUTHY_API_KEY": {
-      "description": "Your Authy API key, you can find at: https://dashboard.authy.com/",
-      "value": "enter_your_auth_key_here",
-      "required": true
-    },
-    "SECRET_KEY_BASE": {
-      "description": "Your Rails session secret key",
-      "generator": "secret"
-    },
     "TWILIO_ACCOUNT_SID": {
       "description": "Your Twilio account secret ID, you can find at: https://www.twilio.com/user/account",
       "value": "enter_your_account_sid_here",

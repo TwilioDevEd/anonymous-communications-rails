@@ -1,6 +1,6 @@
-# Rails Starter Kit
+# Airtng App: Part 1 - Workflow Automation with Twilio
 
-Use Authy and Twilio to verify your user's account.
+Learn how to automate your workflow using Twilio's REST API and Twilio SMS. This example app is a vacation rental site, where the host can confirm a reservation via SMS. 
 
 ## Running the application
 
@@ -9,7 +9,6 @@ Clone this repository and cd into the directory then.
 ```
 $ bundle install
 $ rake db:create db:migrate
-$ export AUTHY_API_KEY=your authy key
 $ export TWILIO_ACCOUNT_SID=your account sid
 $ export TWILIO_AUTH_TOKEN=your auth token
 $ export TWILIO_NUMBER=+16515559999
