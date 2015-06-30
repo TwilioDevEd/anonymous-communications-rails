@@ -18,7 +18,6 @@ class User < ActiveRecord::Base
       to: self.phone_number,
       body: message,
     )
-    puts sms_message.to
   end
 
   def check_for_reservations_pending
