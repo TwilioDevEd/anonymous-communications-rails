@@ -7,7 +7,7 @@
 <div class="container">
   <div class="login-form form">
     <h1>Log in</h1>
-    <%= form_tag(:action => 'login_attempt') do %>
+    <%= form_tag(action: 'login_attempt') do %>
       <div class="form-group">
         <label for="email">Username or Email:</label>
         <%= text_field_tag :email, nil, class: "form-control" %>

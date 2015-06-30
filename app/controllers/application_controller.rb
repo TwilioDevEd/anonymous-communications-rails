@@ -17,11 +17,11 @@ class ApplicationController < ActionController::Base
 
   def authenticate_user
     unless session[:user_id]
-      redirect_to(:controller => 'sessions', :action => 'login')
+      redirect_to(controller: 'sessions', action: 'login')
       flash[:notice] = "You must be logged in to view that page."
       return false
     else
-      @user = User.find session[:user_id] 
+      @user = User.find session[:user_id]
       return true
     end
   end

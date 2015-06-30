@@ -1,5 +1,5 @@
 class VacationPropertiesController < ApplicationController
-  before_filter :authenticate_user, :except => [:index]
+  before_filter :authenticate_user, except: [:index]
   before_action :set_vacation_property_and_user, only: [:show, :edit, :update, :destroy]
 
   # GET /vacation_properties
