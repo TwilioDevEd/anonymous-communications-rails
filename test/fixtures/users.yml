@@ -11,5 +11,5 @@ two:
   email: hello@hello.com
   password_digest: secret
   name: blah
-  country_code: +44
-  phone_number: 07712345678
+  country_code: +1
+  phone_number: 6195559091

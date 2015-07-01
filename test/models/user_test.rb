@@ -16,6 +16,17 @@ class UserTest < ActiveSupport::TestCase
     assert !user2.valid?
   end
 
+  test "phone number should be unique" do
+    user = users(:one)
+    user2 = User.new(user_params(phone_number: user.phone_number))
+    assert !user2.valid?
+  end
+
+  test "password must be at least 6 chars" do
+    assert !User.new(user_params(password: "root")).valid?
+    assert User.new(user_params).valid?
+  end
+
   test "user requires password" do
     assert !User.new(user_params(password: nil)).valid?
   end

@@ -3,6 +3,9 @@ require 'test_helper'
 class VacationPropertiesControllerTest < ActionController::TestCase
   setup do
     @vacation_property = vacation_properties(:one)
+    @user = User.create(user_params)
+    # Need to login user to view properties
+    session[:user_id] = @user.id
   end
 
   test "should get index" do
@@ -18,6 +21,7 @@ class VacationPropertiesControllerTest < ActionController::TestCase
 
   test "should create vacation_property" do
     assert_difference('VacationProperty.count') do
+      session[:user_id] = @user.id
       post :create, vacation_property: { description: @vacation_property.description, image_url: @vacation_property.image_url }
     end
 

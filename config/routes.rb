@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get "login/", to: "sessions#login"
+  get "login/", to: "sessions#login", as: 'login'
   get "logout/", to: "sessions#logout"
   post "login_attempt/", to: "sessions#login_attempt"
 

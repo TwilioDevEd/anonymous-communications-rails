@@ -11,11 +11,11 @@ class ActiveSupport::TestCase
 
   def user_params(params={})
     {
-      password: "hello",
-      email: "blah@example.com",
-      name: "Phil",
-      phone_number: "07712345678",
-      country_code: "+44"
+      password: "hello55",
+      email: "jard@example.com",
+      name: "Jard",
+      phone_number: "6195559090",
+      country_code: "+1"
     }.merge(params)
   end
 end
