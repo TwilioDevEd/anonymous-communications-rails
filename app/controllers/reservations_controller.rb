@@ -38,7 +38,7 @@ class ReservationsController < ApplicationController
       sms_reponse = "You have successfully #{@reservation.status} the reservation."
       respond(sms_reponse)
     rescue Exception => e
-      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR: #{e.message}"
+      puts "ERROR: #{e.message}"
       sms_reponse = "Sorry, it looks like you don't have any reservations to respond to."
       respond(sms_reponse)
     end
@@ -54,16 +54,16 @@ class ReservationsController < ApplicationController
 
     # Guest -> Host
     if @reservation.guest.phone_number == incoming_phone
-      puts "Guest -> Host"
       @reservation.send_message_to_host(message)
 
     # Host -> Guest
     elsif @reservation.host.phone_number == incoming_phone
-      puts "Host -> Guest"
       @reservation.send_message_to_guest(message)
     end
     render text: "ok"
   end
+
+
 
   private
     # Send an SMS back to the Subscriber
