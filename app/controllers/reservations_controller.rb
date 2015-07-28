@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject]
+  skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms]
 
   # GET /vacation_properties/new
   def new
@@ -37,10 +37,32 @@ class ReservationsController < ApplicationController
 
       sms_reponse = "You have successfully #{@reservation.status} the reservation."
       respond(sms_reponse)
-    rescue
+    rescue Exception => e
+      puts "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! ERROR: #{e.message}"
       sms_reponse = "Sorry, it looks like you don't have any reservations to respond to."
       respond(sms_reponse)
     end
+  end
+
+  # webhook for twilio to anonymously connect the two parties
+  def connect_guest_to_host_sms
+    incoming_phone = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+    message = params[:Body]
+    anonymous_phone_number = params[:To]
+
+    @reservation = Reservation.where(phone_number: anonymous_phone_number).first
+
+    # Guest -> Host
+    if @reservation.guest.phone_number == incoming_phone
+      puts "Guest -> Host"
+      @reservation.send_message_to_host(message)
+
+    # Host -> Guest
+    elsif @reservation.host.phone_number == incoming_phone
+      puts "Host -> Guest"
+      @reservation.send_message_to_guest(message)
+    end
+    render text: "ok"
   end
 
   private

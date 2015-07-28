@@ -7,8 +7,6 @@ class Reservation < ActiveRecord::Base
   belongs_to :vacation_property
   belongs_to :user
 
-  after_create :provision_phone_number
-
   def notify_host(force = false)
     # Don't send the message if we have more than one and we aren't being forced
     if self.host.pending_reservations.length > 1 and !force
@@ -33,6 +31,7 @@ class Reservation < ActiveRecord::Base
   end
 
   def confirm!
+    provision_phone_number
     self.status = "confirmed"
     self.save!
   end
@@ -49,6 +48,16 @@ class Reservation < ActiveRecord::Base
     end
   end
 
+  def send_message_to_guest(message)
+    message = "From #{self.host.name}: #{message}"
+    self.guest.send_message_via_sms(message, self.phone_number)
+  end
+
+  def send_message_to_host(message)
+    message = "From guest #{self.guest.name}: #{message}"
+    self.host.send_message_via_sms(message, self.phone_number)
+  end
+
   private
 
   def provision_phone_number
@@ -60,14 +69,17 @@ class Reservation < ActiveRecord::Base
       end
       # Purchase the number
       @number = @numbers[0].phone_number
-      @client.account.incoming_phone_numbers.create(:phone_number => @number)
+      @anon_number = @client.account.incoming_phone_numbers.create(:phone_number => @number)
+
+      # Set the application_sid for voice and sms, will tell the number where to route calls/sms
+      @anon_number.update(:voice_application_sid => ENV['ANONYMOUS_APPLICATION_SID'], :sms_application_sid => ENV['ANONYMOUS_APPLICATION_SID'])
 
       # Set the reservation.phone_number
       self.phone_number = @number
       self.save!
-      
+
     rescue Exception => e
-      puts e.message
+      puts "ERROR: #{e.message}"
     end
   end
 end
