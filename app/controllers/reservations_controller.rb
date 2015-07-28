@@ -1,4 +1,5 @@
 class ReservationsController < ApplicationController
+  skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject]
 
   # GET /vacation_properties/new
   def new

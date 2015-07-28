@@ -10,12 +10,14 @@ class User < ActiveRecord::Base
   has_many :vacation_properties
   has_many :reservations, through: :vacation_properties
 
+  after_create :save_join_phone_number!
+
   def send_message_via_sms(message)
     @app_number = ENV['BARISTA_NUMBER']
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     sms_message = @client.account.messages.create(
       from: @app_number,
-      to: self.whole_phone,
+      to: self.phone_number,
       body: message,
     )
   end
@@ -34,8 +36,12 @@ class User < ActiveRecord::Base
     self.reservations.where(status: "pending")
   end
 
-  def whole_phone
-    return "#{self.area_code}#{self.phone_number}"
+  private
+
+  # No reason to save phone number without the area_code, it's what twilio & ActiveRecord expect
+  def save_join_phone_number!
+    self.phone_number = "#{self.area_code}#{self.phone_number}"
+    self.save!
   end
 
 end

@@ -12,6 +12,15 @@ class VacationPropertiesController < ApplicationController
   # GET /vacation_properties/1.json
   def show
     @reservation = Reservation.new
+    begin
+      @current_reservation = Reservation.where(
+        vacation_property_id: @vacation_property.id, 
+        guest_phone: @user.phone_number,
+        status: 1)
+      .first 
+    rescue Exception => e
+      puts "e.message"
+    end
   end
 
   # GET /vacation_properties/new
