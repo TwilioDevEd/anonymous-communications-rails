@@ -11,7 +11,7 @@ class ReservationsController < ApplicationController
 
     if @reservation.save
       flash[:notice] = "Sending your reservation request now."
-      @reservation.notify_host
+      @reservation.host.check_for_reservations_pending
       redirect_to @vacation_property
     else
       flast[:danger] = @reservation.errors
@@ -53,7 +53,7 @@ class ReservationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
-      params.require(:reservation).permit(:name, :host_phone, :message)
+      params.require(:reservation).permit(:name, :guest_phone, :message)
     end
 
 end
