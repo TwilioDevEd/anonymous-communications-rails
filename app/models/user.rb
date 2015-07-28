@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     sms_message = @client.account.messages.create(
       from: @app_number,
-      to: self.phone_number,
+      to: self.whole_phone,
       body: message,
     )
   end
@@ -32,6 +32,10 @@ class User < ActiveRecord::Base
 
   def pending_reservations
     self.reservations.where(status: "pending")
+  end
+
+  def whole_phone
+    return "#{self.area_code}#{self.phone_number}"
   end
 
 end

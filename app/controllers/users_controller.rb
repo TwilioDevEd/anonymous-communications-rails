@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.create(user_params)
+    puts @user.whole_phone
     if @user.valid?
       # Save the user_id to the session object
       session[:user_id] = @user.id
@@ -23,7 +24,7 @@ class UsersController < ApplicationController
 
   def user_params
     params.require(:user).permit(
-      :email, :password, :name, :country_code, :phone_number
+      :email, :password, :name, :country_code, :area_code, :phone_number
     )
   end
 
