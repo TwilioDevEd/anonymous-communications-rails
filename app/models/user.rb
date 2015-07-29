@@ -12,11 +12,10 @@ class User < ActiveRecord::Base
 
   after_create :save_join_phone_number!
 
-  def send_message_via_sms(message, from_number = nil)
-    @app_number = if from_number.nil? then ENV['TWILIO_NUMBER'] else from_number end
+  def send_message_via_sms(message, from_number = ENV['TWILIO_NUMBER'])
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     sms_message = @client.account.messages.create(
-      from: @app_number,
+      from: from_number,
       to: self.phone_number,
       body: message,
     )
