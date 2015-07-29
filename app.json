@@ -1,10 +1,10 @@
 {
-  "name": "Airtng: Workflow Automation",
-  "description": "Workflow Automation (SMS) with Twilio and Rails",
-  "repository": "https://github.com/TwilioDevEd/workflow-automation-rails",
+  "name": "Airtng: Anonymous Communications",
+  "description": "Anonymous Communications (Voice & SMS) with Twilio and Rails",
+  "repository": "https://github.com/TwilioDevEd/anonymous-communications-rails",
   "success_url": "/landing.html",
   "keywords": [
-    "security", "phone", "twilio", "authy", "account verification", "security", "data"
+    "anonymous communications", "anonymous calling", "anonymous sms", "customer privacy", "privacy", "cloaked", "2-way anonymous"
   ],
   "addons": ["heroku-postgresql:hobby-dev"],
   "env": {
