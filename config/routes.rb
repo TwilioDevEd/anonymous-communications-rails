@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "reservations/incoming", to: 'reservations#accept_or_reject', as: 'incoming'
 
   post "reservations/connect_sms", to: 'reservations#connect_guest_to_host_sms'
-  # post "reservations/connect_voice", to: 'reservations#connect_guest_to_host_voice'
+  post "reservations/connect_voice", to: 'reservations#connect_guest_to_host_voice'
 
   # Home page
   root 'main#index', as: 'home'

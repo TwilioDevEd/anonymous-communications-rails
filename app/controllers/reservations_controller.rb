@@ -1,5 +1,6 @@
 class ReservationsController < ApplicationController
-  skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms]
+  skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms, :connect_guest_to_host_voice]
+  before_action :set_twilio_params, only: [:connect_guest_to_host_sms, :connect_guest_to_host_voice]
 
   # GET /vacation_properties/new
   def new
@@ -46,23 +47,33 @@ class ReservationsController < ApplicationController
 
   # webhook for twilio to anonymously connect the two parties
   def connect_guest_to_host_sms
-    incoming_phone = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
-    message = params[:Body]
-    anonymous_phone_number = params[:To]
-
-    @reservation = Reservation.where(phone_number: anonymous_phone_number).first
-
     # Guest -> Host
-    if @reservation.guest.phone_number == incoming_phone
-      @reservation.send_message_to_host(message)
+    if @reservation.guest.phone_number == @incoming_phone
+      @reservation.send_message_to_host(@message)
 
     # Host -> Guest
-    elsif @reservation.host.phone_number == incoming_phone
-      @reservation.send_message_to_guest(message)
+    elsif @reservation.host.phone_number == @incoming_phone
+      @reservation.send_message_to_guest(@message)
     end
     render text: "ok"
   end
 
+  # webhook for twilio -> TwiML for voice calls
+  def connect_guest_to_host_voice
+    # Guest -> Host
+    if @reservation.guest.phone_number == @incoming_phone
+      @outgoing_number = @reservation.host.phone_number
+
+    # Host -> Guest
+    elsif @reservation.host.phone_number == @incoming_phone
+      @outgoing_number = @reservation.guest.phone_number
+    end
+    response = Twilio::TwiML::Response.new do |r|
+      r.Play "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3"
+      r.Dial @outgoing_number
+    end
+    render text: response.text
+  end
 
 
   private
@@ -77,6 +88,15 @@ class ReservationsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def reservation_params
       params.require(:reservation).permit(:name, :guest_phone, :message)
+    end
+
+    # Load up Twilio parameters
+    def set_twilio_params
+      @incoming_phone = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+      @message = params[:Body]
+      anonymous_phone_number = params[:To]
+
+      @reservation = Reservation.where(phone_number: anonymous_phone_number).first
     end
 
 end
