@@ -20,7 +20,7 @@ work.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
-<li><a href="//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#3">AirTNG App: Workflow-Automation</a></li>
+<li><a href="//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0">AirTNG App: Workflow-Automation</a></li>
 <li><a href="http://guides.rubyonrails.org/getting_started.html">Getting Started with Ruby on Rails</a></li>
 <li><a href="//twilio-ruby.readthedocs.org/en/latest/index.html#getting-started">Getting started with the Twilio Ruby gem</a></li>
 </ul>
@@ -71,7 +71,10 @@ make a POST to the routes.</p>
 that it has a host and guest. This way we can ask the reservation for
 details like the <code>host.phone_number</code> or to send a message(SMS) to the guest.</p>
 </div><div data-file="/app/controllers/reservations_controller.rb" data-highlight="61-76" class="step"><h2 id="routing-calls-anonymously">Routing calls anonymously</h2>
-<p>When Twilio requests the voice URL it will expect to see some <a href="//www.twilio.com/docs/api/twiml">TwiML</a>(Twilio specific XML). In this case we will simply <code>Dial</code> the <code>@outgoing_number</code> which we can assign by checking the incoming number against the guest and host numbers.</p>
+<p>When Twilio requests the voice URL it will expect to see some
+<a href="//www.twilio.com/docs/api/twiml">TwiML</a>(Twilio specific XML). In this
+case we will simply <code>Dial</code> the <code>@outgoing_number</code> which we can assign by
+checking the incoming number against the guest and host numbers.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
@@ -80,14 +83,15 @@ details like the <code>host.phone_number</code> or to send a message(SMS) to the
 </ul>
 </div><div data-file="/app/controllers/reservations_controller.rb" data-highlight="48-59" class="step"><h2 id="routing-messages-anonymously">Routing messages anonymously</h2>
 <p>When our host or guest send a message to the reservation&#39;s phone number,
-it will check to see if the incoming number is the host or guest. Than
+this controller will check to see if the incoming number is the host or guest. Than
 it will ask the reservation to send the message to the appropriate
 party. Next let&#39;s look at the the method that actually sends the message.</p>
-</div><div data-file="app/models/user.rb" data-highlight="41-54" class="step"><h2 id="sending-a-text-message">Sending a text message</h2>
-<p>There are the three parameters needed to <a href="https://www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest">send an SMS</a> 
-using the <a href="https://www.twilio.com/docs/api/rest">Twilio REST API</a>:<br><code>:from</code>, <code>:to</code>, and <code>:body</code>. After the message is sent, we print out the phone 
-number we&#39;re texting. <a href="https://www.twilio.com/help/faq/sms/is-mms-supported-for-all-carriers-in-us-and-canada">US phone numbers</a> 
-can also send an image with the message.</p>
+</div><div data-file="app/models/user.rb" data-highlight="15-22" class="step"><h2 id="sending-a-text-message">Sending a text message</h2>
+<p>Here we have a method on the <code>User</code> model that will send a message to
+that user instance. These are the three parameters needed to <a href="https://www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest">send an
+SMS</a>
+using the <a href="https://www.twilio.com/docs/api/rest">Twilio REST API</a>:
+<code>:from</code>, <code>:to</code>, and <code>:body</code>.</p>
 <hr>
 <p><strong>See Also:</strong></p>
 <ul>
@@ -95,13 +99,9 @@ can also send an image with the message.</p>
 <li><a href="https://www.twilio.com/user/account/log/messages">Your message logs in the account portal</a></li>
 </ul>
 </div><div class="step"><h2 id="where-to-next-">Where to next?</h2>
-<p>That&#39;s it! We&#39;ve just implemented an automated server notification system 
-that can send you server alerts if anything goes wrong. If you&#39;re a Ruby
-developer working with Twilio, you might want to check out these other
-tutorials.</p>
-<p><a href="https://www.twilio.com/docs/howto/walkthrough/two-factor-authentication/ruby/rails"><strong>Two-Factor Authentication</strong></a></p>
-<p>Increase the security of your login system by verifying a user&#39;s mobile
-phone in addition to their password.</p>
+<p>That&#39;s it! We&#39;ve just implemented anonymous communications that allow your customers to connect while protecting their privacy. If you&#39;re a Ruby developer working with Twilio, you might want to check out these other tutorials.</p>
+<p><a href="//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0"><strong>Part 1 of this Tutorial: Workflow Automation</strong></a></p>
+<p>Increase your rate of response by automating the workflows that are key to your business.</p>
 <p><a href="https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/ruby/rails"><strong>Appointment Reminders</strong></a></p>
 <p>Send your customers a text message when they have an upcoming appointment - 
 this tutorial shows you how to do it from a background job.</p>
