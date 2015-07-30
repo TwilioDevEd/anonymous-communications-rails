@@ -39,8 +39,7 @@ class User < ActiveRecord::Base
 
   # No reason to save phone number without the area_code, it's what twilio & ActiveRecord expect
   def save_join_phone_number!
-    self.phone_number = "#{self.area_code}#{self.phone_number}"
-    self.save!
+    self.update!(phone_number: "#{self.area_code}#{self.phone_number}")
   end
 
 end

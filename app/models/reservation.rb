@@ -32,13 +32,11 @@ class Reservation < ActiveRecord::Base
 
   def confirm!
     provision_phone_number
-    self.status = "confirmed"
-    self.save!
+    self.update!(status: "confirmed")
   end
 
   def reject!
-    self.status = "rejected"
-    self.save!
+    self.update!(status: "rejected")
   end
 
   def notify_guest
@@ -64,19 +62,18 @@ class Reservation < ActiveRecord::Base
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     begin
       @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => self.host.area_code)
-      if not @numbers.any?
+      if @numbers.empty?
         @numbers = @client.account.available_phone_numbers.get('US').local.list()
       end
       # Purchase the number
-      @number = @numbers[0].phone_number
+      @number = @numbers.first.phone_number
       @anon_number = @client.account.incoming_phone_numbers.create(:phone_number => @number)
 
       # Set the application_sid for voice and sms, will tell the number where to route calls/sms
       @anon_number.update(:voice_application_sid => ENV['ANONYMOUS_APPLICATION_SID'], :sms_application_sid => ENV['ANONYMOUS_APPLICATION_SID'])
 
       # Set the reservation.phone_number
-      self.phone_number = @number
-      self.save!
+      self.update!(phone_number: @number)
 
     rescue Exception => e
       puts "ERROR: #{e.message}"
