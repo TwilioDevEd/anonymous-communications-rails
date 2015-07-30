@@ -1,0 +1,158 @@
+.chapter(data-title='Anonymous Communications')
+  .step(data-file='config/routes.rb')
+    :markdown
+      ## Anonymous Communications - Vacation Rental Part 2
+
+      ![Airtng](http://howtodocs.s3.amazonaws.com/airtng-screen.png)
+
+    a.btn(href="http://airtng-wa.herokuapp.com", target="_blank") View a demo
+    
+    :markdown
+      ## What does this thing do?
+
+      This [Ruby on Rails](http://rubyonrails.org/) sample application
+      demonstrates how to connect two people anonymously through a shared phone
+      number. In this tutorial, we'll show you the key bits of code to make this
+      work.
+
+      Let's get started!
+
+      ---
+
+      **See Also:**
+      * [AirTNG App: Workflow-Automation](//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0)
+      * [Getting Started with Ruby on Rails](http://guides.rubyonrails.org/getting_started.html)
+      * [Getting started with the Twilio Ruby gem](//twilio-ruby.readthedocs.org/en/latest/index.html#getting-started)
+
+  .step(data-file='db/migrate/20150727233817_add_phone_number_to_reservations.rb')
+    :markdown
+      ## Update the Reservation model
+
+      Add a `phone_number` field to the `Reservation` model that will be a
+      point of contact for the reservation host and guest. Will need this to
+      display on the reservation detail page as well.
+
+      ---
+
+      **See Also:**
+      * [Creating Rails Migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html#creating-a-migration)
+
+  .step(data-file='app/views/vacation_properties/show.html.erb', data-highlight='10-25')
+    :markdown
+      ## Update the property View
+
+      In the Vacation Property details view we need to check and see if there
+      is a current reservation. Then we need to add the
+      `@reservation.phone_number` to the vacation property template so that
+      the guest and host have a way to contact each other.
+
+  .step(data-file='app/controllers/vacation_properties_controller.rb', data-highlight='13-25')
+    :markdown
+      ## Update the property Controller
+
+      Since the template now expects some context, we need to pass the
+      @current_reservation up to the view. This checks for a Reservation that
+      is "confirmed" for this property.
+
+      ---
+
+      **See Also:**
+      * [Rails Guides: Rescuing in the controller](http://guides.rubyonrails.org/action_controller_overview.html#rescue)
+      * [Rails Guides: Active Record queries](http://guides.rubyonrails.org/active_record_querying.html#retrieving-objects-from-the-database)
+
+  .step(data-file='app/models/reservation.rb', data-highlight='61-83')
+    :markdown
+      ## Provision a Phone Number
+
+      Here we provision a phone number from Twilio, either locally or anywhere
+      in the US, and purchase it. Once we own the phone number, we can tell it
+      to route requests to a [Twilio
+      Application](https://www.twilio.com/docs/api/rest/applications). Finally
+      we update the `Reservation` with the new phone number.
+
+      ---
+
+      **See Also:**
+      * [Searching for Available Numbers](//www.twilio.com/docs/api/rest/available-phone-numbers)
+      * [Purchase a Phone Number with the REST API](//www.twilio.com/docs/api/rest/incoming-phone-numbers#list-post)
+      * [Create an Application in your account portal](//www.twilio.com/user/account/apps)
+
+
+  .step(data-file='config/routes.rb', data-highlight='11-13')
+    :markdown
+      ## Create webhook routes for Twilio
+
+      When we provisioned our phone number we told it to route calls and
+      messages to an application that is configured to request these two
+      routes, so we need make sure they are present. By default Twilio will
+      make a POST to the routes.
+
+  .step(data-file='app/models/reservation.rb', data-highlight='25-31, 49-57')
+    :markdown
+      ## Helpers for the Reservation
+
+      For the next bit of work we need to make sure the `Reservation` is aware
+      that it has a host and guest. This way we can ask the reservation for
+      details like the `host.phone_number` or to send a message(SMS) to the guest.
+
+  .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='61-76')
+    :markdown
+      ## Routing calls anonymously
+
+      When Twilio requests the voice URL it will expect to see some
+      [TwiML](//www.twilio.com/docs/api/twiml)(Twilio specific XML). In this
+      case we will simply `Dial` the `@outgoing_number` which we can assign by
+      checking the incoming number against the guest and host numbers.
+
+      ---
+
+      **See Also:**
+      * [TwiML Dial](https://www.twilio.com/docs/api/twiml/dial)
+      * [TwiML Play](https://www.twilio.com/docs/api/twiml/dial)
+
+  .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='48-59')
+    :markdown
+      ## Routing messages anonymously
+
+      When our host or guest send a message to the reservation's phone number,
+      this controller will check to see if the incoming number is the host or guest. Than
+      it will ask the reservation to send the message to the appropriate
+      party. Next let's look at the the method that actually sends the message.
+
+  .step(data-file='app/models/user.rb', data-highlight='15-22')
+    :markdown
+      ## Sending a text message
+
+      Here we have a method on the `User` model that will send a message to
+      that user instance. These are the three parameters needed to [send an
+      SMS](https://www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest)
+      using the [Twilio REST API](https://www.twilio.com/docs/api/rest):
+      `:from`, `:to`, and `:body`.
+
+      ---
+
+      **See Also:**
+      * [REST API Docs for Message resource](https://www.twilio.com/docs/api/rest/message)
+      * [Your message logs in the account portal](https://www.twilio.com/user/account/log/messages)
+
+  .step
+    :markdown
+      ## Where to next?
+
+      That's it! We've just implemented anonymous communications that allow your customers to connect while protecting their privacy. If you're a Ruby developer working with Twilio, you might want to check out these other tutorials.
+
+      [**Part 1 of this Tutorial: Workflow Automation**](//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0)
+
+      Increase your rate of response by automating the workflows that are key to your business.
+
+      [**Appointment Reminders**](https://www.twilio.com/docs/howto/walkthrough/appointment-reminders/ruby/rails)
+
+      Send your customers a text message when they have an upcoming appointment - 
+      this tutorial shows you how to do it from a background job.
+
+      ### Did this help?
+
+      Thanks for checking out this tutorial! If you have any feedback to share 
+      with us, we'd love to hear it. Tweet [@twilio](http://twitter.com/twilio) 
+      to let us know what you think.
+
