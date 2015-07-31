@@ -5,9 +5,6 @@
 
       ![Airtng](http://howtodocs.s3.amazonaws.com/airtng-screen.png)
 
-    a.btn(href="http://airtng-wa.herokuapp.com", target="_blank") View a demo
-    
-    :markdown
       ## What does this thing do?
 
       This [Ruby on Rails](http://rubyonrails.org/) sample application
@@ -24,41 +21,32 @@
       * [Getting Started with Ruby on Rails](http://guides.rubyonrails.org/getting_started.html)
       * [Getting started with the Twilio Ruby gem](//twilio-ruby.readthedocs.org/en/latest/index.html#getting-started)
 
-  .step(data-file='db/migrate/20150727233817_add_phone_number_to_reservations.rb')
+  .step(data-file='app/controllers/reservations_controller.rb', data-highlight='10-21, 88-91')
     :markdown
-      ## Update the Reservation model
+      ## Guest creates a reservation
 
-      Add a `phone_number` field to the `Reservation` model that will be a
-      point of contact for the reservation host and guest. Will need this to
-      display on the reservation detail page as well.
+      When a guest creates a reservation for a specific `VacationProperty`
+      this controller adds their phone number to the reservation. You can see
+      the white-listed `reservation_params` that this method accepts towards
+      the bottom of the file.
 
       ---
 
       **See Also:**
-      * [Creating Rails Migrations](http://edgeguides.rubyonrails.org/active_record_migrations.html#creating-a-migration)
+      * [Creating Active Record Associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-association)
 
-  .step(data-file='app/views/vacation_properties/show.html.erb', data-highlight='10-25')
+  .step(data-file='app/models/reservation.rb', data-highlight='33-36')
     :markdown
-      ## Update the property View
+      ## Host confirms the reservation
 
-      In the Vacation Property details view we need to check and see if there
-      is a current reservation. Then we need to add the
-      `@reservation.phone_number` to the vacation property template so that
-      the guest and host have a way to contact each other.
-
-  .step(data-file='app/controllers/vacation_properties_controller.rb', data-highlight='13-25')
-    :markdown
-      ## Update the property Controller
-
-      Since the template now expects some context, we need to pass the
-      @current_reservation up to the view. This checks for a Reservation that
-      is "confirmed" for this property.
+      We don't need to connect the host and guest until they have a confirmed
+      reservation. Therefore we don't need to provision a phone number until
+      the host confirms the reservation.
 
       ---
 
       **See Also:**
-      * [Rails Guides: Rescuing in the controller](http://guides.rubyonrails.org/action_controller_overview.html#rescue)
-      * [Rails Guides: Active Record queries](http://guides.rubyonrails.org/active_record_querying.html#retrieving-objects-from-the-database)
+      * [Workflow Automation: Handling Incoming Messages](https://www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#12)
 
   .step(data-file='app/models/reservation.rb', data-highlight='61-83')
     :markdown
@@ -77,27 +65,9 @@
       * [Purchase a Phone Number with the REST API](//www.twilio.com/docs/api/rest/incoming-phone-numbers#list-post)
       * [Create an Application in your account portal](//www.twilio.com/user/account/apps)
 
-
-  .step(data-file='config/routes.rb', data-highlight='11-13')
-    :markdown
-      ## Create webhook routes for Twilio
-
-      When we provisioned our phone number we told it to route calls and
-      messages to an application that is configured to request these two
-      routes, so we need make sure they are present. By default Twilio will
-      make a POST to the routes.
-
-  .step(data-file='app/models/reservation.rb', data-highlight='25-31, 49-57')
-    :markdown
-      ## Helpers for the Reservation
-
-      For the next bit of work we need to make sure the `Reservation` is aware
-      that it has a host and guest. This way we can ask the reservation for
-      details like the `host.phone_number` or to send a message(SMS) to the guest.
-
   .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='61-76')
     :markdown
-      ## Routing calls anonymously
+      ## Connecting guest and host via Voice Call
 
       When Twilio requests the voice URL it will expect to see some
       [TwiML](//www.twilio.com/docs/api/twiml)(Twilio specific XML). In this
@@ -112,7 +82,7 @@
 
   .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='48-59')
     :markdown
-      ## Routing messages anonymously
+      ## Connecting guest and host via SMS
 
       When our host or guest send a message to the reservation's phone number,
       this controller will check to see if the incoming number is the host or guest. Than
