@@ -24,7 +24,7 @@ work.</p>
 <li><a href="http://guides.rubyonrails.org/getting_started.html">Getting Started with Ruby on Rails</a></li>
 <li><a href="//twilio-ruby.readthedocs.org/en/latest/index.html#getting-started">Getting started with the Twilio Ruby gem</a></li>
 </ul>
-</div><div data-file="app/controllers/reservations_controller.rb" data-highlight="10-21, 88-91" class="step"><h2 id="guest-creates-a-reservation">Guest creates a reservation</h2>
+</div><div data-file="app/controllers/reservations_controller.rb" data-highlight="16-27, 99-106" class="step"><h2 id="guest-creates-a-reservation">Guest creates a reservation</h2>
 <p>When a guest creates a reservation for a specific <code>VacationProperty</code>
 this controller adds their phone number to the reservation. You can see
 the white-listed <code>reservation_params</code> that this method accepts towards
@@ -56,7 +56,7 @@ we update the <code>Reservation</code> with the new phone number.</p>
 <li><a href="//www.twilio.com/docs/api/rest/incoming-phone-numbers#list-post">Purchase a Phone Number with the REST API</a></li>
 <li><a href="//www.twilio.com/user/account/apps">Create an Application in your account portal</a></li>
 </ul>
-</div><div data-file="/app/controllers/reservations_controller.rb" data-highlight="61-76" class="step"><h2 id="connecting-guest-and-host-via-voice-call">Connecting guest and host via Voice Call</h2>
+</div><div data-file="/app/controllers/reservations_controller.rb" data-highlight="67-82" class="step"><h2 id="connecting-guest-and-host-via-voice-call">Connecting guest and host via Voice Call</h2>
 <p>When Twilio requests the voice URL it will expect to see some
 <a href="//www.twilio.com/docs/api/twiml">TwiML</a>(Twilio specific XML). In this
 case we will simply <code>Dial</code> the <code>@outgoing_number</code> which we can assign by
@@ -67,7 +67,7 @@ checking the incoming number against the guest and host numbers.</p>
 <li><a href="https://www.twilio.com/docs/api/twiml/dial">TwiML Dial</a></li>
 <li><a href="https://www.twilio.com/docs/api/twiml/dial">TwiML Play</a></li>
 </ul>
-</div><div data-file="/app/controllers/reservations_controller.rb" data-highlight="48-59" class="step"><h2 id="connecting-guest-and-host-via-sms">Connecting guest and host via SMS</h2>
+</div><div data-file="/app/controllers/reservations_controller.rb" data-highlight="54-65" class="step"><h2 id="connecting-guest-and-host-via-sms">Connecting guest and host via SMS</h2>
 <p>When our host or guest send a message to the reservation&#39;s phone number,
 this controller will check to see if the incoming number is the host or guest. Than
 it will ask the reservation to send the message to the appropriate
