@@ -55,16 +55,17 @@ class ReservationsController < ApplicationController
   def connect_guest_to_host_sms
     # Guest -> Host
     if @reservation.guest.phone_number == @incoming_phone
-      @reservation.send_message_to_host(@message)
-      render text: "ok"
+      @outgoing_number = @reservation.host.phone_number
 
     # Host -> Guest
     elsif @reservation.host.phone_number == @incoming_phone
-      response = Twilio::TwiML::Response.new do |r|
-        r.Message @message, :to => @reservation.guest_phone
-      end
-      render text: response.text
+      @outgoing_number = @reservation.guest.phone_number
     end
+    
+    response = Twilio::TwiML::Response.new do |r|
+      r.Message @message, :to => @outgoing_number
+    end
+    render text: response.text
   end
 
   # webhook for twilio -> TwiML for voice calls
