@@ -67,12 +67,14 @@ class Reservation < ActiveRecord::Base
         @numbers = @client.account.available_phone_numbers.get('US').local.list()
       end
 
-      # Purchase the number
+      # Purchase the number & set the application_sid for voice and sms, will
+      # tell the number where to route calls/sms
       @number = @numbers.first.phone_number
-      @anon_number = @client.account.incoming_phone_numbers.create(:phone_number => @number)
-
-      # Set the application_sid for voice and sms, will tell the number where to route calls/sms
-      @anon_number.update(:voice_application_sid => ENV['ANONYMOUS_APPLICATION_SID'], :sms_application_sid => ENV['ANONYMOUS_APPLICATION_SID'])
+      @anon_number = @client.account.incoming_phone_numbers.create(
+        :phone_number => @number,
+        :voice_application_sid => ENV['ANONYMOUS_APPLICATION_SID'], 
+        :sms_application_sid => ENV['ANONYMOUS_APPLICATION_SID']
+      )
 
       # Set the reservation.phone_number
       self.update!(phone_number: @number)
