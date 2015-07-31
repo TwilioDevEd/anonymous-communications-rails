@@ -43,6 +43,13 @@ div {
   background-color: red;
   display: table;
 }
+.flash-above {
+  position: absolute;
+  width:100%;
+  z-index: 1010;
+  padding: 20px;
+  top: 80px;
+}
 
 #error_explanation {
   width: 450px;
