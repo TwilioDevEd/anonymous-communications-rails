@@ -5,8 +5,8 @@ Protect your customers' privacy, and create a seamless interaction by provisioni
 ## Setup a Twilio application
 Before you can run this app you need to go into your account portal and [create a new Twilio Application](https://www.twilio.com/user/account/apps). Once you have created an app the urls should look like:
 
-**Voice**: YOUR_PUBLIC_APP.com/reservations/connect_voice
-**SMS & MMS*: YOUR_PUBLIC_APP.com/reservations/connect_sms
+**Voice**: http://[your server].com/reservations/connect_voice
+**SMS & MMS**: http://[your server].com/reservations/connect_sms
 
 ## Running the application
 
