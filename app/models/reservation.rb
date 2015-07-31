@@ -61,10 +61,12 @@ class Reservation < ActiveRecord::Base
   def provision_phone_number
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     begin
+      # Lookup numbers in host area code, if none than lookup from anywhere
       @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => self.host.area_code)
       if @numbers.empty?
         @numbers = @client.account.available_phone_numbers.get('US').local.list()
       end
+
       # Purchase the number
       @number = @numbers.first.phone_number
       @anon_number = @client.account.incoming_phone_numbers.create(:phone_number => @number)
