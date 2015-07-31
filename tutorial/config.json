@@ -1,6 +1,6 @@
 {
     "title": "Anonymous Communications",
     "repo": "TwilioDevEd/anonymous-communications-rails",
-    "description": "Protect your customers' privacy, and create a seamless interaction by provisioning Twilio numbers on the fly, and routing all voice calls, and messages through your very own 3rd party. This allows you to control the interaction between your customers, while putting your customer's privacy first.",
+    "description": "Protect your users' privacy by anonymously connecting them with Twilio Voice and SMS. Learn how to create disposable phone numbers on-demand so two users can communicate without exchanging personal information.",
     "heroku": true
 }
