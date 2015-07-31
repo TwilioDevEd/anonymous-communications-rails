@@ -1,62 +1,69 @@
-.chapter(data-title='Anonymous Communications')
+.chapter(data-title='Anonymous Communication')
   .step(data-file='config/routes.rb')
     :markdown
-      ## Anonymous Communications - Vacation Rental Part 2
-
-      ![Airtng](http://howtodocs.s3.amazonaws.com/airtng-screen.png)
-
       ## What does this thing do?
 
-      This [Ruby on Rails](http://rubyonrails.org/) sample application
-      demonstrates how to connect two people anonymously through a shared phone
-      number. In this tutorial, we'll show you the key bits of code to make this
-      work.
+      ![Airtng](//howtodocs.s3.amazonaws.com/airtng-screen.png)
 
-      Let's get started!
+      This [Ruby on Rails](http://rubyonrails.org/) sample application is
+      modeled after the amazing rental experience created by
+      [AirBnB](https://www.airbnb.com), but with more 
+      [Klingons](https://en.wikipedia.org/wiki/Klingon). 
+
+      Host users can offer rental properties which other guest users can reserve. 
+      The guest and the host can then anonymously communicate via a disposable Twilio phone number created 
+      just for a reservation. In this tutorial, we'll show you the key bits of
+      code to make this work. To run this sample app yourself, 
+      [follow the instructions on GitHub](https://github.com/TwilioDevEd/anonymous-communications-rails).
+
+      Let's get started! Click the right arrow above to move to the next step
+      of the tutorial.
 
       ---
 
       **See Also:**
-      * [AirTNG App: Workflow-Automation](//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0)
+      * [AirTNG App Part One: Workflow Automation](https://www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0)
       * [Getting Started with Ruby on Rails](http://guides.rubyonrails.org/getting_started.html)
       * [Getting started with the Twilio Ruby gem](//twilio-ruby.readthedocs.org/en/latest/index.html#getting-started)
 
   .step(data-file='app/controllers/reservations_controller.rb', data-highlight='16-27, 99-106')
     :markdown
-      ## Guest creates a reservation
+      ## Create a reservation
 
-      When a guest creates a reservation for a specific `VacationProperty`
-      this controller adds their phone number to the reservation. You can see
-      the white-listed `reservation_params` that this method accepts towards
-      the bottom of the file.
+      The first step in connecting a guest and host is creating a reservation.
+      Here, we handle a form submission for a new reservation which contains the
+      guest's name and phone number.
 
       ---
 
       **See Also:**
-      * [Creating Active Record Associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+      * [Creating ActiveRecord associations](http://guides.rubyonrails.org/association_basics.html#the-has-many-association)
+      * [Rails controllers](http://guides.rubyonrails.org/action_controller_overview.html)
 
   .step(data-file='app/models/reservation.rb', data-highlight='33-36')
     :markdown
-      ## Host confirms the reservation
+      ## Confirm the reservation
 
-      We don't need to connect the host and guest until they have a confirmed
-      reservation. Therefore we don't need to provision a phone number until
-      the host confirms the reservation.
+      Before the reservation is finalized, the host needs to confirm that the property
+      is still available. Learn how to automate this process in [our first AirTNG
+      tutorial, Workflow Automation](https://www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails).
 
-      ---
-
-      **See Also:**
-      * [Workflow Automation: Handling Incoming Messages](https://www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#12)
+      Once the reservation is confirmed, we need to create a Twilio number that
+      the guest and host can use to communicate in the `provision_phone_number` method.
 
   .step(data-file='app/models/reservation.rb', data-highlight='61-85')
     :markdown
-      ## Provision a Phone Number
+      ## Create a phone number for the guest and host to use
 
-      Here we provision a phone number from Twilio, either locally or anywhere
-      in the US, and purchase it. Once we own the phone number, we can tell it
-      to route requests to a [Twilio
-      Application](https://www.twilio.com/docs/api/rest/applications). Finally
-      we update the `Reservation` with the new phone number.
+      Here we use a [Twilio REST API Client](//twilio-ruby.readthedocs.org/en/latest/index.html#getting-started)
+      to search for and buy a new phone number to associate with the reservation.
+      When we buy the number, we designate a [Twilio application](https://www.twilio.com/docs/api/rest/applications)
+      that will handle [webhook](https://en.wikipedia.org/wiki/Webhook) requests
+      when the new number receives an incoming call or text.
+
+      We then save the new phone number on our `Reservation` model, so when our app
+      receives calls or texts to this number, we'll know which reservation the call or
+      text belongs to.
 
       ---
 
@@ -67,18 +74,19 @@
 
   .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='67-82')
     :markdown
-      ## Connecting guest and host via Voice Call
+      ## Connecting guest and host via phone call
 
-      When Twilio requests the voice URL it will expect to see some
-      [TwiML](//www.twilio.com/docs/api/twiml)(Twilio specific XML). In this
-      case we will simply `Dial` the `@outgoing_number` which we can assign by
-      checking the incoming number against the guest and host numbers.
+      Our [Twilio application](https://www.twilio.com/docs/api/rest/applications)
+      should be configured to [send HTTP requests](https://www.twilio.com/docs/api/twiml/twilio_request) 
+      to this controller method. Our app responds with [TwiML instructions](https://www.twilio.com/docs/api/twiml)
+      that tell Twilio to `&lt;Play&gt;` an introductory MP3 audio file and then
+      `&lt;Dial&gt;` either the guest or host, depending on who initiated the call.
 
       ---
 
       **See Also:**
-      * [TwiML Dial](https://www.twilio.com/docs/api/twiml/dial)
-      * [TwiML Play](https://www.twilio.com/docs/api/twiml/dial)
+      * [TwiML Dial verb](https://www.twilio.com/docs/api/twiml/dial)
+      * [TwiML Play verb](https://www.twilio.com/docs/api/twiml/dial)
 
   .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='54-65')
     :markdown

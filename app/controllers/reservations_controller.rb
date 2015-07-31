@@ -22,7 +22,7 @@ class ReservationsController < ApplicationController
       @reservation.host.check_for_reservations_pending
       redirect_to @vacation_property
     else
-      flast[:danger] = @reservation.errors
+      flash[:danger] = @reservation.errors
     end
   end
 
