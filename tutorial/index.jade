@@ -1,7 +1,7 @@
 .chapter(data-title='Anonymous Communication')
   .step(data-file='config/routes.rb')
     :markdown
-      ## What does this thing do?
+      ## About this application
 
       ![Airtng](//howtodocs.s3.amazonaws.com/airtng-screen.png)
 
@@ -13,8 +13,10 @@
       Host users can offer rental properties which other guest users can reserve. 
       The guest and the host can then anonymously communicate via a disposable Twilio phone number created 
       just for a reservation. In this tutorial, we'll show you the key bits of
-      code to make this work. To run this sample app yourself, 
-      [follow the instructions on GitHub](https://github.com/TwilioDevEd/anonymous-communications-rails).
+      code to make this work. 
+
+      To run this sample app yourself, 
+      [download the code and follow the instructions on GitHub](https://github.com/TwilioDevEd/anonymous-communications-rails).
 
       Let's get started! Click the right arrow above to move to the next step
       of the tutorial.
@@ -72,15 +74,51 @@
       * [Purchase a Phone Number with the REST API](//www.twilio.com/docs/api/rest/incoming-phone-numbers#list-post)
       * [Create an Application in your account portal](//www.twilio.com/user/account/apps)
 
-  .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='71-86')
+  .step(data-file='app/controllers/reservations_controller.rb', data-highlight='103-110')
     :markdown
-      ## Connecting guest and host via phone call
+      ## Find a reservation when a guest or host calls
+
+      In our controller, we create a filter which gets executed every time Twilio
+      asks our application how to handle an incoming call or text.  This filter
+      finds and stores the correct reservation (the one associated with the anonymous number)
+      as an instance variable that will be used as we connect the guest and host via
+      voice or SMS.
+
+      ---
+
+      **See Also:**
+      * [Filters in Rails controllers](http://guides.rubyonrails.org/action_controller_overview.html#filters)
+
+  .step(data-file='app/controllers/reservations_controller.rb', data-highlight='54-69')
+    :markdown
+      ## Connect guest and host via SMS
 
       Our [Twilio application](https://www.twilio.com/docs/api/rest/applications)
       should be configured to [send HTTP requests](https://www.twilio.com/docs/api/twiml/twilio_request) 
-      to this controller method. Our app responds with [TwiML instructions](https://www.twilio.com/docs/api/twiml)
-      that tell Twilio to `&lt;Play&gt;` an introductory MP3 audio file and then
-      `&lt;Dial&gt;` either the guest or host, depending on who initiated the call.
+      to this controller method on any incoming text message. Our app responds with 
+      [TwiML](https://www.twilio.com/docs/api/twiml) to tell Twilio what to do in
+      response to the message.
+
+      If the initial message sent to the anonymous number was sent by the host, 
+      we forward it on to the guest. We forward it
+      to the host if the original message was sent by the guest.
+
+      ---
+
+      **See Also:**
+      * [The &lt;Message&gt; TwiML verb](https://www.twilio.com/docs/api/twiml/sms/message)
+      * [Your message logs in the account portal](https://www.twilio.com/user/account/log/messages)
+
+  .step(data-file='app/controllers/reservations_controller.rb', data-highlight='71-86')
+    :markdown
+      ## Connect guest and host via phone call
+
+      Our [Twilio application](https://www.twilio.com/docs/api/rest/applications)
+      will [send HTTP requests](https://www.twilio.com/docs/api/twiml/twilio_request) 
+      to this method on any incoming voice call. Our app responds with 
+      [TwiML instructions](https://www.twilio.com/docs/api/twiml)
+      that tell Twilio to `Play` an introductory MP3 audio file and then
+      `Dial` either the guest or host, depending on who initiated the call.
 
       ---
 
@@ -88,36 +126,13 @@
       * [TwiML Dial verb](https://www.twilio.com/docs/api/twiml/dial)
       * [TwiML Play verb](https://www.twilio.com/docs/api/twiml/dial)
 
-  .step(data-file='/app/controllers/reservations_controller.rb', data-highlight='54-69')
-    :markdown
-      ## Connecting guest and host via SMS
-
-      When our host or guest send a message to the reservation's phone number,
-      this controller will check to see if the incoming number is the host or guest. Than
-      it will ask the reservation to send the message to the appropriate
-      party. Next let's look at the the method that actually sends the message.
-
-  .step(data-file='app/models/user.rb', data-highlight='15-22')
-    :markdown
-      ## Sending a text message
-
-      Here we have a method on the `User` model that will send a message to
-      that user instance. These are the three parameters needed to [send an
-      SMS](https://www.twilio.com/docs/quickstart/ruby/sms/sending-via-rest)
-      using the [Twilio REST API](https://www.twilio.com/docs/api/rest):
-      `:from`, `:to`, and `:body`.
-
-      ---
-
-      **See Also:**
-      * [REST API Docs for Message resource](https://www.twilio.com/docs/api/rest/message)
-      * [Your message logs in the account portal](https://www.twilio.com/user/account/log/messages)
-
   .step
     :markdown
       ## Where to next?
 
-      That's it! We've just implemented anonymous communications that allow your customers to connect while protecting their privacy. If you're a Ruby developer working with Twilio, you might want to check out these other tutorials.
+      That's it! We've just implemented anonymous communications that allow your 
+      customers to connect while protecting their privacy. If you're a Ruby 
+      developer working with Twilio, you might want to check out these other tutorials.
 
       [**Part 1 of this Tutorial: Workflow Automation**](//www.twilio.com/docs/howto/walkthrough/workflow-automation/ruby/rails#0)
 

@@ -1,6 +1,6 @@
 {
     "title": "Anonymous Communications",
     "repo": "TwilioDevEd/anonymous-communications-rails",
-    "description": "Protect your users' privacy by anonymously connecting them with Twilio Voice and SMS. Learn how to create disposable phone numbers on-demand so two users can communicate without exchanging personal information.",
+    "description": "Protect your users' privacy by anonymously connecting them with Twilio Voice and SMS. Learn how to create disposable phone numbers on-demand, so two users can communicate without exchanging personal information.",
     "heroku": true
 }
