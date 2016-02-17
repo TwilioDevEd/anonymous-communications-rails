@@ -2,6 +2,8 @@
 
 Protect your customers' privacy, and create a seamless interaction by provisioning Twilio numbers on the fly, and routing all voice calls, and messages through your very own 3rd party. This allows you to control the interaction between your customers, while putting your customer's privacy first.
 
+[Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/masked-numbers/ruby/rails)!
+
 ## Setup a Twilio application
 Before you can run this app you need to go into your account portal and [create a new Twilio Application](https://www.twilio.com/user/account/apps). Once you have created an app the urls should look like:
 
