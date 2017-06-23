@@ -28,12 +28,11 @@ class ReservationsController < ApplicationController
 
   # webhook for twilio incoming message from host
   def accept_or_reject
-    incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+    incoming = params[:From]
     sms_input = params[:Body].downcase
     begin
       @host = User.find_by(phone_number: incoming)
       @reservation = @host.pending_reservation
-
       if sms_input == "accept" || sms_input == "yes"
         @reservation.confirm!
       else
@@ -101,10 +100,9 @@ class ReservationsController < ApplicationController
 
     # Load up Twilio parameters
     def set_twilio_params
-      @incoming_phone = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+      @incoming_phone = params[:From]
       @message = params[:Body]
       anonymous_phone_number = params[:To]
-
       @reservation = Reservation.where(phone_number: anonymous_phone_number).first
     end
 
