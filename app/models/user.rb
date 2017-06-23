@@ -13,10 +13,10 @@ class User < ActiveRecord::Base
   after_create :save_join_phone_number!
 
   def send_message_via_sms(message, from_number = ENV['TWILIO_NUMBER'])
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
-    @client.account.messages.create(
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
+    @client.messages.create(
       from: from_number,
-      to: self.phone_number,
+      to: "#{self.phone_number}",
       body: message,
     )
   end
@@ -28,18 +28,18 @@ class User < ActiveRecord::Base
   end
 
   def pending_reservation
-    self.reservations.where(status: "pending").first
+    self.reservations.pending.first
   end
 
   def pending_reservations
-    self.reservations.where(status: "pending")
+    self.reservations.pending
   end
 
   private
 
-  # No reason to save phone number without the area_code, it's what twilio & ActiveRecord expect
+  # No reason to save phone number without the area_code or country_code, it's what twilio & ActiveRecord expect
   def save_join_phone_number!
-    self.update!(phone_number: "#{self.area_code}#{self.phone_number}")
+    self.update!(phone_number: "#{self.country_code}#{self.area_code}#{self.phone_number}")
   end
 
 end

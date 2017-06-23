@@ -2,13 +2,13 @@ class ReservationsController < ApplicationController
   skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_action :set_twilio_params, only: [:connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_filter :authenticate_user, only: [:index]
-  
+
   # GET /reservations
   def index
     @reservations = current_user.reservations.all
   end
 
-  # GET /vacation_properties/new
+  # GET /reservations/new
   def new
     @reservation = Reservation.new
   end
@@ -28,12 +28,11 @@ class ReservationsController < ApplicationController
 
   # webhook for twilio incoming message from host
   def accept_or_reject
-    incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+    incoming = params[:From]
     sms_input = params[:Body].downcase
     begin
       @host = User.find_by(phone_number: incoming)
       @reservation = @host.pending_reservation
-
       if sms_input == "accept" || sms_input == "yes"
         @reservation.confirm!
       else
@@ -61,7 +60,7 @@ class ReservationsController < ApplicationController
     elsif @reservation.host.phone_number == @incoming_phone
       @outgoing_number = @reservation.guest.phone_number
     end
-    
+
     response = Twilio::TwiML::Response.new do |r|
       r.Message @message, :to => @outgoing_number
     end
@@ -102,10 +101,9 @@ class ReservationsController < ApplicationController
 
     # Load up Twilio parameters
     def set_twilio_params
-      @incoming_phone = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+      @incoming_phone = params[:From]
       @message = params[:Body]
       anonymous_phone_number = params[:To]
-
       @reservation = Reservation.where(phone_number: anonymous_phone_number).first
     end
 

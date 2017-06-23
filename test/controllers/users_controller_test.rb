@@ -11,7 +11,6 @@ class UsersControllerTest < ActionController::TestCase
 
   test "should post successfully to create" do
     assert_difference "User.count" do
-      puts user_params
       post :create, user: user_params
       assert_response :redirect
       assert_redirected_to home_path
