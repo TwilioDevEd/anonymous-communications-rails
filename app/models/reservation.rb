@@ -62,15 +62,15 @@ class Reservation < ActiveRecord::Base
     @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
     begin
       # Lookup numbers in host area code, if none than lookup from anywhere
-      @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => self.host.area_code)
+      @numbers = @client.available_phone_numbers.get('US').local.list(:area_code => self.host.area_code)
       if @numbers.empty?
-        @numbers = @client.account.available_phone_numbers.get('US').local.list()
+        @numbers = @client.available_phone_numbers.get('US').local.list()
       end
 
       # Purchase the number & set the application_sid for voice and sms, will
       # tell the number where to route calls/sms
       @number = @numbers.first.phone_number
-      @anon_number = @client.account.incoming_phone_numbers.create(
+      @anon_number = @client.incoming_phone_numbers.create(
         :phone_number => @number,
         :voice_application_sid => ENV['ANONYMOUS_APPLICATION_SID'], 
         :sms_application_sid => ENV['ANONYMOUS_APPLICATION_SID']

@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Twilio to send confirmation message
-gem 'twilio-ruby', '~> 5.0.0.rc17'
+gem 'twilio-ruby', '~> 5.0.0.rc24'
 # Use sanitize
 gem 'sanitize'
 
@@ -51,4 +51,3 @@ group :development, :test do
   # Mocha for mocking
   gem 'mocha'
 end
-

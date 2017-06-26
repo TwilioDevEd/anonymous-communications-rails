@@ -2,13 +2,13 @@ class ReservationsController < ApplicationController
   skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_action :set_twilio_params, only: [:connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_filter :authenticate_user, only: [:index]
-  
+
   # GET /reservations
   def index
     @reservations = current_user.reservations.all
   end
 
-  # GET /vacation_properties/new
+  # GET /reservations/new
   def new
     @reservation = Reservation.new
   end
@@ -61,11 +61,10 @@ class ReservationsController < ApplicationController
     elsif @reservation.host.phone_number == @incoming_phone
       @outgoing_number = @reservation.guest.phone_number
     end
-    
-    response = Twilio::TwiML::Response.new do |r|
-      r.Message @message, :to => @outgoing_number
-    end
-    render text: response.text
+
+    response = Twilio::TwiML::MessagingResponse.new
+    response.message(@message, :to => @outgoing_number)
+    render text: response.to_s
   end
 
   # webhook for twilio -> TwiML for voice calls
@@ -78,21 +77,21 @@ class ReservationsController < ApplicationController
     elsif @reservation.host.phone_number == @incoming_phone
       @outgoing_number = @reservation.guest.phone_number
     end
-    response = Twilio::TwiML::Response.new do |r|
-      r.Play "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3"
-      r.Dial @outgoing_number
-    end
-    render text: response.text
+    response = Twilio::TwiML::VoiceResponse.new
+    response.play(url: "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3")
+    response.dial(@outgoing_number)
+
+    render text: response.to_s
   end
 
 
   private
     # Send an SMS back to the Subscriber
     def respond(message)
-      response = Twilio::TwiML::Response.new do |r|
-        r.Message message
-      end
-      render text: response.text
+      response = Twilio::TwiML::MessagingResponse.new
+      response.message(message)
+
+      render text: response.to_s
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
