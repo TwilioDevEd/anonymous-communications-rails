@@ -13,9 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150728042020) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
   create_table "reservations", force: :cascade do |t|
     t.string   "name"
     t.string   "guest_phone"
@@ -27,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150728042020) do
     t.string   "phone_number"
   end
 
-  add_index "reservations", ["vacation_property_id"], name: "index_reservations_on_vacation_property_id", using: :btree
+  add_index "reservations", ["vacation_property_id"], name: "index_reservations_on_vacation_property_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -48,6 +45,6 @@ ActiveRecord::Schema.define(version: 20150728042020) do
     t.datetime "updated_at",  null: false
   end
 
-  add_index "vacation_properties", ["user_id"], name: "index_vacation_properties_on_user_id", using: :btree
+  add_index "vacation_properties", ["user_id"], name: "index_vacation_properties_on_user_id"
 
 end
