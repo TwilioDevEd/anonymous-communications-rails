@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - 2.2.1
+install:
+  - bundle install
+  - bundle exec rake db:create db:migrate
+env:
+  global:
+    - TWILIO_ACCOUNT_SID=ACYour-Account-SID
+    - TWILIO_AUTH_TOKEN=Your-Twilio-Authy-Token
+    - TWILIO_NUMBER=+15551234567
+    - ANONYMOUS_APPLICATION_SID=APXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX

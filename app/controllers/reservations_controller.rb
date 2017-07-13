@@ -2,13 +2,13 @@ class ReservationsController < ApplicationController
   skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_action :set_twilio_params, only: [:connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_filter :authenticate_user, only: [:index]
-  
+
   # GET /reservations
   def index
     @reservations = current_user.reservations.all
   end
 
-  # GET /vacation_properties/new
+  # GET /reservations/new
   def new
     @reservation = Reservation.new
   end
@@ -28,12 +28,11 @@ class ReservationsController < ApplicationController
 
   # webhook for twilio incoming message from host
   def accept_or_reject
-    incoming = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+    incoming = params[:From]
     sms_input = params[:Body].downcase
     begin
       @host = User.find_by(phone_number: incoming)
       @reservation = @host.pending_reservation
-
       if sms_input == "accept" || sms_input == "yes"
         @reservation.confirm!
       else
@@ -61,11 +60,10 @@ class ReservationsController < ApplicationController
     elsif @reservation.host.phone_number == @incoming_phone
       @outgoing_number = @reservation.guest.phone_number
     end
-    
-    response = Twilio::TwiML::Response.new do |r|
-      r.Message @message, :to => @outgoing_number
-    end
-    render text: response.text
+
+    response = Twilio::TwiML::MessagingResponse.new
+    response.message(@message, :to => @outgoing_number)
+    render text: response.to_s
   end
 
   # webhook for twilio -> TwiML for voice calls
@@ -78,21 +76,21 @@ class ReservationsController < ApplicationController
     elsif @reservation.host.phone_number == @incoming_phone
       @outgoing_number = @reservation.guest.phone_number
     end
-    response = Twilio::TwiML::Response.new do |r|
-      r.Play "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3"
-      r.Dial @outgoing_number
-    end
-    render text: response.text
+    response = Twilio::TwiML::VoiceResponse.new
+    response.play(url: "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3")
+    response.dial(@outgoing_number)
+
+    render text: response.to_s
   end
 
 
   private
     # Send an SMS back to the Subscriber
     def respond(message)
-      response = Twilio::TwiML::Response.new do |r|
-        r.Message message
-      end
-      render text: response.text
+      response = Twilio::TwiML::MessagingResponse.new
+      response.message(message)
+
+      render text: response.to_s
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -102,10 +100,9 @@ class ReservationsController < ApplicationController
 
     # Load up Twilio parameters
     def set_twilio_params
-      @incoming_phone = Sanitize.clean(params[:From]).gsub(/^\+\d/, '')
+      @incoming_phone = params[:From]
       @message = params[:Body]
       anonymous_phone_number = params[:To]
-
       @reservation = Reservation.where(phone_number: anonymous_phone_number).first
     end
 

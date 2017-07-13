@@ -8,8 +8,8 @@ Rails.application.routes.draw do
 
   resources :vacation_properties, path: "/properties"
   resources :reservations, only: [:index, :new, :create]
-  post "reservations/incoming", to: 'reservations#accept_or_reject', as: 'incoming'
 
+  post "reservations/incoming", to: 'reservations#accept_or_reject', as: 'incoming'
   post "reservations/connect_sms", to: 'reservations#connect_guest_to_host_sms'
   post "reservations/connect_voice", to: 'reservations#connect_guest_to_host_voice'
 

@@ -32,15 +32,15 @@ class Reservation < ActiveRecord::Base
 
   def confirm!
     provision_phone_number
-    self.update!(status: "confirmed")
+    self.update!(status: 1)
   end
 
   def reject!
-    self.update!(status: "rejected")
+    self.update!(status: 0)
   end
 
   def notify_guest
-    if self.status_changed? && (self.status == "confirmed" || self.status == "rejected")
+    if self.status_changed? && (self.status == :confirmed || self.status == :rejected)
       message = "Your recent request to stay at #{self.vacation_property.description} was #{self.status}."
       self.guest.send_message_via_sms(message)
     end
@@ -59,21 +59,21 @@ class Reservation < ActiveRecord::Base
   private
 
   def provision_phone_number
-    @client = Twilio::REST::Client.new ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN']
+    @client = Twilio::REST::Client.new(ENV['TWILIO_ACCOUNT_SID'], ENV['TWILIO_AUTH_TOKEN'])
     begin
       # Lookup numbers in host area code, if none than lookup from anywhere
-      @numbers = @client.account.available_phone_numbers.get('US').local.list(:area_code => self.host.area_code)
+      @numbers = @client.api.available_phone_numbers('US').local.list(area_code: self.host.area_code)
       if @numbers.empty?
-        @numbers = @client.account.available_phone_numbers.get('US').local.list()
+        @numbers = @client.api.available_phone_numbers('US').local.list()
       end
 
       # Purchase the number & set the application_sid for voice and sms, will
       # tell the number where to route calls/sms
       @number = @numbers.first.phone_number
-      @anon_number = @client.account.incoming_phone_numbers.create(
-        :phone_number => @number,
-        :voice_application_sid => ENV['ANONYMOUS_APPLICATION_SID'], 
-        :sms_application_sid => ENV['ANONYMOUS_APPLICATION_SID']
+      @client.api.incoming_phone_numbers.create(
+        phone_number: @number,
+        voice_application_sid: ENV['ANONYMOUS_APPLICATION_SID'],
+        sms_application_sid: ENV['ANONYMOUS_APPLICATION_SID']
       )
 
       # Set the reservation.phone_number

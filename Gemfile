@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
 # Use postgresql as the database for Active Record
-gem 'pg'
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -27,7 +27,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 
 # Use Twilio to send confirmation message
-gem 'twilio-ruby'
+gem 'twilio-ruby', '~> 5.0.0'
 # Use sanitize
 gem 'sanitize'
 
@@ -50,5 +50,7 @@ group :development, :test do
 
   # Mocha for mocking
   gem 'mocha'
-end
 
+  gem 'vcr'
+  gem 'webmock'
+end
