@@ -62,7 +62,7 @@ class ReservationsController < ApplicationController
     end
 
     response = Twilio::TwiML::MessagingResponse.new
-    response.message(@message, :to => @outgoing_number)
+    response.message(:body => @message, :to => @outgoing_number)
     render text: response.to_s
   end
 
@@ -78,7 +78,7 @@ class ReservationsController < ApplicationController
     end
     response = Twilio::TwiML::VoiceResponse.new
     response.play(url: "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3")
-    response.dial(@outgoing_number)
+    response.dial(number: @outgoing_number)
 
     render text: response.to_s
   end
@@ -88,7 +88,7 @@ class ReservationsController < ApplicationController
     # Send an SMS back to the Subscriber
     def respond(message)
       response = Twilio::TwiML::MessagingResponse.new
-      response.message(message)
+      response.message(body: message)
 
       render text: response.to_s
     end
