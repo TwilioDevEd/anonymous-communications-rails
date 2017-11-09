@@ -10,12 +10,6 @@ Protect your customers' privacy, and create a seamless interaction by provisioni
 
 [Read the full tutorial here](https://www.twilio.com/docs/tutorials/walkthrough/masked-numbers/ruby/rails)!
 
-## Deploy to Heroku
-
-Hit the button!
-
-[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy)
-
 ## Local Development
 
 This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
