@@ -29,7 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Twilio to send confirmation message
 gem 'twilio-ruby', '>= 5.0.0'
 # Use sanitize
-gem 'sanitize'
+gem 'sanitize', '>= 5.2.1'
 
 # Use Unicorn as the app server
 gem 'unicorn'
