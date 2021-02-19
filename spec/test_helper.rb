@@ -1,7 +1,4 @@
-ENV['RAILS_ENV'] ||= 'test'
-require File.expand_path('../../config/environment', __FILE__)
-require 'rails/test_help'
-require 'mocha/mini_test'
+require 'rails_helper'
 require 'vcr'
 
 VCR.configure do |configure|
@@ -13,9 +10,9 @@ VCR.configure do |configure|
   configure.filter_sensitive_data("<APPLICATION SID>") { ENV["ANONYMOUS_APPLICATION_SID"] }
 end
 
-class ActiveSupport::TestCase
-  # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  fixtures :all
+module Params
+  # # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
+  # fixtures :all
 
   # Add more helper methods to be used by all tests here...
 
@@ -34,7 +31,11 @@ class ActiveSupport::TestCase
       name: "reservation1",
       guest_phone: "6195559090",
       message: "message1",
-      property_id: 1
+      property_id: 1,
     }
   end
+end
+
+RSpec.configure do |c|
+  c.include Params
 end

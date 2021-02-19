@@ -1,10 +1,10 @@
-<a href="https://www.twilio.com">
-  <img src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg" alt="Twilio" width="250" />
+<a  href="https://www.twilio.com">
+<img  src="https://static0.twilio.com/marketing/bundles/marketing/img/logos/wordmark-red.svg"  alt="Twilio"  width="250"  />
 </a>
-
+ 
 # Airtng App: Part 2 - Anonymous Calling and SMS with Twilio
 
-[![Build Status](https://travis-ci.org/TwilioDevEd/anonymous-communications-rails.svg?branch=master)](https://travis-ci.org/TwilioDevEd/anonymous-communications-rails)
+![](https://github.com/TwilioDevEd/anonymous-communications-rails/workflows/build/badge.svg)
 
 Protect your customers' privacy, and create a seamless interaction by provisioning Twilio numbers on the fly, and routing all voice calls, and messages through your very own 3rd party. This allows you to control the interaction between your customers, while putting your customer's privacy first.
 
@@ -58,22 +58,16 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
    [Twilio Account Settings](https://www.twilio.com/console/account/settings).
    You will also need a `TWILIO_NUMBER`, which you may find [here](https://www.twilio.com/console/phone-numbers/incoming).
 
-   Run:
-   ```bash
-   $ source .env
-   ```
-   to export the environment variables.
-
-1. Create database and run migrations.
+1. Create database and run migrations. Be sure to have [SQLite](https://www.sqlite.org/index.html) installed before running this command.
 
    ```bash
-   $ bundle exec rake db:create db:migrate
+   $ bundle exec rails db:setup
    ```
 
 1. Make sure the tests succeed.
 
    ```bash
-   $ bundle exec rake
+   $ bundle exec rspec
    ```
 
 1. Start the server.
@@ -87,5 +81,5 @@ That's it!
 ## Meta
 
 * No warranty expressed or implied. Software is as is. Diggity.
-* [MIT License](http://www.opensource.org/licenses/mit-license.html)
+* [MIT License](LICENSE)
 * Lovingly crafted by Twilio Developer Education.

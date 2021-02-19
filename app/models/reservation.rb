@@ -5,7 +5,7 @@ class Reservation < ActiveRecord::Base
   enum status: [ :pending, :confirmed, :rejected ]
 
   belongs_to :vacation_property
-  belongs_to :user
+  belongs_to :user, optional: true
 
   def notify_host(force = false)
     # Don't send the message if we have more than one and we aren't being forced

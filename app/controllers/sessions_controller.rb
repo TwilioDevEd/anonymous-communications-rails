@@ -1,6 +1,6 @@
 class SessionsController < ApplicationController
-  before_filter :authenticate_user, :except => [:login, :login_attempt]
-  before_filter :save_login_state, :only => [:login, :login_attempt]
+  before_action :authenticate_user, :except => [:login, :login_attempt]
+  before_action :save_login_state, :only => [:login, :login_attempt]
 
   def login
     #Login Form
@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
 
     else
       flash[:notice] = "Invalid Username or Password"
-      render "login"  
+      render "login"
     end
   end
 

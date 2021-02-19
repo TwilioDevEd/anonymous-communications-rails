@@ -6,6 +6,7 @@ one:
   status: 0
   message: Is the universe safe there?
   guest_phone: '+16195559091'
+  phone_number: '+100343233'
   vacation_property_id: 1
 
 two:
