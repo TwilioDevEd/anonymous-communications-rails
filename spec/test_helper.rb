@@ -2,18 +2,14 @@ require 'rails_helper'
 require 'vcr'
 
 VCR.configure do |configure|
-  configure.cassette_library_dir = "test/vcr_cassettes"
+  configure.cassette_library_dir = "spec/vcr_cassettes"
   configure.hook_into :webmock
-  configure.filter_sensitive_data("<TWILIO ACCOUNT SID>") { ENV["TWILIO_ACCOUNT_SID"] }
-  configure.filter_sensitive_data("<TWILIO AUTH TOKEN>") { ENV["TWILIO_AUTH_TOKEN"] }
-  configure.filter_sensitive_data("<TWILIO NUMBER>") { ENV["TWILIO_NUMBER"] }
-  configure.filter_sensitive_data("<APPLICATION SID>") { ENV["ANONYMOUS_APPLICATION_SID"] }
+  configure.register_request_matcher :uri_regex do |request1, request2|
+    request1.uri.match(request2.uri)
+  end
 end
 
 module Params
-  # # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
-  # fixtures :all
-
   # Add more helper methods to be used by all tests here...
 
   def user_params(params={})

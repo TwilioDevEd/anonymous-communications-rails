@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/AvailablePhoneNumbers/US/Local.json?AreaCode=619
+    uri: !ruby/regexp /^https:\/\/api\.twilio\.com\/2010-04-01\/Accounts\/.*\/AvailablePhoneNumbers\/US\/Local\.json\?AreaCode=619/
     body:
       encoding: US-ASCII
       string: ''
@@ -196,7 +196,7 @@ http_interactions:
   recorded_at: Thu, 29 Jun 2017 12:41:44 GMT
 - request:
     method: post
-    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/IncomingPhoneNumbers.json
+    uri: !ruby/regexp /^https:\/\/api\.twilio\.com\/2010-04-01\/Accounts\/.*\/IncomingPhoneNumbers\.json/
     body:
       encoding: UTF-8
       string: PhoneNumber=%2B16196324285
@@ -265,7 +265,7 @@ http_interactions:
   recorded_at: Thu, 29 Jun 2017 12:41:45 GMT
 - request:
     method: post
-    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/Messages.json
+    uri: !ruby/regexp /^https:\/\/api\.twilio\.com\/2010-04-01\/Accounts\/.*\/Messages.json/
     body:
       encoding: UTF-8
       string: Body=You+have+a+new+reservation+request+from+Kevin+for+Data%27s+Test+Suite%3A%0A%0A++++++%27Looking+forward+to+testing+your+space+couch.%27%0A%0A++++++Reply+%5Baccept%5D+or+%5Breject%5D.&From=%2B14049476065&To=5551234

@@ -26,7 +26,7 @@ RSpec.describe ReservationsController, type: :controller do
 
   describe "POST accept_or_reject" do
     it "accepts reservations" do
-      VCR.use_cassette("accept_or_reject_reservation") do
+      VCR.use_cassette("accept_or_reject_reservation", match_requests_on: [:method, :uri_regex]) do
         post :accept_or_reject, params: { From: @host.phone_number, Body: "accept"}
   
         expect(response).to be_successful
@@ -39,7 +39,7 @@ RSpec.describe ReservationsController, type: :controller do
 
   describe "POST create" do
     it "redirects to vacation property" do
-      VCR.use_cassette("create_reservation", record: :new_episodes) do
+      VCR.use_cassette("create_reservation", match_requests_on: [:method, :uri_regex]) do
         post :create, params: { reservation: reservation_params}
         expect(response).to have_http_status(:redirect)
         expect(response).to redirect_to(@vacation_property)
