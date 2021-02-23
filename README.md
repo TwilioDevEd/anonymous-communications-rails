@@ -42,7 +42,7 @@ This project is built using [Ruby on Rails](http://rubyonrails.org/) Framework.
 
 1. Configure Twilio App to call your webhooks.
 
-   Before you can run this app you need to go into your account portal and [create a new Twilio Application](https://www.twilio.com/user/account/apps). Once you have created an app the urls should look like:
+   Before you can run this app you need to go into your account portal and [create a new Twilio Application](https://www.twilio.com/console/phone-numbers/runtime/twiml-apps). Once you have created an app the urls should look like:
 
    Voice: `https://<ngrok_subdomain>.ngrok.io/reservations/connect_voice`
 
