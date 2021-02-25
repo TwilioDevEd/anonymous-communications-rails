@@ -4,7 +4,7 @@
  
 # Airtng App: Part 2 - Anonymous Calling and SMS with Twilio
 
-![](https://github.com/TwilioDevEd/anonymous-communications-rails/workflows/build/badge.svg)
+![](https://github.com/TwilioDevEd/anonymous-communications-rails/actions/workflows/build.yml/badge.svg)
 
 Protect your customers' privacy, and create a seamless interaction by provisioning Twilio numbers on the fly, and routing all voice calls, and messages through your very own 3rd party. This allows you to control the interaction between your customers, while putting your customer's privacy first.
 
