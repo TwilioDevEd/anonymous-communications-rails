@@ -35,7 +35,7 @@ RSpec.describe SessionsController, type: :controller do
   end
 
   describe "GET logout" do
-    it "" do
+    it "redirects to login" do
       session["user_id"] = @user.id
       assert session["user_id"], "Precondition: user should be logged in"
       get :logout
