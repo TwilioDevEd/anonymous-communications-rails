@@ -1,7 +1,7 @@
 class ReservationsController < ApplicationController
-  skip_before_filter  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms, :connect_guest_to_host_voice]
+  skip_before_action  :verify_authenticity_token, only: [:accept_or_reject, :connect_guest_to_host_sms, :connect_guest_to_host_voice]
   before_action :set_twilio_params, only: [:connect_guest_to_host_sms, :connect_guest_to_host_voice]
-  before_filter :authenticate_user, only: [:index]
+  before_action :authenticate_user, only: [:index]
 
   # GET /reservations
   def index
@@ -20,10 +20,10 @@ class ReservationsController < ApplicationController
     if @reservation.save
       flash[:notice] = "Sending your reservation request now."
       @reservation.host.check_for_reservations_pending
-      redirect_to @vacation_property
     else
-      flash[:danger] = @reservation.errors
+      flash[:error] = @reservation.errors.full_messages.to_sentence
     end
+    redirect_to @vacation_property
   end
 
   # webhook for twilio incoming message from host
@@ -63,7 +63,7 @@ class ReservationsController < ApplicationController
 
     response = Twilio::TwiML::MessagingResponse.new
     response.message(:body => @message, :to => @outgoing_number)
-    render text: response.to_s
+    render plain: response.to_s
   end
 
   # webhook for twilio -> TwiML for voice calls
@@ -80,7 +80,7 @@ class ReservationsController < ApplicationController
     response.play(url: "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3")
     response.dial(number: @outgoing_number)
 
-    render text: response.to_s
+    render plain: response.to_s
   end
 
 
@@ -90,7 +90,7 @@ class ReservationsController < ApplicationController
       response = Twilio::TwiML::MessagingResponse.new
       response.message(body: message)
 
-      render text: response.to_s
+      render plain: response.to_s
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

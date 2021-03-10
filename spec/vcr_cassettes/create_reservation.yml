@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: post
-    uri: https://api.twilio.com/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/Messages.json
+    uri: !ruby/regexp /^https:\/\/api\.twilio\.com\/2010-04-01\/Accounts\/.*\/Messages\.json/
     body:
       encoding: UTF-8
       string: Body=You+have+a+new+reservation+request+from+Jardo+for+Data%27s+Test+Suite%3A%0A%0A++++++%27Is+the+universe+safe+there%3F%27%0A%0A++++++Reply+%5Baccept%5D+or+%5Breject%5D.&From=%2B14049476065&To=%2B16195551234
@@ -66,6 +66,5 @@ http_interactions:
         null, "error_message": null, "uri": "/2010-04-01/Accounts/<TWILIO ACCOUNT
         SID>/Messages/SM164c4dac645543518ce80cbebe4fe377.json", "subresource_uris":
         {"media": "/2010-04-01/Accounts/<TWILIO ACCOUNT SID>/Messages/SM164c4dac645543518ce80cbebe4fe377/Media.json"}}'
-    http_version:
   recorded_at: Thu, 29 Jun 2017 17:43:38 GMT
-recorded_with: VCR 3.0.3
+recorded_with: VCR 6.0.0
