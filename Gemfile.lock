@@ -221,7 +221,7 @@ GEM
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
-    twilio-ruby (5.46.0)
+    twilio-ruby (5.50.0)
       faraday (>= 0.9, < 2.0)
       jwt (>= 1.5, <= 2.5)
       nokogiri (>= 1.6, < 2.0)
@@ -274,7 +274,7 @@ DEPENDENCIES
   spring
   sqlite3
   turbolinks (~> 5)
-  twilio-ruby (~> 5.46)
+  twilio-ruby (~> 5.50)
   tzinfo-data
   uglifier
   vcr
