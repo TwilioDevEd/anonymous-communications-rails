@@ -77,7 +77,7 @@ class ReservationsController < ApplicationController
       @outgoing_number = @reservation.guest.phone_number
     end
     response = Twilio::TwiML::VoiceResponse.new
-    response.play(url: "http://howtodocs.s3.amazonaws.com/howdy-tng.mp3")
+    response.say(message: "Hello, thanks for calling Air T N G. ...Please hold while we connect your call.")
     response.dial(number: @outgoing_number)
 
     render plain: response.to_s
