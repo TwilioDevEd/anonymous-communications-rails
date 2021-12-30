@@ -70,7 +70,7 @@ RSpec.describe ReservationsController, type: :controller do
       post :connect_guest_to_host_voice, params: { From: @guest.phone_number, Body: "message", To: @reservation.phone_number}
   
       expect(response).to be_successful
-      expect(response.body).to include("<Response>\n<Play>http://howtodocs.s3.amazonaws.com/howdy-tng.mp3</Play>\n<Dial>+16195551234</Dial>\n</Response>")
+      expect(response.body).to include("<Response>\n<Say>Hello, thanks for calling Air T N G. ...Please hold while we connect your call.</Say>\n<Dial>+16195551234</Dial>\n</Response>")
     end
   end
 
@@ -79,7 +79,7 @@ RSpec.describe ReservationsController, type: :controller do
       post :connect_guest_to_host_voice, params: { From: @host.phone_number, Body: "message", To: @reservation.phone_number}
   
       expect(response).to be_successful
-      expect(response.body).to include("<Response>\n<Play>http://howtodocs.s3.amazonaws.com/howdy-tng.mp3</Play>\n<Dial>+16195559091</Dial>\n</Response>")
+      expect(response.body).to include("<Response>\n<Say>Hello, thanks for calling Air T N G. ...Please hold while we connect your call.</Say>\n<Dial>+16195551234</Dial>\n</Response>")
     end
   end
 
