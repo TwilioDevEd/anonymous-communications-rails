@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby ' ~> 3.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 6.1.3'
+gem 'rails', '~> 6.1.5', '>= 6.1.5.1'
 # Use postgresql as the database for Active Record
 gem 'sqlite3'
 # Use Puma as the app server
@@ -28,7 +28,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'dotenv-rails'
   gem 'factory_bot_rails'
-  gem "rspec-rails", "~> 4.0"
+  gem "rspec-rails", "~> 4.0", ">= 4.0.2"
 end
 
 group :development do
